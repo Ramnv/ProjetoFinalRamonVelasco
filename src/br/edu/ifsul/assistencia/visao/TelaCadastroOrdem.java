@@ -5,15 +5,19 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import br.edu.ifsul.assistencia.model.Ordem;
+import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
+
 /**
  *
  * @author ramon
  */
 public class TelaCadastroOrdem extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaCadastroFuncionario
-     */
+        DAOOrdem dao = new DAOOrdem();
+        Ordem o= new Ordem(); 
+        Conexao conexao = new Conexao(); 
     public TelaCadastroOrdem() {
         initComponents();
     }

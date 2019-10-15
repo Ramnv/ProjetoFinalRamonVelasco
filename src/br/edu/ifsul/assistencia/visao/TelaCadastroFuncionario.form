@@ -37,7 +37,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonLimpar" min="-2" pref="125" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonLimpar1" min="-2" pref="128" max="-2" attributes="0"/>
+                      <Component id="jButtonLocalizar" min="-2" pref="128" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -61,7 +61,7 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jButtonLimpar1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButtonLocalizar" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -180,19 +180,19 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField3" pref="225" max="32767" attributes="0"/>
+                      <Component id="jTextFieldCpf" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldNome" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldTelefone" pref="225" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabelCodigo" min="-2" pref="69" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField4" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCodigo" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonTecnico" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonAtendente" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -203,22 +203,22 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonTecnico" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonAtendente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -226,7 +226,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jTextFieldNome">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelNome">
           <Properties>
@@ -243,14 +243,14 @@
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jTextFieldCpf">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCpfActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="jTextFieldTelefone">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTelefoneActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCodigo">
@@ -258,25 +258,25 @@
             <Property name="text" type="java.lang.String" value="Codigo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="jTextFieldCodigo">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCodigoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="jRadioButtonTecnico">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tecnico"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="jRadioButtonAtendente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Atendente"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonAtendenteActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -290,6 +290,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Deletar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeletarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAtualizar">
       <Properties>
@@ -299,12 +302,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAtualizarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonLimpar1">
+    <Component class="javax.swing.JButton" name="jButtonLocalizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Localizar Funcionario"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimpar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

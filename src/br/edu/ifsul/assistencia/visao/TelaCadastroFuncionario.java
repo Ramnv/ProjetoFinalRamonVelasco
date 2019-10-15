@@ -5,15 +5,19 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import br.edu.ifsul.assistencia.model.Funcionario;
+import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+
 /**
  *
  * @author ramon
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaCadastroFuncionario
-     */
+        DAOFuncionario dao = new DAOFuncionario();
+        Funcionario f = new Funcionario();
+        Conexao conexao = new Conexao();
+        
     public TelaCadastroFuncionario() {
         initComponents();
     }
@@ -32,20 +36,20 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
         jLabelCPF = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCpf = new javax.swing.JTextField();
+        jTextFieldTelefone = new javax.swing.JTextField();
         jLabelCodigo = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jRadioButtonTecnico = new javax.swing.JRadioButton();
+        jRadioButtonAtendente = new javax.swing.JRadioButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
-        jButtonLimpar1 = new javax.swing.JButton();
+        jButtonLocalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,33 +97,33 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         jLabelTelefone.setText("Telefone:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldCpfActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldTelefoneActionPerformed(evt);
             }
         });
 
         jLabelCodigo.setText("Codigo:");
 
-        jTextField4.setEditable(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCodigo.setEditable(false);
+        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldCodigoActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setText("Tecnico");
+        jRadioButtonTecnico.setText("Tecnico");
 
-        jRadioButton2.setText("Atendente");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButtonAtendente.setText("Atendente");
+        jRadioButtonAtendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jRadioButtonAtendenteActionPerformed(evt);
             }
         });
 
@@ -135,17 +139,17 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabelTelefone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButtonTecnico, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonAtendente, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -153,26 +157,31 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCodigo)
                     .addComponent(jLabelNome)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCPF)
-                    .addComponent(jRadioButton1))
+                    .addComponent(jRadioButtonTecnico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTelefone)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jRadioButtonAtendente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonLimpar.setText("Limpar");
 
         jButtonDeletar.setText("Deletar");
+        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeletarActionPerformed(evt);
+            }
+        });
 
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -181,10 +190,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jButtonLimpar1.setText("Localizar Funcionario");
-        jButtonLimpar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLocalizar.setText("Localizar Funcionario");
+        jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimpar1ActionPerformed(evt);
+                jButtonLocalizarActionPerformed(evt);
             }
         });
 
@@ -206,7 +215,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLocalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -224,7 +233,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                             .addComponent(jButtonDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButtonLimpar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonLocalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -233,36 +242,59 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldCpfActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+         f.setNome(jTextFieldNome.getText());
+        f.setCpf(jTextFieldCpf.getText());
+        f.setTelefone(jTextFieldTelefone.getText());
+        if(jRadioButtonAtendente.hasFocus()){
+            f.setTipo("Atendente");
+        }
+        else{
+            f.setTipo("Técnico");
+        }
+        dao.alterar(f); 
+        //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRadioButtonAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAtendenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSalvarActionPerformed
+        f.setNome(jTextFieldNome.getText());
+        f.setCpf(jTextFieldCpf.getText());
+        f.setTelefone(jTextFieldTelefone.getText());
+        if(jRadioButtonAtendente.hasFocus()){
+            f.setTipo("Atendente");
+        }
+        else{
+            f.setTipo("Técnico");
+        }
+        dao.inserir(f);    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void jButtonLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar1ActionPerformed
-        // TODO add your handling code here:
+    private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         TelaLocalizarFuncionario tela = new TelaLocalizarFuncionario();
         tela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButtonLimpar1ActionPerformed
+        
+    }//GEN-LAST:event_jButtonLocalizarActionPerformed
+
+    private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
+       f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
+        dao.remover(f);
+    }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +335,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonLimpar;
-    private javax.swing.JButton jButtonLimpar1;
+    private javax.swing.JButton jButtonLocalizar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCodigo;
@@ -311,13 +343,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButtonAtendente;
+    private javax.swing.JRadioButton jRadioButtonTecnico;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldCpf;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

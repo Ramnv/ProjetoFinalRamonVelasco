@@ -16,7 +16,7 @@ import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 public class TelaLocalizarCliente extends javax.swing.JFrame {
     Cliente c = new Cliente();
     DAOCliente dao = new DAOCliente();
-        Conexao conexao = new Conexao();
+     Conexao conexao = new Conexao();
 
     
 

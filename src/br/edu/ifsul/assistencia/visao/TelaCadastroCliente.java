@@ -277,6 +277,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
         c.setProduto(p);
         dao.alterar(c);
+        //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed

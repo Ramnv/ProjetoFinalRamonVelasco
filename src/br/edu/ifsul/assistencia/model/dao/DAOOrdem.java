@@ -5,6 +5,7 @@
  */
 package br.edu.ifsul.assistencia.model.dao;
 
+import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.Peca;
 import java.sql.PreparedStatement;
@@ -104,6 +105,39 @@ public class DAOOrdem {
             System.out.println("Erro de SQL: "+ e.getMessage());
         }
         return lista;
+    }
+      public Ordem localizar(Integer id){
+        String sql = "select * from ordem where ordem_cod = " +id;
+        List<Ordem> lista = new ArrayList<>();
+        try{
+            PreparedStatement pst= Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next()){
+                Ordem o = new Ordem();
+                o.setOrdem_cod(rs.getInt("ordem_cod"));
+                o.setMotivo(rs.getString("motivo"));
+                o.setPago(rs.getBoolean("pago"));
+                o.setValor(rs.getFloat("valor"));
+                
+                Peca p = new Peca();
+                p.setCodigoPeca(rs.getInt("peca_cod"));
+                o.setPeca(p);
+                
+                Funcionario f = new Funcionario();
+                f.setFuncionario_cod(rs.getInt("funcionario_cod"));
+                o.setFuncionario(f);
+                
+                o.setData_final(rs.getDate("data_final"));
+                o.setData_inicial(rs.getDate("data_inicial"));
+                
+            }
+        
+            
+        }catch(Exception e ){
+            System.out.println("Erro de SQL: " +e.getMessage());
+        }
+        return null;
     }
     
     
