@@ -58,6 +58,11 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         jButtonLimpar2.setText("Limpar");
 
         jButtonVoltar2.setText("Voltar");
+        jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltar2ActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizar2.setText("Localizar");
         jButtonLocalizar2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +135,13 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
        f.setFuncionario_cod(Integer.parseInt(jTextFieldID.getText()));
         dao.localizar(f.getFuncionario_cod());
     }//GEN-LAST:event_jButtonLocalizar2ActionPerformed
+
+    private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -57,6 +57,11 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         jButtonLimpar2.setText("Limpar");
 
         jButtonVoltar2.setText("Voltar");
+        jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltar2ActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizar2.setText("Localizar");
         jButtonLocalizar2.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +134,13 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         o.setOrdem_cod(Integer.parseInt(jTextFieldID.getText()));
         dao.localizar(o.getOrdem_cod());
     }//GEN-LAST:event_jButtonLocalizar2ActionPerformed
+
+    private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroOrdem tela = new TelaCadastroOrdem();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 
     /**
      * @param args the command line arguments

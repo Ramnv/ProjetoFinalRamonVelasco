@@ -62,6 +62,11 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
         jButtonLimpar.setText("Limpar");
 
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizar.setText("Localizar");
         jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +140,13 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
         c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.localizar(c.getCodigoCliente());
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroCliente tela = new TelaCadastroCliente();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
      * @param args the command line arguments

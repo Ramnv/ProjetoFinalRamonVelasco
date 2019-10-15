@@ -14,12 +14,12 @@ import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
  *
  * @author ramon
  */
-public class TelaCadastroOrdem extends javax.swing.JFrame {
+public class TelaOrcamento extends javax.swing.JFrame {
     
         DAOOrdem dao = new DAOOrdem();
         Ordem o= new Ordem(); 
         Conexao conexao = new Conexao(); 
-    public TelaCadastroOrdem() {
+    public TelaOrcamento() {
         initComponents();
     }
 
@@ -316,21 +316,23 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroOrdem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroOrdem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroOrdem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroOrdem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrcamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroOrdem().setVisible(true);
+                new TelaOrcamento().setVisible(true);
             }
         });
     }

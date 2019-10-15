@@ -33,6 +33,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
         jLabelFundoLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,29 +46,35 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAcessar);
-        jButtonAcessar.setBounds(200, 210, 71, 23);
+        jButtonAcessar.setBounds(360, 290, 80, 23);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_Padlock_lock_locked_circle_door_5172995.png"))); // NOI18N
         jLabelUsuario.setText("Usuario:");
         getContentPane().add(jLabelUsuario);
-        jLabelUsuario.setBounds(130, 90, 90, 30);
+        jLabelUsuario.setBounds(200, 140, 160, 60);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(310, 210, 51, 23);
+        jButtonSair.setBounds(461, 290, 70, 23);
 
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_key_lock_password_door_safe_5172988.png"))); // NOI18N
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(147, 134, 73, 20);
+        jLabelSenha.setBounds(220, 230, 141, 40);
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(220, 100, 170, 20);
+        jTextFieldUsuario.setBounds(360, 180, 170, 20);
         getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(220, 140, 170, 20);
-        getContentPane().add(jLabelFundoLogin);
-        jLabelFundoLogin.setBounds(0, 0, 580, 310);
+        jPasswordFieldSenha.setBounds(360, 250, 170, 20);
 
-        setSize(new java.awt.Dimension(600, 345));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_locked_shield_antivirus_protect_lock_5172993 (2).png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(320, 30, 120, 110);
+        getContentPane().add(jLabelFundoLogin);
+        jLabelFundoLogin.setBounds(0, 0, 770, 440);
+
+        setSize(new java.awt.Dimension(786, 472));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,6 +123,7 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAcessar;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFundoLogin;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
