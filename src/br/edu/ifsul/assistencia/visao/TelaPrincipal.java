@@ -5,9 +5,6 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-import MenuPrototipo.OpcoesCadastro;
-import MenuPrototipo.OpcoesLocalizar;
-
 /**
  *
  * @author ramon
@@ -41,8 +38,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextFieldDescricao.setBackground(new java.awt.Color(204, 204, 255));
+        jTextFieldDescricao.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTextFieldDescricao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDescricao.setOpaque(false);
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_Browser_webpage_website_web_page_5172949.png"))); // NOI18N
         jButton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -81,6 +85,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_document_file_check_success_report_5172969.png"))); // NOI18N
+        jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -162,7 +167,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("Cadastra funcionários, cliente, modelo ou marca");
+        jTextFieldDescricao.setText("Cadastra: \nfuncionários, cliente, modelo ou marca");
     }//GEN-LAST:event_jButton2MouseMoved
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -173,7 +178,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("Localiza funcionários, cliente, modelo ou marca");
+        jTextFieldDescricao.setText("Localiza: \nfuncionários, cliente, modelo ou marca");
     }//GEN-LAST:event_jButton3MouseMoved
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -194,8 +199,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("IFSUL - 2019 Alunos: Jessica ... Ramon ... 2019");
+        jTextFieldDescricao.setText("IFSUL - 2019 Alunos: \nJessica ... Ramon ... 2019");
     }//GEN-LAST:event_jButton5MouseMoved
+
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     /**
      * @param args the command line arguments

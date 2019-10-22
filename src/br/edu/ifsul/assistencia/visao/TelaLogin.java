@@ -55,6 +55,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelUsuario.setBounds(200, 140, 160, 60);
 
         jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSair);
         jButtonSair.setBounds(461, 290, 70, 23);
 
@@ -84,6 +89,11 @@ public class TelaLogin extends javax.swing.JFrame {
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonAcessarActionPerformed
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonSairActionPerformed
 
     /**
      * @param args the command line arguments
