@@ -15,11 +15,13 @@ import br.edu.ifsul.assistencia.visao.TelaCadastroModelo;
  * @author ramon
  */
 public class OpcoesCadastro extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form CadastroOpcoes
      */
     public OpcoesCadastro() {
+        
         initComponents();
     }
 
@@ -41,7 +43,7 @@ public class OpcoesCadastro extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Funcionário");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

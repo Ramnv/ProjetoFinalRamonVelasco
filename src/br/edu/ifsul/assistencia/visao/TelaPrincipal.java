@@ -37,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextFieldDescricao.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldDescricao.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
