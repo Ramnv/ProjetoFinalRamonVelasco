@@ -9,7 +9,10 @@ import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Produto;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,21 +33,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     public TelaCadastroCliente() {
         initComponents();
     }
-    public void tabela(){
-      
+    private void carregaTabela(){
         
-       for(Cliente c: dao.listar()){
-           
-                   
-           c.getCodigoCliente();
-           c.getCpf();
-           c.getEndereco();
-           c.getNome();
-           c.getTelefone();
-           Produto p = new Produto();
-           p.getNumeroSerie();
-           c.setProduto(p);
-       }
+        DefaultTableModel modelo = (DefaultTableModel) jTableCliente.getModel();
+        modelo.setNumRows(0);
+        DAOCliente dao = new DAOCliente();
+        
+        try{
+        
+        for(Cliente c : dao.listar()){
+            modelo.addRow(new Object[]{
+                c.getCodigoCliente(),
+                c.getCpf(),
+                c.getEndereco(),
+                c.getNome(),
+                c.getProduto(),
+                c.getTelefone()
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
     }
 
     /**
