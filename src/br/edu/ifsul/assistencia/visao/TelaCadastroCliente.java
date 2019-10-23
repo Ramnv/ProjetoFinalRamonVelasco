@@ -9,6 +9,7 @@ import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Produto;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
+import javax.swing.JTable;
 
 /**
  *
@@ -19,12 +20,31 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     Cliente c = new Cliente();
     Conexao conexao = new Conexao();
     
+    
+    
+    
 
     /**
      * Creates new form TelaCadastroFuncionario
      */
     public TelaCadastroCliente() {
         initComponents();
+    }
+    public void tabela(){
+      
+        
+       for(Cliente c: dao.listar()){
+           
+                   
+           c.getCodigoCliente();
+           c.getCpf();
+           c.getEndereco();
+           c.getNome();
+           c.getTelefone();
+           Produto p = new Produto();
+           p.getNumeroSerie();
+           c.setProduto(p);
+       }
     }
 
     /**
@@ -36,10 +56,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        queryCliente = java.beans.Beans.isDesignTime() ? null : ((javax.persistence.EntityManager)null).createQuery("select c from cliente");
+        listCliente = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ((javax.persistence.Query)null).getResultList();
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCliente = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
@@ -57,7 +79,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonLocalicalizar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +92,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -78,7 +100,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 "CodCliente", "Nome", "CPF", "Telefone", "CodOrdem", "Pago", "N de serie", "Modelo Nome", "Modelo Valor", "Marca Nome"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableCliente);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -220,10 +242,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
@@ -247,7 +269,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonLocalicalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -261,7 +283,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDeletar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAtualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +324,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
         // TODO add your handling code here:
-         TelaLocalizarCliente tela = new TelaLocalizarCliente();
+        TelaLocalizarCliente tela = new TelaLocalizarCliente();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
@@ -326,22 +348,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         dao.remover(c);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-         TelaPrincipal tela = new TelaPrincipal();
+        TelaPrincipal tela = new TelaPrincipal();
         tela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         // TODO add your handling code here:
-        //nao sei
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
-                jTextFieldEndereco.setText("");
-                jTextFieldTelefone.setText("");
-                        jTextFieldProduto.setText("");
-                        jTextFieldCodigo.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldTelefone.setText("");
+        jTextFieldProduto.setText("");
+        jTextFieldCodigo.setText("");
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
@@ -376,17 +397,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaCadastroCliente().setVisible(true);
+               
+                
             }
         });
+        
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonLocalicalizar;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -396,12 +421,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldProduto;
     private javax.swing.JTextField jTextFieldTelefone;
+    private java.util.List listCliente;
+    private javax.persistence.Query queryCliente;
     // End of variables declaration//GEN-END:variables
 }

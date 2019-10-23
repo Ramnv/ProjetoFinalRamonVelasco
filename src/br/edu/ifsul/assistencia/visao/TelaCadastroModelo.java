@@ -5,18 +5,19 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-import br.edu.ifsul.assistencia.model.Cliente;
-import br.edu.ifsul.assistencia.model.Produto;
+
+import br.edu.ifsul.assistencia.model.Marca;
+import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
-import br.edu.ifsul.assistencia.model.dao.DAOCliente;
+import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 
 /**
  *
  * @author ramon
  */
 public class TelaCadastroModelo extends javax.swing.JFrame {
-    DAOCliente dao = new DAOCliente();
-    Cliente c = new Cliente();
+    DAOModelo dao = new DAOModelo();
+    Modelo m = new Modelo();
     Conexao conexao = new Conexao();
     
 
@@ -243,14 +244,12 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
-        c.setNome(jTextFieldModelo.getText());
-        c.setCpf(jTextFieldCpf.getText());
-        c.setEndereco(jTextFieldEndereco.getText());
-        c.setTelefone(jTextFieldTelefone.getText());
-        Produto p = new Produto();
-        p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
-        c.setProduto(p);
-        dao.alterar(c);
+      m.setDescricao(jTextFieldModelo.getText());
+        Marca ma= new Marca();
+      ma.setDescricao(jComboBoxMarca.getCursor().getName());
+      m.setMarca(ma);
+      dao.alterar(m);
+      
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -267,21 +266,18 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
-        c.setNome(jTextFieldModelo.getText());
-        c.setCpf(jTextFieldCpf.getText());
-        c.setEndereco(jTextFieldEndereco.getText());
-        c.setTelefone(jTextFieldTelefone.getText());
-        Produto p = new Produto();
-        p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
-        c.setProduto(p);
-        dao.inserir(c);
+      m.setDescricao(jTextFieldModelo.getText());
+      Marca ma= new Marca();
+      ma.setDescricao(jComboBoxMarca.getCursor().getName());
+      m.setMarca(ma);
+      dao.inserir(m);
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         // TODO add your handling code here:
-        c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));        
-        dao.remover(c);
+       m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText())); // linha selecionada ou pegar o código
+       dao.remover(m);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -293,13 +289,9 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         // TODO add your handling code here:
-        //nao sei
         jTextFieldModelo.setText("");
-        jTextFieldCpf.setText("");
-                jTextFieldEndereco.setText("");
-                jTextFieldTelefone.setText("");
-                        jTextFieldProduto.setText("");
-                        jTextFieldCodigo.setText("");
+        jComboBoxMarca.setFocusable(false);
+        
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**

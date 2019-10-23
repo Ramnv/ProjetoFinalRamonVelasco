@@ -5,11 +5,9 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-import br.edu.ifsul.assistencia.model.Cliente;
+
 import br.edu.ifsul.assistencia.model.Marca;
-import br.edu.ifsul.assistencia.model.Produto;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
-import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 
 /**
