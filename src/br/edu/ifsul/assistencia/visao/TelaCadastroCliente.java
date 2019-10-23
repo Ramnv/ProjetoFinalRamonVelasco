@@ -97,7 +97,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CodCliente", "Nome", "CPF", "Telefone", "CodOrdem", "Pago", "N de serie", "Modelo Nome", "Modelo Valor", "Marca Nome"
+                "CodCliente", "Nome", "CPF", "Telefone", "CodOrdem", "Pago", "N de serie", "Mod Nome", "Mod Valor", "Marca Nome"
             }
         ));
         jScrollPane1.setViewportView(jTableCliente);

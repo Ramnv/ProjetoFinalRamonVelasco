@@ -99,9 +99,9 @@ public class DAOCliente {
 
     public List<Cliente> listar() {
 
-        String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone,c.endereco, "
-                + " o.ordem_cod ,  ma.nome,  m.nome, p.n_serie,  p.motivo,"
-                + " pe.valor,o.pago from cliente as c, produto as p,"
+        String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, "
+                + " o.ordem_cod,o.pago ,  ma.nome,  m.nome, p.n_serie,"
+                + " pe.valor from cliente as c, produto as p,"
                 + " modelo as m, marca as ma, ordem as o, pecas as pe where"
                 + " p.produto_cod = c.produto and m.modelo_cod = p.modelo and"
                 + " ma.marca_cod = m.marca and o.ordem_cod = p.ordem and "
@@ -116,7 +116,7 @@ public class DAOCliente {
                 c.setNome(rs.getString("nome"));
                 c.setCpf(rs.getString("cpf"));
                 c.setTelefone(rs.getString("telefone"));
-                c.setEndereco(rs.getString("endereco"));
+                
                 
                 Ordem o = new Ordem();
                 o.setOrdem_cod(rs.getInt("ordem_cod"));
@@ -127,11 +127,6 @@ public class DAOCliente {
                 p.setNumeroSerie(rs.getString("n_serie"));
                 p.setOrdem(o);
                 
-               
-                
-                
-                
-
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("nome"));
                 Peca pe = new Peca(); 

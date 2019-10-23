@@ -19,13 +19,14 @@ public class DAOFuncionario {
     
     public boolean inserir(Funcionario obj){
         
-        String sql = " insert into funcionario (nome, telefone, cpf) values" +
-        "(?,?,?) ";
+        String sql = " insert into funcionario (nome, telefone, cpf, tipo) values" +
+        "(?,?,?,?) ";
         try{
             PreparedStatement pst= Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getNome());
             pst.setString(2, obj.getTelefone());
             pst.setString(3, obj.getCpf());
+            pst.setString(4, obj.getTipo());
             
             if(pst.executeUpdate()> 0){
                 System.out.println("Funcionário inserido com sucesso!!");
@@ -46,14 +47,15 @@ public class DAOFuncionario {
     }
     public boolean alterar( Funcionario obj){
     
-        String sql = "update funcionario set nome = ?, telefone =?, cpf =? "
+        String sql = "update funcionario set nome = ?, telefone =?, cpf =?, tipo =? "
                 + "where funcionario_cod =? ";
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getNome());
             pst.setString(2, obj.getTelefone());
             pst.setString(3, obj.getCpf());
-            pst.setInt(4, obj.getFuncionario_cod());
+            pst.setString(4, obj.getTipo());            
+            pst.setInt(5, obj.getFuncionario_cod());
             
              if (pst.executeUpdate() > 0) {
                 System.out.println("Funcionário alterado com sucesso!!!");
@@ -103,6 +105,7 @@ public class DAOFuncionario {
                 f.setNome(rs.getString("nome"));
                 f.setTelefone(rs.getString("telefone"));
                 f.setCpf(rs.getString("cpf"));
+                f.setTipo(rs.getString("tipo"));
                 
                 lista.add(f);
             
@@ -130,6 +133,7 @@ public class DAOFuncionario {
                 f.setNome(rs.getString("nome"));
                 f.setTelefone(rs.getString("telefone"));
                 f.setCpf(rs.getString("cpf"));
+                f.setTipo(rs.getString("tipo"));
                 
                
             

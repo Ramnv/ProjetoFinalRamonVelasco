@@ -139,8 +139,8 @@
                     <Column editable="true" title="CodOrdem" type="java.lang.Object"/>
                     <Column editable="true" title="Pago" type="java.lang.Object"/>
                     <Column editable="true" title="N de serie" type="java.lang.Object"/>
-                    <Column editable="true" title="Modelo Nome" type="java.lang.Object"/>
-                    <Column editable="true" title="Modelo Valor" type="java.lang.Object"/>
+                    <Column editable="true" title="Mod Nome" type="java.lang.Object"/>
+                    <Column editable="true" title="Mod Valor" type="java.lang.Object"/>
                     <Column editable="true" title="Marca Nome" type="java.lang.Object"/>
                   </Table>
                 </Property>
