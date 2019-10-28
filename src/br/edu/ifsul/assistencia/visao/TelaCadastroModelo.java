@@ -9,7 +9,9 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +28,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
      */
     public TelaCadastroModelo() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -243,7 +246,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+       carregaTabela();
       m.setDescricao(jTextFieldModelo.getText());
         Marca ma= new Marca();
       ma.setDescricao(jComboBoxMarca.getCursor().getName());
@@ -265,7 +268,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+       carregaTabela();
       m.setDescricao(jTextFieldModelo.getText());
       Marca ma= new Marca();
       ma.setDescricao(jComboBoxMarca.getCursor().getName());
@@ -275,7 +278,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        // TODO add your handling code here:
+       carregaTabela();
        m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText())); // linha selecionada ou pegar o código
        dao.remover(m);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
@@ -288,15 +291,32 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         jTextFieldModelo.setText("");
         jComboBoxMarca.setFocusable(false);
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableModelo.getModel();
+        modelo.setNumRows(0);
+        DAOModelo dao = new DAOModelo();
+        
+        try{
+        
+        for(Modelo m : dao.listar()){
+            modelo.addRow(new Object[]{
+             m.getCodigoModelo(),
+                m.getDescricao(),
+                m.getMarca()
+                
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
