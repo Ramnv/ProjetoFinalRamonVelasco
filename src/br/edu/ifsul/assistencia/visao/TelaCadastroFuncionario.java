@@ -5,13 +5,16 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ramon
+ * @author ramon, Jessica
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
         DAOFuncionario dao = new DAOFuncionario();
@@ -20,6 +23,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         
     public TelaCadastroFuncionario() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -34,7 +38,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableFuncionario = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabelNome = new javax.swing.JLabel();
@@ -63,7 +67,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,7 +75,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 "Codigo", "Nome", "Telefone", "CPF"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableFuncionario);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,7 +278,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-         f.setNome(jTextFieldNome.getText());
+         carregaTabela();
+        f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
         if(jRadioButtonAtendente.hasFocus()){
@@ -296,6 +301,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        carregaTabela();
         f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
@@ -315,19 +321,20 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
+        carregaTabela();
+        f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.remover(f);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         TelaPrincipal tela = new TelaPrincipal();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
         jTextFieldTelefone.setText("");
@@ -338,10 +345,31 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     
 
     }//GEN-LAST:event_jButtonLimparActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableFuncionario.getModel();
+        modelo.setNumRows(0);
+        DAOFuncionario dao = new DAOFuncionario();
+        
+        try{
+        
+        for(Funcionario f : dao.listar()){
+            modelo.addRow(new Object[]{
+                f.getFuncionario_cod(),
+                f.getNome(),
+                f.getTelefone(),
+                f.getCpf()
+                //descobrir como colocar ordem, o.pago, n-serie, marca e modelo!!!
+                
+                
+                
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -390,7 +418,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonAtendente;
     private javax.swing.JRadioButton jRadioButtonTecnico;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableFuncionario;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldNome;
