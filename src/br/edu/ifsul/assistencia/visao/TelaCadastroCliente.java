@@ -32,30 +32,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      */
     public TelaCadastroCliente() {
         initComponents();
+        carregaTabela();
     }
-    private void carregaTabela(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTableCliente.getModel();
-        modelo.setNumRows(0);
-        DAOCliente dao = new DAOCliente();
-        
-        try{
-        
-        for(Cliente c : dao.listar()){
-            modelo.addRow(new Object[]{
-                c.getCodigoCliente(),
-                c.getCpf(),
-                c.getEndereco(),
-                c.getNome(),
-                c.getProduto(),
-                c.getTelefone()
-            
-            });
-        }
-        }catch(Exception e){
-            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
-        }
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -316,7 +295,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         c.setNome(jTextFieldNome.getText());
         c.setCpf(jTextFieldCpf.getText());
         c.setEndereco(jTextFieldEndereco.getText());
@@ -340,7 +319,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         c.setNome(jTextFieldNome.getText());
         c.setCpf(jTextFieldCpf.getText());
         c.setEndereco(jTextFieldEndereco.getText());
@@ -353,7 +332,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        // TODO add your handling code here:
+       carregaTabela();
         c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));        
         dao.remover(c);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
@@ -366,7 +345,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
         jTextFieldEndereco.setText("");
@@ -374,10 +353,29 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jTextFieldProduto.setText("");
         jTextFieldCodigo.setText("");
     }//GEN-LAST:event_jButtonLimparActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+ private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableCliente.getModel();
+        modelo.setNumRows(0);
+        DAOCliente dao = new DAOCliente();
+        
+        try{
+        
+        for(Cliente c : dao.listar()){
+            modelo.addRow(new Object[]{
+                c.getCodigoCliente(),
+                c.getCpf(),
+                c.getEndereco(),
+                c.getNome(),
+                c.getProduto(),
+                c.getTelefone()
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
