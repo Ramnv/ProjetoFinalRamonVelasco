@@ -362,11 +362,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         for(Cliente c : dao.listar()){
             modelo.addRow(new Object[]{
                 c.getCodigoCliente(),
-                c.getCpf(),
-                c.getEndereco(),
                 c.getNome(),
+                c.getCpf(),
+                c.getTelefone(),
+                //descobrir como colocar ordem, o.pago, n-serie, marca e modelo!!!
+                
                 c.getProduto(),
-                c.getTelefone()
+                
             
             });
         }
