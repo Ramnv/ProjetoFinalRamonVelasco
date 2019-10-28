@@ -5,10 +5,13 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.Peca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,7 +38,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableOrdem = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -64,7 +67,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableOrdem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -72,7 +75,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 "Ordem_cod", "Motivo", "Peça", "Nome", "Modelo", "Marca"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableOrdem);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -261,7 +264,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+       carregaTabela();
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -276,7 +279,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         o.setMotivo(jTextFieldMotivo.getText());
         Peca p = new Peca();
         p.setCodigoPeca(Integer.parseInt(jTextFieldPeca.getText()));
@@ -287,7 +290,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
@@ -296,12 +299,34 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldMotivoActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableOrdem.getModel();
+        modelo.setNumRows(0);
+        DAOOrdem dao = new DAOOrdem();
+        
+        try{
+        
+        for(Ordem o: dao.listar()){
+            modelo.addRow(new Object[]{
+            o.getOrdem_cod(),
+                o.getOrdem_cod(),
+                o.getData_inicial(),
+                o.getData_final(),
+                o.getMotivo(),
+                o.getPago(),
+                o.getPeca(),
+                o.getValor(),
+                o.getFuncionario(),
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -350,7 +375,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableOrdem;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextFieldMotivo;
