@@ -45,8 +45,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        queryCliente = java.beans.Beans.isDesignTime() ? null : ((javax.persistence.EntityManager)null).createQuery("select c from cliente");
-        listCliente = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ((javax.persistence.Query)null).getResultList();
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,7 +84,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CodCliente", "Nome", "CPF", "Telefone", "CodOrdem", "Pago", "N de serie", "Mod Nome", "Mod Valor", "Marca Nome"
+                "CodCliente", "Nome", "CPF", "Telefone", "Ordem", "Pago", "N de serie", "Modelo", "Marca"
             }
         ));
         jScrollPane1.setViewportView(jTableCliente);
@@ -436,7 +434,5 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldProduto;
     private javax.swing.JTextField jTextFieldTelefone;
-    private java.util.List listCliente;
-    private javax.persistence.Query queryCliente;
     // End of variables declaration//GEN-END:variables
 }
