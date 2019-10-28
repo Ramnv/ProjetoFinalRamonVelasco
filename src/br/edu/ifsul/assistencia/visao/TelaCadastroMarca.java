@@ -6,9 +6,12 @@
 package br.edu.ifsul.assistencia.visao;
 
 
+import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +28,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
      */
     public TelaCadastroMarca() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -39,7 +43,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMarca = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldMarca = new javax.swing.JTextField();
         jLabelMarca = new javax.swing.JLabel();
@@ -62,7 +66,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMarca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -70,7 +74,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
                 "CodMarca", "Marca"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableMarca);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,7 +231,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         m.setDescricao(jTextFieldMarca.getText());
 
        
@@ -247,14 +251,14 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         m.setDescricao(jTextFieldMarca.getText());
         dao.inserir(m);
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        // TODO add your handling code here:
+        carregaTabela();
         m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));        
         dao.remover(m);
     }//GEN-LAST:event_jButtonDeletarActionPerformed
@@ -267,15 +271,30 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
-        //nao sei
+        carregaTabela();
         jTextFieldMarca.setText("");
         jTextFieldCodigo.setText("");
     }//GEN-LAST:event_jButtonLimparActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableMarca.getModel();
+        modelo.setNumRows(0);
+        DAOMarca dao = new DAOMarca();
+        
+        try{
+        
+        for(Marca m : dao.listar()){
+            modelo.addRow(new Object[]{
+                m.getCodigoMarca(),
+                m.getDescricao()
+                
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -323,7 +342,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableMarca;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldMarca;
     // End of variables declaration//GEN-END:variables
