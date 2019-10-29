@@ -137,8 +137,8 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
 
     private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
         // TODO add your handling code here:
-        TelaCadastroOrdem tela = new TelaCadastroOrdem();
-        tela.setVisible(true);
+//        TelaCadastroOrdem tela = new TelaCadastroOrdem();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 

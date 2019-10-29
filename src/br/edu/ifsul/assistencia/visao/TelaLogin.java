@@ -46,31 +46,31 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAcessar);
-        jButtonAcessar.setBounds(360, 290, 80, 23);
+        jButtonAcessar.setBounds(300, 330, 140, 25);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_Padlock_lock_locked_circle_door_5172995.png"))); // NOI18N
         jLabelUsuario.setText("Usuario:");
         getContentPane().add(jLabelUsuario);
-        jLabelUsuario.setBounds(200, 140, 160, 60);
+        jLabelUsuario.setBounds(190, 190, 190, 60);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(461, 290, 70, 23);
+        jButtonSair.setBounds(460, 330, 130, 25);
 
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_key_lock_password_door_safe_5172988.png"))); // NOI18N
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(220, 230, 141, 40);
+        jLabelSenha.setBounds(190, 270, 149, 40);
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(360, 180, 170, 20);
+        jTextFieldUsuario.setBounds(420, 220, 170, 19);
         getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(360, 250, 170, 20);
+        jPasswordFieldSenha.setBounds(420, 280, 170, 19);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_locked_shield_antivirus_protect_lock_5172993 (2).png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 30, 120, 110);
+        jLabel1.setBounds(330, 30, 120, 110);
         getContentPane().add(jLabelFundoLogin);
         jLabelFundoLogin.setBounds(0, 0, 770, 440);
 

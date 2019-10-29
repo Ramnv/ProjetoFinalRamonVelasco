@@ -138,8 +138,8 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
     private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
         // TODO add your handling code here:
-        TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
-        tela.setVisible(true);
+//        TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 

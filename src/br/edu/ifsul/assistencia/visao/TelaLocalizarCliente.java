@@ -143,8 +143,8 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroCliente tela = new TelaCadastroCliente();
-        tela.setVisible(true);
+//        TelaCadastroCliente tela = new TelaCadastroCliente();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
