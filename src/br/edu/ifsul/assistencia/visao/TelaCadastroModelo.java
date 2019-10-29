@@ -73,7 +73,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CodModelo", "Modelo", "Marca"
+                "Código", "Modelo", "Marca"
             }
         ));
         jScrollPane1.setViewportView(jTableModelo);
@@ -308,7 +308,7 @@ private void carregaTabela(){
             modelo.addRow(new Object[]{
              m.getCodigoModelo(),
                 m.getDescricao(),
-                m.getMarca()
+                m.getMarca().getDescricao(),
                 
             
             });

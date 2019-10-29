@@ -94,7 +94,7 @@ public class DAOModelo {
     }
     
     public List<Modelo> listar(){
-        String sql ="select m.modelo_cod, m.nome, ma.nome from modelo as m, marca as ma \n" +
+        String sql ="select m.modelo_cod, m.nome, ma.nome as marca from modelo as m, marca as ma " +
 "where m.marca=ma.marca_cod";
         
         List<Modelo> lista = new ArrayList<>();
