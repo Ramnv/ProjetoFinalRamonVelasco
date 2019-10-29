@@ -100,7 +100,7 @@ public class DAOCliente {
     public List<Cliente> listar() {
 
         String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, " +
-"                 o.ordem_cod,o.pago ,p.n_serie,m.nome,   ma.nome  " +
+"                 o.ordem_cod,o.pago ,p.n_serie,m.nome as modelo,   ma.nome  as marca " +
 "                  from cliente as c, produto as p," +
 "                 modelo as m, marca as ma, ordem as o where" +
 "                 p.produto_cod = c.produto and m.modelo_cod = p.modelo and" +
@@ -127,10 +127,10 @@ public class DAOCliente {
                 p.setOrdem(o);
                 
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
+                m.setDescricao(rs.getString("modelo"));
                 
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 p.setModelo(m);
                 c.setProduto(p);

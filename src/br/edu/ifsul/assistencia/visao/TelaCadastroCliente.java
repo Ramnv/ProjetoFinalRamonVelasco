@@ -365,9 +365,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 c.getNome(),
                 c.getCpf(),
                 c.getTelefone(),
-                //descobrir como colocar ordem, o.pago, n-serie, marca e modelo!!!
+                            
+                c.getProduto().getOrdem().getOrdem_cod(),
+                c.getProduto().getOrdem().getPago(),
+                c.getProduto().getNumeroSerie(),
+                c.getProduto().getModelo().getDescricao(),
+                c.getProduto().getModelo().getMarca().getDescricao(),
                 
-                c.getProduto(),
                 
             
             });
