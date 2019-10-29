@@ -72,7 +72,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Telefone", "CPF"
+                "Codigo", "Nome", "Telefone", "CPF", "Tipo"
             }
         ));
         jScrollPane1.setViewportView(jTableFuncionario);
@@ -358,12 +358,9 @@ private void carregaTabela(){
                 f.getFuncionario_cod(),
                 f.getNome(),
                 f.getTelefone(),
-                f.getCpf()
-                //descobrir como colocar ordem, o.pago, n-serie, marca e modelo!!!
-                
-                
-                
-            
+                f.getCpf(),
+                f.getTipo(),
+          
             });
         }
         }catch(Exception e){
