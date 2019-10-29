@@ -24,6 +24,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         Conexao conexao = new Conexao(); 
     public TelaCadastroOrdem() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -72,7 +73,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ordem_cod", "Motivo", "Peça", "Nome", "Modelo", "Marca"
+                "Código", "Motivo", "Peça", "Modelo", "Marca", "Data Inicial", "Data Final", "Valor", "Pago", "Funcionário"
             }
         ));
         jScrollPane1.setViewportView(jTableOrdem);
@@ -313,13 +314,16 @@ private void carregaTabela(){
             modelo.addRow(new Object[]{
             o.getOrdem_cod(),
                 o.getOrdem_cod(),
+                o.getMotivo(),
+                o.getPeca().getDescricaoPeca(),
+                o.getPeca().getModelo().getDescricao(),
+                o.getPeca().getModelo().getMarca().getDescricao(),
                 o.getData_inicial(),
                 o.getData_final(),
-                o.getMotivo(),
-                o.getPago(),
-                o.getPeca(),
+                
                 o.getValor(),
-                o.getFuncionario(),
+                o.getPago(),
+                o.getFuncionario().getNome(),
             
             });
         }

@@ -6,6 +6,8 @@
 package br.edu.ifsul.assistencia.model.dao;
 
 import br.edu.ifsul.assistencia.model.Funcionario;
+import br.edu.ifsul.assistencia.model.Marca;
+import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.Peca;
 import java.sql.PreparedStatement;
@@ -84,10 +86,12 @@ public class DAOOrdem {
     }
     
     public List<Ordem> listar(){
-        //revisar 2008
-        String sql = "select o.ordem_cod, o.motivo, o.peca, pe.nome, m.nome,  ma.nome from ordem as o, " +
-"pecas as pe, modelo as m, marca as ma where o.peca = pe.peca_cod and pe.modelo = m.modelo_cod and m.marca = ma.marca_cod order by" +
-"o.ordem_cod asc;";
+        
+        String sql = " select o.ordem_cod, o.motivo, pe.nome as peca, mo.nome as modelo, "+
+  "ma.nome as marca, o.data_inicial, o.data_final, o.valor, o.pago, f.nome as funcionario from ordem as o,"+ 
+"pecas as pe, modelo as mo, marca as ma, funcionario as f where o.peca = pe.peca_cod and pe.modelo = mo.modelo_cod and o.funcionario = f.funcionario_cod"+
+"and mo.marca = ma.marca_cod order by"+
+"o.ordem_cod asc" ;
         List<Ordem> lista = new ArrayList<>();
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -97,8 +101,29 @@ public class DAOOrdem {
                 o.setOrdem_cod(rs.getInt("ordem_cod"));
                 o.setMotivo(rs.getString("motivo"));
                 Peca p = new Peca();
-                p.setCodigoPeca(rs.getInt("peca"));
+                p.setDescricaoPeca(rs.getString("peca"));
+                
+                Modelo mo = new Modelo();
+                mo.setDescricao(rs.getString("modelo"));
+                
+                Marca m = new Marca();
+                m.setDescricao(rs.getString("marca"));
+                mo.setMarca(m);
+                
+                p.setModelo(mo);
+                
                 o.setPeca(p);
+                
+                o.setData_inicial(rs.getDate("data_inicial"));
+                o.setData_final(rs.getDate("data_final"));
+                o.setValor(rs.getFloat("valor"));
+                o.setPago(rs.getBoolean("pago"));
+                
+                Funcionario f = new Funcionario();
+                f.setNome(rs.getString("funcionario"));
+                
+                o.setFuncionario(f);
+                
                 lista.add(o);
             }
         }catch (Exception e){
