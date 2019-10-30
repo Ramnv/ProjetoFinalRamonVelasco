@@ -19,9 +19,9 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon
  */
 public class TelaCadastroCliente extends javax.swing.JFrame {
-    DAOCliente dao = new DAOCliente();
-    Cliente c = new Cliente();
-    Conexao conexao = new Conexao();
+    DAOCliente dao = new DAOCliente();//
+    Cliente c = new Cliente();//
+    Conexao conexao = new Conexao();//
     
     
     

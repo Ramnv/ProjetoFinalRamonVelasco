@@ -5,9 +5,6 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-import MenuPrototipo.OpcoesCadastro;
-import MenuPrototipo.OpcoesLocalizar;
-
 /**
  *
  * @author ramon
