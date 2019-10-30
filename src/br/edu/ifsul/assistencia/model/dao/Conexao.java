@@ -32,7 +32,7 @@ public class Conexao {
 }
 
     
-    //abre c
+    //Faz conexão, define a url, user, senha;
     public static Connection getConexao(){
         if(con == null){
             try{

@@ -29,18 +29,17 @@
                   <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jButtonSalvar" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="jButtonSalvar" linkSize="1" min="-2" pref="110" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonDeletar" min="-2" pref="153" max="-2" attributes="0"/>
+                      <Component id="jButtonDeletar" linkSize="1" min="-2" pref="153" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonAtualizar" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Component id="jButtonAtualizar" linkSize="1" min="-2" pref="132" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButtonLimpar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonLimpar" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonLocalicalizar" min="-2" pref="111" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonVoltar" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jButtonLocalicalizar" linkSize="1" min="-2" pref="165" max="-2" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <Component id="jButtonVoltar" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -57,18 +56,17 @@
                   <Component id="jButtonSalvar" alignment="1" max="32767" attributes="0"/>
                   <Component id="jButtonDeletar" alignment="1" max="32767" attributes="0"/>
                   <Component id="jButtonAtualizar" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jButtonVoltar" max="32767" attributes="0"/>
+                  <Component id="jButtonVoltar" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonLocalicalizar" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonLimpar" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="jButtonLocalicalizar" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,8 +93,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="693" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
