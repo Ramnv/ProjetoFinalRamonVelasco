@@ -135,6 +135,7 @@ public class DAOFuncionario {
                 f.setCpf(rs.getString("cpf"));
                 f.setTipo(rs.getString("tipo"));
                 
+                lista.add(f);
                
             
             }

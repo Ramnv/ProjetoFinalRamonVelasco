@@ -7,7 +7,7 @@ package br.edu.ifsul.assistencia.model;
 
 /**
  *
- * @author 20181210031
+ * @author Jéssica
  */
 public class Cliente {
     

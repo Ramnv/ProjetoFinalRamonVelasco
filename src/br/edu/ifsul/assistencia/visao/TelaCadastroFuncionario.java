@@ -5,10 +5,8 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
-import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
 import javax.swing.table.DefaultTableModel;
 
@@ -301,7 +299,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        carregaTabela();
+        
         f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
@@ -311,8 +309,9 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         else{
             f.setTipo("Técnico");
         }
+        
         dao.inserir(f);    }//GEN-LAST:event_jButtonSalvarActionPerformed
-
+       
     private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         TelaLocalizarFuncionario tela = new TelaLocalizarFuncionario();
         tela.setVisible(true);

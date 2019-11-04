@@ -293,7 +293,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        carregaTabela();
+       
         c.setNome(jTextFieldNome.getText());
         c.setCpf(jTextFieldCpf.getText());
         c.setEndereco(jTextFieldEndereco.getText());
@@ -302,6 +302,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
         c.setProduto(p);
         dao.alterar(c);
+         carregaTabela();
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -317,7 +318,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        carregaTabela();
+        
         c.setNome(jTextFieldNome.getText());
         c.setCpf(jTextFieldCpf.getText());
         c.setEndereco(jTextFieldEndereco.getText());
@@ -326,13 +327,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
         c.setProduto(p);
         dao.inserir(c);
+        carregaTabela();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       carregaTabela();
+       
         c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));        
         dao.remover(c);
+        carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -343,13 +346,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        carregaTabela();
+        
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
         jTextFieldEndereco.setText("");
         jTextFieldTelefone.setText("");
         jTextFieldProduto.setText("");
         jTextFieldCodigo.setText("");
+        carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
  private void carregaTabela(){
         
@@ -367,7 +371,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 c.getTelefone(),
                             
                 c.getProduto().getOrdem().getOrdem_cod(),
-                c.getProduto().getOrdem().getPago(),
+                 c.getProduto().getOrdem().getPago(),
+               
                 c.getProduto().getNumeroSerie(),
                 c.getProduto().getModelo().getDescricao(),
                 c.getProduto().getModelo().getMarca().getDescricao(),

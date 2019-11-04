@@ -231,11 +231,12 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        carregaTabela();
+        
         m.setDescricao(jTextFieldMarca.getText());
 
        
         dao.alterar(m);
+        carregaTabela();
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -251,16 +252,18 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        carregaTabela();
+        
         m.setDescricao(jTextFieldMarca.getText());
         dao.inserir(m);
+        carregaTabela();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        carregaTabela();
+        
         m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));        
         dao.remover(m);
+        carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -271,9 +274,10 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        carregaTabela();
+        
         jTextFieldMarca.setText("");
         jTextFieldCodigo.setText("");
+        carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 private void carregaTabela(){
         

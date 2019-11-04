@@ -8,10 +8,11 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ramon
+ * @author Jessica
  */
 public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
@@ -21,6 +22,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         
     public TelaLocalizarFuncionario() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -33,7 +35,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLocalizarFunc = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButtonLimpar2 = new javax.swing.JButton();
         jButtonVoltar2 = new javax.swing.JButton();
@@ -43,19 +45,24 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLocalizarFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nome", "Telefone", "CPF"
+                "Código", "Nome", "Telefone", "CPF", "Tipo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLocalizarFunc);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButtonLimpar2.setText("Limpar");
+        jButtonLimpar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpar2ActionPerformed(evt);
+            }
+        });
 
         jButtonVoltar2.setText("Voltar");
         jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,9 +150,31 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar2ActionPerformed
+       jTextFieldID.setText("");
+    }//GEN-LAST:event_jButtonLimpar2ActionPerformed
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarFunc.getModel();
+        modelo.setNumRows(0);
+        DAOFuncionario dao = new DAOFuncionario();
+        
+        try{
+        
+        for(Funcionario f : dao.listar()){
+            modelo.addRow(new Object[]{
+                f.getFuncionario_cod(),
+                f.getNome(),
+                f.getTelefone(),
+                f.getCpf(),
+                f.getTipo(),
+          
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -185,7 +214,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLocalizarFunc;
     private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
 }

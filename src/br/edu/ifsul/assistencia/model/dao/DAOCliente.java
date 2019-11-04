@@ -147,13 +147,13 @@ public class DAOCliente {
 
     public Cliente localizar(Integer id) {
 
-        String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, "
-                + " p.ordem ,  ma.nome,  m.nome, p.n_serie,  p.motivo,"
-                + " pe.valor,o.pago from cliente as c, produto as p,"
-                + " modelo as m, marca as ma, ordem as o, pecas as pe where"
-                + " p.produto_cod = c.produto and m.modelo_cod = p.modelo and"
-                + " ma.marca_cod = m.marca and o.ordem_cod = p.ordem and "
-                + " o.peca= pe.peca_cod where cliente_cod = "+ id;
+        String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, " +
+"                 o.ordem_cod,o.pago ,p.n_serie,m.nome as modelo,   ma.nome  as marca " +
+"                  from cliente as c, produto as p," +
+"                 modelo as m, marca as ma, ordem as o where" +
+"                 p.produto_cod = c.produto and m.modelo_cod = p.modelo and" +
+"                ma.marca_cod = m.marca and o.ordem_cod = p.ordem  " +
+"                  where cliente_cod = "+ id;
 
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -161,33 +161,28 @@ public class DAOCliente {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Cliente c = new Cliente();
-                 c.setCodigoCliente(rs.getInt("cliente_cod"));
+                c.setCodigoCliente(rs.getInt("cliente_cod"));
                 c.setNome(rs.getString("nome"));
                 c.setCpf(rs.getString("cpf"));
                 c.setTelefone(rs.getString("telefone"));
+                
                 
                 Ordem o = new Ordem();
                 o.setOrdem_cod(rs.getInt("ordem_cod"));
                 o.setPago(rs.getBoolean("pago"));
                 
                 Produto p = new Produto();
-                p.setMotivo(rs.getString("motivo"));
                 p.setNumeroSerie(rs.getString("n_serie"));
                 p.setOrdem(o);
-                                      
-                            
+                
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
-                Peca pe = new Peca(); 
-                pe.setValor(rs.getDouble("valor"));
-                pe.setModelo(m);
+                m.setDescricao(rs.getString("modelo"));
                 
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 p.setModelo(m);
                 c.setProduto(p);
-
             }
         } catch (Exception e) {
             System.out.println("Erro de SQL: " + e.getMessage());

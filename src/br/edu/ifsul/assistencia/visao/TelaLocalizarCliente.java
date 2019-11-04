@@ -6,8 +6,11 @@
 package br.edu.ifsul.assistencia.visao;
 
 import br.edu.ifsul.assistencia.model.Cliente;
+import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
+import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +28,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
      */
     public TelaLocalizarCliente() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -37,7 +41,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLocalizarCliente = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButtonLimpar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
@@ -47,19 +51,24 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLocalizarCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "CodCliente", "Nome", "CPF", "Telefone", "CodOrdem", "Pago", "N de serie", "Modelo Nome", "Modelo Valor", "Marca Nome"
+                "Código", "Nome", "CPF", "Telefone", "Ordem", " Valor", "Pago", "N de serie", "Modelo ", "Marca"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLocalizarCliente);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,8 +146,8 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
     private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         // TODO add your handling code here:
-        c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));
-        dao.localizar(c.getCodigoCliente());
+        Integer id = Integer.parseInt(jTextFieldCodigo.getText());
+        dao.localizar(id);
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -148,9 +157,37 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+    jTextFieldCodigo.setText("");
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarCliente.getModel();
+        modelo.setNumRows(0);
+        DAOCliente dao = new DAOCliente();
+        
+        try{
+        
+        for(Cliente c : dao.listar()){
+            modelo.addRow(new Object[]{
+                c.getCodigoCliente(),
+                c.getNome(),
+                c.getCpf(),
+                c.getTelefone(),
+                c.getProduto().getOrdem().getOrdem_cod(),
+                c.getProduto().getOrdem().getValor(),
+                c.getProduto().getOrdem().getPago(),
+                c.getProduto().getNumeroSerie(),
+                c.getProduto().getModelo().getDescricao(),
+                c.getProduto().getModelo().getMarca().getDescricao()
+                
+          
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -190,7 +227,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLocalizarCliente;
     private javax.swing.JTextField jTextFieldCodigo;
     // End of variables declaration//GEN-END:variables
 }
