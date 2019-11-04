@@ -46,35 +46,35 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAcessar);
-        jButtonAcessar.setBounds(300, 330, 140, 25);
+        jButtonAcessar.setBounds(480, 220, 100, 60);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_Padlock_lock_locked_circle_door_5172995.png"))); // NOI18N
         jLabelUsuario.setText("Usuario:");
         getContentPane().add(jLabelUsuario);
-        jLabelUsuario.setBounds(190, 190, 190, 60);
+        jLabelUsuario.setBounds(450, 90, 190, 60);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(460, 330, 130, 25);
+        jButtonSair.setBounds(620, 220, 100, 60);
 
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_key_lock_password_door_safe_5172988.png"))); // NOI18N
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(190, 270, 149, 40);
+        jLabelSenha.setBounds(450, 160, 73, 40);
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(420, 220, 170, 19);
+        jTextFieldUsuario.setBounds(590, 110, 170, 20);
         getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(420, 280, 170, 19);
+        jPasswordFieldSenha.setBounds(590, 170, 170, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_locked_shield_antivirus_protect_lock_5172993 (2).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/AndroidLogo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(330, 30, 120, 110);
+        jLabel1.setBounds(-90, 0, 520, 360);
         getContentPane().add(jLabelFundoLogin);
-        jLabelFundoLogin.setBounds(0, 0, 770, 440);
+        jLabelFundoLogin.setBounds(0, 0, 770, 380);
 
-        setSize(new java.awt.Dimension(786, 472));
+        setSize(new java.awt.Dimension(786, 399));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
