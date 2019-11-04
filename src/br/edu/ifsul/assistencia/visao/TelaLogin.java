@@ -33,8 +33,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -68,14 +69,16 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jPasswordFieldSenha);
         jPasswordFieldSenha.setBounds(610, 210, 170, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/AndroidLogo.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-70, 0, 540, 360);
-
         jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel2.setText("Quick Budget");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(480, 10, 330, 70);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/AndroidLogo.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-70, 0, 540, 360);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 820, 360);
 
         setSize(new java.awt.Dimension(839, 397));
         setLocationRelativeTo(null);
@@ -130,6 +133,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
