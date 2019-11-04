@@ -33,8 +33,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelFundoLogin = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -46,35 +47,40 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAcessar);
-        jButtonAcessar.setBounds(360, 290, 80, 23);
+        jButtonAcessar.setBounds(610, 260, 80, 23);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_Padlock_lock_locked_circle_door_5172995.png"))); // NOI18N
+        jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/lock.png"))); // NOI18N
         jLabelUsuario.setText("Usuario:");
         getContentPane().add(jLabelUsuario);
-        jLabelUsuario.setBounds(200, 140, 160, 60);
+        jLabelUsuario.setBounds(450, 110, 160, 60);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(461, 290, 70, 23);
+        jButtonSair.setBounds(710, 260, 70, 23);
 
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_key_lock_password_door_safe_5172988.png"))); // NOI18N
+        jLabelSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/key.png"))); // NOI18N
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(220, 230, 141, 40);
+        jLabelSenha.setBounds(460, 190, 141, 60);
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(360, 180, 170, 20);
+        jTextFieldUsuario.setBounds(610, 130, 170, 20);
         getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(360, 250, 170, 20);
+        jPasswordFieldSenha.setBounds(610, 210, 170, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/iconfinder_Internet_Security_locked_shield_antivirus_protect_lock_5172993 (2).png"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jLabel2.setText("Quick Budget");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(480, 10, 330, 70);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifsul/assistencia/imagens/AndroidLogo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 30, 120, 110);
-        getContentPane().add(jLabelFundoLogin);
-        jLabelFundoLogin.setBounds(0, 0, 770, 440);
+        jLabel1.setBounds(-70, 0, 540, 360);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 820, 360);
 
-        setSize(new java.awt.Dimension(786, 472));
+        setSize(new java.awt.Dimension(839, 397));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,9 +130,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAcessar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelFundoLogin;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
