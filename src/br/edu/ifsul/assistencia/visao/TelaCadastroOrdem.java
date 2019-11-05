@@ -312,7 +312,7 @@ private void carregaTabela(){
         
         for(Ordem o: dao.listar()){
             modelo.addRow(new Object[]{
-            o.getOrdem_cod(),
+         
                 o.getOrdem_cod(),
                 o.getMotivo(),
                 o.getPeca().getDescricaoPeca(),

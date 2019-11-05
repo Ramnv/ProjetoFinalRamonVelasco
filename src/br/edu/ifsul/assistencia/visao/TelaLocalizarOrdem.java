@@ -8,18 +8,21 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ramon
+ * @author ramon, Jessica
  */
 public class TelaLocalizarOrdem extends javax.swing.JFrame {
 
         DAOOrdem dao = new DAOOrdem();
         Conexao conexao = new Conexao();
         Ordem o = new Ordem(); 
+        
     public TelaLocalizarOrdem() {
         initComponents();
+        carregaTabela();
     }
 
     /**
@@ -32,7 +35,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLocalizarOrdem = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButtonLimpar2 = new javax.swing.JButton();
         jButtonVoltar2 = new javax.swing.JButton();
@@ -42,19 +45,24 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLocalizarOrdem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cod_Ordem", "Motivo", "Cod_Peça"
+                "Código", "Motivo", "Peça", "Modelo", "Marca", "Data Inicial", "Data_Final", "Valor", "Pago", "Funcionário"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLocalizarOrdem);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButtonLimpar2.setText("Limpar");
+        jButtonLimpar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpar2ActionPerformed(evt);
+            }
+        });
 
         jButtonVoltar2.setText("Voltar");
         jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -142,9 +150,38 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar2ActionPerformed
+        jTextFieldID.setText("");
+         carregaTabela();
+    }//GEN-LAST:event_jButtonLimpar2ActionPerformed
+
+    private void carregaTabela(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarOrdem.getModel();
+        modelo.setNumRows(0);
+        DAOOrdem dao = new DAOOrdem();
+        
+        try{
+        
+        for(Ordem o: dao.listar()){
+            modelo.addRow(new Object[]{
+                o.getOrdem_cod(),
+                o.getMotivo(),
+                o.getPeca().getDescricaoPeca(),
+                o.getPeca().getModelo().getDescricao(),
+                o.getPeca().getModelo().getMarca().getDescricao(),
+                o.getData_inicial(),
+                o.getData_final(),
+                o.getValor(),
+                o.getPago(),
+                o.getFuncionario().getNome(),
+            
+            });
+        }
+        }catch(Exception e){
+            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -184,7 +221,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLocalizarOrdem;
     private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
 }

@@ -87,11 +87,11 @@ public class DAOOrdem {
     
     public List<Ordem> listar(){
         
-        String sql = " select o.ordem_cod, o.motivo, pe.nome as peca, mo.nome as modelo, "+
-  "ma.nome as marca, o.data_inicial, o.data_final, o.valor, o.pago, f.nome as funcionario from ordem as o,"+ 
-"pecas as pe, modelo as mo, marca as ma, funcionario as f where o.peca = pe.peca_cod and pe.modelo = mo.modelo_cod and o.funcionario = f.funcionario_cod"+
-"and mo.marca = ma.marca_cod order by"+
-"o.ordem_cod asc" ;
+        String sql = "select o.ordem_cod, o.motivo, pe.nome as peca, mo.nome as modelo, \n" +
+"  ma.nome as marca, o.data_inicial, o.data_final, o.valor, o.pago, f.nome as funcionario from\n" +
+"  ordem as o,pecas as pe, modelo as mo, marca as ma, funcionario as f\n" +
+"  where o.peca = pe.peca_cod and pe.modelo = mo.modelo_cod and o.funcionario = f.funcionario_cod\n" +
+"and mo.marca = ma.marca_cod order by o.ordem_cod asc" ;
         List<Ordem> lista = new ArrayList<>();
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
