@@ -77,7 +77,7 @@ public class DAOCliente {
     }
 
     public boolean remover(Cliente obj) {
-        String sql = " delete  from cliente where cliente_cod =?  ";
+        String sql = " delete * from cliente where cliente_cod =?  ";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setInt(1, obj.getCodigoCliente());

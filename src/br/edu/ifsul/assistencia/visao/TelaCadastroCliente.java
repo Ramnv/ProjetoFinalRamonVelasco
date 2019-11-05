@@ -11,6 +11,9 @@ import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,7 +25,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     DAOCliente dao = new DAOCliente();
     Cliente c = new Cliente();
     Conexao conexao = new Conexao();
-    
+    private java.util.List<Cliente> list;
     
     
     
@@ -84,7 +87,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CodCliente", "Nome", "CPF", "Telefone", "Ordem", "Pago", "N de serie", "Modelo", "Marca"
+                "Código", "Nome", "CPF", "Telefone", "Ordem", "Pago", "N de serie", "Modelo", "Marca"
             }
         ));
         jScrollPane1.setViewportView(jTableCliente);
@@ -332,9 +335,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       
-        c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));        
-        dao.remover(c);
+        int row = jTableCliente.getSelectedRow();
+        if(row!= -1){
+           
+             Integer id = (Integer) jTableCliente.getValueAt(row , 1);
+            c.setCodigoCliente(id);
+            dao.remover(c);
+            carregaTabela();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+        }
+                    
+       // c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));        
+      // jButtonSalvarActionPerformed(evt);
         carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
