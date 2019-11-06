@@ -91,6 +91,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 "Código", "Nome", "CPF", "Telefone", "Ordem", "Pago", "N de serie", "Modelo", "Marca"
             }
         ));
+        jTableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableCliente);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -132,7 +137,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabel3.setText("Codigo:");
 
-        jTextFieldCodigo.setEditable(false);
         jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCodigoActionPerformed(evt);
@@ -297,12 +301,19 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-       try{
-           alterarRegistro();
-           
-       }catch(SQLException e){
-           JOptionPane.showMessageDialog(rootPane, "Erro ao alterar registro!");
-       }
+         
+             
+             c.setCpf(jTextFieldCpf.getText());
+             c.setEndereco(jTextFieldEndereco.getText());
+             c.setNome(jTextFieldNome.getText());
+             c.setTelefone(jTextFieldTelefone.getText() );
+             Produto p = new Produto();
+            p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
+            c.setProduto(p);
+                     
+            
+             dao.alterar(c);
+             carregaTabela();
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -366,6 +377,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jTextFieldCodigo.setText("");
         carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteMouseClicked
+         int index = jTableCliente.getSelectedRow();
+             if(index != -1 ){
+                 
+                 jTextFieldNome.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),1).toString());
+                 jTextFieldCpf.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),2).toString());
+                 jTextFieldTelefone.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),3).toString());
+               //  jTextFieldEndereco.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),).toString());
+                jTextFieldProduto.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),6).toString());
+             }
+    }//GEN-LAST:event_jTableClienteMouseClicked
  private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableCliente.getModel();
@@ -396,33 +419,26 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             System.out.println("ERRO SQL: " +e.getLocalizedMessage());
         }
     }
- private void alterarRegistro() throws SQLException{
-     int row = jTableCliente.getSelectedRow();
-     if(row != -1){
-         int res = JOptionPane.showConfirmDialog(rootPane,"Deseja alterar este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
-         int id = (int) jTableCliente.getValueAt(row , 0);
-         if(res == JOptionPane.YES_NO_OPTION){
-             c.setCpf(jTextFieldCpf.getText());
-             c.setEndereco(jTextFieldEndereco.getText());
-             c.setNome(jTextFieldNome.getText());
-             c.setTelefone(jTextFieldTelefone.getText() );
-             Produto p = new Produto();
-             p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
-             c.setProduto(p);
-             dao.alterar(id);
-             jTextFieldNome.setText("");
-             jTextFieldCpf.setText("");
-            jTextFieldEndereco.setText("");
-            jTextFieldTelefone.setText("");
-            jTextFieldProduto.setText("");
-            jTextFieldCodigo.setText("");
-            carregaTabela();
+ private void alterarRegistro() {
+     
+     
+     //verifica se tem linha selecionada
+    // if(row != -1){
+         //pede confirmação de alteração
+        // int res = JOptionPane.showConfirmDialog(rootPane,"Deseja alterar este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+         
+        // if(res == JOptionPane.YES_NO_OPTION){
+            
              
-         }
-     }
-         else{
-             JOptionPane.showMessageDialog(rootPane,"Linha não selecionada");
-         }
+             //limpa os campos depois de alterar
+             
+            
+             
+       //  }
+   //  }
+        // else{
+            // JOptionPane.showMessageDialog(rootPane,"Linha não selecionada");
+       //  }
      }
      
      
