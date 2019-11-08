@@ -8,6 +8,8 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -139,8 +141,9 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLocalizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizar2ActionPerformed
-       f.setFuncionario_cod(Integer.parseInt(jTextFieldID.getText()));
-        dao.localizar(f.getFuncionario_cod());
+      // f.setFuncionario_cod(Integer.parseInt(jTextFieldID.getText()));
+      //  dao.localizar(f.getFuncionario_cod());
+      carregaTabela();
     }//GEN-LAST:event_jButtonLocalizar2ActionPerformed
 
     private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
@@ -158,10 +161,17 @@ private void carregaTabela(){
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarFunc.getModel();
         modelo.setNumRows(0);
         DAOFuncionario dao = new DAOFuncionario();
-        
+        List<Funcionario> lista = new ArrayList<>();
         try{
+            
+            if(jTextFieldID.getText().length()>0){
+                dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
+            }else {
+                
+                lista = dao.listar();
+            }
         
-        for(Funcionario f : dao.listar()){
+        for(Funcionario f : lista){
             modelo.addRow(new Object[]{
                 f.getFuncionario_cod(),
                 f.getNome(),

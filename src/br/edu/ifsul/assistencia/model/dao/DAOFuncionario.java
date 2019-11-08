@@ -148,5 +148,34 @@ public class DAOFuncionario {
        return null;        
                 
     }
+     public List<Funcionario> listarFiltro(Integer id){
+    
+        String sql = "select * from funcionario where funcionario_cod="+ id;
+        List<Funcionario> lista = new ArrayList<>(); 
+        try{
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next()){
+                Funcionario f = new Funcionario();
+                f.setFuncionario_cod(rs.getInt("funcionario_cod"));
+                f.setNome(rs.getString("nome"));
+                f.setTelefone(rs.getString("telefone"));
+                f.setCpf(rs.getString("cpf"));
+                f.setTipo(rs.getString("tipo"));
+                
+                lista.add(f);
+               
+            
+            }
+        
+        
+        }catch(Exception e){
+            System.out.println("Erro de SQL: " +e.getMessage());
+            
+        }
+       return lista;        
+                
+    }
     
 }
