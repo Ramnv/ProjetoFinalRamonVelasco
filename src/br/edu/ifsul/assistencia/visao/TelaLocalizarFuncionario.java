@@ -165,7 +165,7 @@ private void carregaTabela(){
         try{
             
             if(jTextFieldID.getText().length()>0){
-                dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
+               lista = dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
             }else {
                 
                 lista = dao.listar();

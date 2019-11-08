@@ -150,7 +150,8 @@ public class DAOFuncionario {
     }
      public List<Funcionario> listarFiltro(Integer id){
     
-        String sql = "select * from funcionario where funcionario_cod="+ id;
+        String sql = "select * from funcionario where funcionario_cod=?";
+         System.out.println("SQL: " + sql);
         List<Funcionario> lista = new ArrayList<>(); 
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
