@@ -161,6 +161,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableFuncionarioMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -277,7 +280,7 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonTecnico">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tecnico"/>
+            <Property name="text" type="java.lang.String" value="T&#xe9;cnico"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonAtendente">

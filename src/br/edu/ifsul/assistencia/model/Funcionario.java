@@ -15,6 +15,10 @@ public class Funcionario {
     private String telefone; 
     private String cpf; 
     private String tipo;
+    
+    public Funcionario(){
+    
+    }
 
     public Integer getFuncionario_cod() {
         return funcionario_cod;

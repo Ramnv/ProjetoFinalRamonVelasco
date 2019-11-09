@@ -71,11 +71,11 @@ public class DAOFuncionario {
         }
     }
     
-    public boolean remover(Funcionario obj) {
+    public boolean remover(int id) {
         String sql = " delete  from funcionario where funcionario_cod =?  ";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getFuncionario_cod());
+            pst.setInt(1, id);
             //executa update para mostrar as linhas alteradas
 
             if (pst.executeUpdate() > 0) {

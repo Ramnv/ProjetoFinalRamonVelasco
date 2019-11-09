@@ -8,6 +8,7 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -73,6 +74,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 "Codigo", "Nome", "Telefone", "CPF", "Tipo"
             }
         ));
+        jTableFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableFuncionarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableFuncionario);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,7 +127,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jRadioButtonTecnico.setText("Tecnico");
+        jRadioButtonTecnico.setText("Técnico");
 
         jRadioButtonAtendente.setText("Atendente");
         jRadioButtonAtendente.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +282,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-         carregaTabela();
+        
         f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
@@ -286,7 +292,9 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         else{
             f.setTipo("Técnico");
         }
+        f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.alterar(f); 
+         carregaTabela();
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -320,9 +328,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        carregaTabela();
-        f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
-        dao.remover(f);
+        int row = jTableFuncionario.getSelectedRow();
+        if(row !=-1){
+            int id = (int) jTableFuncionario.getValueAt(row,0);
+            dao.remover(id); 
+            carregaTabela();
+        }
+        else{
+             JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+            
+        }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -333,17 +348,31 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        carregaTabela();
+        
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
         jTextFieldTelefone.setText("");
+        jTextFieldCodigo.setText("");
             
         jRadioButtonTecnico.setSelected(false);
         jRadioButtonAtendente.setSelected(false);
+        carregaTabela();
 
     
 
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTableFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFuncionarioMouseClicked
+        int index = jTableFuncionario.getSelectedRow();
+        if(index!= -1){
+            jTextFieldCodigo.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),0).toString());
+            jTextFieldCpf.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),3).toString());
+            jTextFieldNome.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),1).toString());
+            jTextFieldTelefone.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),2).toString());
+            jRadioButtonTecnico.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),4).equals("Técnico"));
+             jRadioButtonAtendente.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),4).equals("Atendente"));   
+        }
+    }//GEN-LAST:event_jTableFuncionarioMouseClicked
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableFuncionario.getModel();
