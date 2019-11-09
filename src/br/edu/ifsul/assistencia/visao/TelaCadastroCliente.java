@@ -88,7 +88,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "CPF", "Telefone", "Ordem", "Pago", "N de serie", "Modelo", "Marca"
+                "Código", "Nome", "CPF", "Telefone", "Endereço", "Ordem", "Pago", "Código Produto", "N de serie", "Modelo", "Marca"
             }
         ));
         jTableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,6 +310,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
              Produto p = new Produto();
             p.setCodigoProduto(Integer.parseInt(jTextFieldProduto.getText()));
             c.setProduto(p);
+            c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));
                      
             
              dao.alterar(c);
@@ -381,12 +382,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void jTableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteMouseClicked
          int index = jTableCliente.getSelectedRow();
              if(index != -1 ){
-                 
+                 jTextFieldCodigo.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),0).toString());
                  jTextFieldNome.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),1).toString());
                  jTextFieldCpf.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),2).toString());
                  jTextFieldTelefone.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),3).toString());
-               //  jTextFieldEndereco.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),).toString());
-                jTextFieldProduto.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),6).toString());
+                 jTextFieldEndereco.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),4).toString());
+                jTextFieldProduto.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(),7).toString());
              }
     }//GEN-LAST:event_jTableClienteMouseClicked
  private void carregaTabela(){
@@ -403,10 +404,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 c.getNome(),
                 c.getCpf(),
                 c.getTelefone(),
+                c.getEndereco(),
                             
                 c.getProduto().getOrdem().getOrdem_cod(),
                  c.getProduto().getOrdem().getPago(),
-               
+                 c.getProduto().getCodigoProduto(),
                 c.getProduto().getNumeroSerie(),
                 c.getProduto().getModelo().getDescricao(),
                 c.getProduto().getModelo().getMarca().getDescricao(),
