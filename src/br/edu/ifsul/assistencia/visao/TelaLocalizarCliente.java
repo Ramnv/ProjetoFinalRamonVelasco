@@ -10,6 +10,9 @@ import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -146,8 +149,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
     private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         // TODO add your handling code here:
-        Integer id = Integer.parseInt(jTextFieldCodigo.getText());
-        dao.localizar(id);
+        carregaTabela();
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -159,16 +161,25 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
     jTextFieldCodigo.setText("");
+    carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarCliente.getModel();
         modelo.setNumRows(0);
         DAOCliente dao = new DAOCliente();
+        List<Cliente> lista = new ArrayList<>();
         
         try{
+            if(jTextFieldCodigo.getText().length()>0){
+                lista = dao.listarFiltro(Integer.parseInt(jTextFieldCodigo.getText()));
+            }
+            else{
+                //JOptionPane.showMessageDialog(rootPane, "Código não enconmtrado!");
+                lista = dao.listar();
+            }
         
-        for(Cliente c : dao.listar()){
+        for(Cliente c : lista){
             modelo.addRow(new Object[]{
                 c.getCodigoCliente(),
                 c.getNome(),

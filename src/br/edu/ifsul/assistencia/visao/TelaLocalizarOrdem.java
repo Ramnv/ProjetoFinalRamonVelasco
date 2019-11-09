@@ -8,6 +8,8 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -139,8 +141,8 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLocalizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizar2ActionPerformed
-        o.setOrdem_cod(Integer.parseInt(jTextFieldID.getText()));
-        dao.localizar(o.getOrdem_cod());
+       carregaTabela();
+       
     }//GEN-LAST:event_jButtonLocalizar2ActionPerformed
 
     private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
@@ -160,10 +162,16 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarOrdem.getModel();
         modelo.setNumRows(0);
         DAOOrdem dao = new DAOOrdem();
+        List<Ordem> lista = new ArrayList<>();
         
         try{
+            if(jTextFieldID.getText().length()>0){
+                lista = dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
+            }else{
+                lista= dao.listar();
+            }
         
-        for(Ordem o: dao.listar()){
+        for(Ordem o: lista) {
             modelo.addRow(new Object[]{
                 o.getOrdem_cod(),
                 o.getMotivo(),

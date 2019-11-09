@@ -146,15 +146,17 @@ public class DAOCliente {
 
     }
 
-    public Cliente localizar(Integer id) {
+    public List<Cliente> listarFiltro(Integer id){
 
         String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, " +
-"                 o.ordem_cod,o.pago ,p.n_serie,m.nome as modelo,   ma.nome  as marca " +
+"                 o.ordem_cod,o.pago, o.valor ,p.n_serie,m.nome as modelo,   ma.nome  as marca " +
 "                  from cliente as c, produto as p," +
 "                 modelo as m, marca as ma, ordem as o where" +
 "                 p.produto_cod = c.produto and m.modelo_cod = p.modelo and" +
 "                ma.marca_cod = m.marca and o.ordem_cod = p.ordem  " +
-"                  where cliente_cod = "+ id;
+"                  and cliente_cod = ?";
+        System.out.println("SQL: " + sql);
+        List<Cliente> lista = new ArrayList<>();
 
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -171,6 +173,7 @@ public class DAOCliente {
                 Ordem o = new Ordem();
                 o.setOrdem_cod(rs.getInt("ordem_cod"));
                 o.setPago(rs.getBoolean("pago"));
+                o.setValor(rs.getFloat("valor"));
                 
                 Produto p = new Produto();
                 p.setNumeroSerie(rs.getString("n_serie"));
@@ -184,11 +187,13 @@ public class DAOCliente {
                 m.setMarca(ma);
                 p.setModelo(m);
                 c.setProduto(p);
+                
+                lista.add(c);
             }
         } catch (Exception e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
-        return null;
+        return lista;
 
     }
 

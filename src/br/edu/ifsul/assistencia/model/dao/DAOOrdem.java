@@ -131,30 +131,48 @@ public class DAOOrdem {
         }
         return lista;
     }
-      public Ordem localizar(Integer id){
-        String sql = "select * from ordem where ordem_cod = " +id;
+      public List<Ordem> listarFiltro(Integer id){
+          
+        String sql = "select o.ordem_cod, o.motivo, pe.nome as peca, mo.nome as modelo, \n" +
+"  ma.nome as marca, o.data_inicial, o.data_final, o.valor, o.pago, f.nome as funcionario from\n" +
+"  ordem as o,pecas as pe, modelo as mo, marca as ma, funcionario as f\n" +
+"  where o.peca = pe.peca_cod and pe.modelo = mo.modelo_cod and o.funcionario = f.funcionario_cod\n" +
+"and mo.marca = ma.marca_cod and ordem_cod = ?" ;
+        System.out.println("SQL: " + sql);
         List<Ordem> lista = new ArrayList<>();
         try{
             PreparedStatement pst= Conexao.getPreparedStatement(sql);
             pst.setInt(1, id);
             ResultSet rs= pst.executeQuery();
             while(rs.next()){
-                Ordem o = new Ordem();
+               Ordem o = new Ordem();
                 o.setOrdem_cod(rs.getInt("ordem_cod"));
                 o.setMotivo(rs.getString("motivo"));
-                o.setPago(rs.getBoolean("pago"));
-                o.setValor(rs.getFloat("valor"));
-                
                 Peca p = new Peca();
-                p.setCodigoPeca(rs.getInt("peca_cod"));
+                p.setDescricaoPeca(rs.getString("peca"));
+                
+                Modelo mo = new Modelo();
+                mo.setDescricao(rs.getString("modelo"));
+                
+                Marca m = new Marca();
+                m.setDescricao(rs.getString("marca"));
+                mo.setMarca(m);
+                
+                p.setModelo(mo);
+                
                 o.setPeca(p);
                 
+                o.setData_inicial(rs.getDate("data_inicial"));
+                o.setData_final(rs.getDate("data_final"));
+                o.setValor(rs.getFloat("valor"));
+                o.setPago(rs.getBoolean("pago"));
+                
                 Funcionario f = new Funcionario();
-                f.setFuncionario_cod(rs.getInt("funcionario_cod"));
+                f.setNome(rs.getString("funcionario"));
+                
                 o.setFuncionario(f);
                 
-                o.setData_final(rs.getDate("data_final"));
-                o.setData_inicial(rs.getDate("data_inicial"));
+                lista.add(o);
                 
             }
         
@@ -162,7 +180,7 @@ public class DAOOrdem {
         }catch(Exception e ){
             System.out.println("Erro de SQL: " +e.getMessage());
         }
-        return null;
+        return lista;
     }
     
     
