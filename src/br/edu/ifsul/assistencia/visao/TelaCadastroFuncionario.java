@@ -34,6 +34,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -127,8 +128,15 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButtonTecnico);
         jRadioButtonTecnico.setText("Técnico");
+        jRadioButtonTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTecnicoActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(jRadioButtonAtendente);
         jRadioButtonAtendente.setText("Atendente");
         jRadioButtonAtendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,6 +381,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
              jRadioButtonAtendente.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),4).equals("Atendente"));   
         }
     }//GEN-LAST:event_jTableFuncionarioMouseClicked
+
+    private void jRadioButtonTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTecnicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonTecnicoActionPerformed
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableFuncionario.getModel();
@@ -428,6 +440,7 @@ private void carregaTabela(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonDeletar;
