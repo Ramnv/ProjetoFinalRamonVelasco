@@ -74,7 +74,15 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             new String [] {
                 "Codigo", "Nome", "Telefone", "CPF", "Tipo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableFuncionarioMouseClicked(evt);
@@ -290,10 +298,33 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
+         boolean valido = true;
         
-        f.setNome(jTextFieldNome.getText());
-        f.setCpf(jTextFieldCpf.getText());
-        f.setTelefone(jTextFieldTelefone.getText());
+        if(jTextFieldNome.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldCpf.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
+            jTextFieldCpf.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldTelefone.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
+            jTextFieldTelefone.requestFocus();
+            valido = false;
+            return;
+        }
+        
+        if(valido == true){
+           f.setCpf(jTextFieldCpf.getText());
+           f.setNome(jTextFieldNome.getText());
+           f.setTelefone(jTextFieldTelefone.getText());
+          
+        
        if(jRadioButtonAtendente.isSelected()){
            
                f.setTipo("Atendente");
@@ -305,6 +336,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.alterar(f); 
          carregaTabela();
+        }
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -317,12 +349,34 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        boolean valido = true;
         
-        f.setNome(jTextFieldNome.getText());
-        f.setCpf(jTextFieldCpf.getText());
-        f.setTelefone(jTextFieldTelefone.getText());
+        if(jTextFieldNome.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldCpf.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
+            jTextFieldCpf.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldTelefone.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
+            jTextFieldTelefone.requestFocus();
+            valido = false;
+            return;
+        }
         
-        if(jRadioButtonAtendente.isSelected()){
+        if(valido == true){
+           f.setCpf(jTextFieldCpf.getText());
+           f.setNome(jTextFieldNome.getText());
+           f.setTelefone(jTextFieldTelefone.getText());
+          
+        
+       if(jRadioButtonAtendente.isSelected()){
            
                f.setTipo("Atendente");
         }
@@ -330,8 +384,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
            
                f.setTipo("Técnico");
         }
+       
+       
         dao.inserir(f);
         carregaTabela();
+        }
         /*
         dao.inserir(f);    }//GEN-LAST:event_jButtonSalvarActionPerformed
        */
