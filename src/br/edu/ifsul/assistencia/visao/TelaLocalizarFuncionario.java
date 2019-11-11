@@ -155,6 +155,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
     private void jButtonLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar2ActionPerformed
        jTextFieldID.setText("");
+       carregaTabela();
     }//GEN-LAST:event_jButtonLimpar2ActionPerformed
 private void carregaTabela(){
         

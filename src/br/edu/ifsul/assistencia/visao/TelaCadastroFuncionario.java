@@ -294,11 +294,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
-        if(jRadioButtonAtendente.hasFocus()){
-            f.setTipo("Atendente");
+       if(jRadioButtonAtendente.isSelected()){
+           
+               f.setTipo("Atendente");
         }
-        else{
-            f.setTipo("Técnico");
+       if(jRadioButtonTecnico.isSelected()){
+           
+               f.setTipo("Técnico");
         }
         f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.alterar(f); 
@@ -311,7 +313,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
     private void jRadioButtonAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAtendenteActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
@@ -319,15 +321,21 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         f.setNome(jTextFieldNome.getText());
         f.setCpf(jTextFieldCpf.getText());
         f.setTelefone(jTextFieldTelefone.getText());
-        if(jRadioButtonAtendente.hasFocus()){
-            f.setTipo("Atendente");
-        }
-        else{
-            f.setTipo("Técnico");
-        }
         
+        if(jRadioButtonAtendente.isSelected()){
+           
+               f.setTipo("Atendente");
+        }
+       if(jRadioButtonTecnico.isSelected()){
+           
+               f.setTipo("Técnico");
+        }
+        dao.inserir(f);
+        carregaTabela();
+        /*
         dao.inserir(f);    }//GEN-LAST:event_jButtonSalvarActionPerformed
-       
+       */
+    }
     private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         TelaLocalizarFuncionario tela = new TelaLocalizarFuncionario();
         tela.setVisible(true);
@@ -383,7 +391,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableFuncionarioMouseClicked
 
     private void jRadioButtonTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTecnicoActionPerformed
-        // TODO add your handling code here:
+       f.setTipo("Técnico");
     }//GEN-LAST:event_jRadioButtonTecnicoActionPerformed
 private void carregaTabela(){
         
