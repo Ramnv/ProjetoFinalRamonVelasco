@@ -137,6 +137,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabel3.setText("Codigo:");
 
+        jTextFieldCodigo.setEditable(false);
         jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCodigoActionPerformed(evt);
@@ -301,7 +302,42 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-         
+           boolean valido = true; 
+        
+        if(jTextFieldNome.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldCpf.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldEndereco.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Endereço deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldTelefone.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldProduto.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Produto deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        
+        
+        
+        if(valido == true){
              
              c.setCpf(jTextFieldCpf.getText());
              c.setEndereco(jTextFieldEndereco.getText());
@@ -315,7 +351,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             
              dao.alterar(c);
              carregaTabela();
-        //falta pegar o código ou a linha selecionada da tabela!!!
+        }
+      
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
@@ -330,7 +367,42 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        boolean valido = true; 
         
+        if(jTextFieldNome.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldCpf.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldEndereco.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Endereço deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldTelefone.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        if(jTextFieldProduto.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "O Produto deve ser informado!!");
+            jTextFieldNome.requestFocus();
+            valido = false;
+            return;
+        }
+        
+        
+        
+        if(valido == true){
         c.setNome(jTextFieldNome.getText());
         c.setCpf(jTextFieldCpf.getText());
         c.setEndereco(jTextFieldEndereco.getText());
@@ -340,6 +412,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         c.setProduto(p);
         dao.inserir(c);
         carregaTabela();
+        }
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
