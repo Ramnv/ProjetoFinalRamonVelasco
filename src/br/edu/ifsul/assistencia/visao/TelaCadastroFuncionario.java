@@ -318,6 +318,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             valido = false;
             return;
         }
+        if(jTextFieldCodigo.getText().length()<=0){
+           JOptionPane.showMessageDialog(rootPane, "Código não informado!!  Uma linha deve ser selecionada");
+            valido = false;
+            return; 
+        }
         
         if(valido == true){
            f.setCpf(jTextFieldCpf.getText());
@@ -448,7 +453,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableFuncionarioMouseClicked
 
     private void jRadioButtonTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTecnicoActionPerformed
-       f.setTipo("Técnico");
+    
     }//GEN-LAST:event_jRadioButtonTecnicoActionPerformed
 private void carregaTabela(){
         

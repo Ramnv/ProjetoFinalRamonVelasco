@@ -64,11 +64,11 @@ public class DAOMarca {
         }
     }
       
-       public boolean remover(Marca obj){
+       public boolean remover(int id){
         String sql = " delete  from marca where marca_cod = ? "; 
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getCodigoMarca());
+            pst.setInt(1, id);
             
 
             //executa update para mostrar as linhas alteradas

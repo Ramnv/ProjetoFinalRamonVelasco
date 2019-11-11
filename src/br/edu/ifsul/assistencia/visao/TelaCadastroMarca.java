@@ -11,6 +11,7 @@ import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -74,6 +75,11 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
                 "CodMarca", "Marca"
             }
         ));
+        jTableMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMarcaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMarca);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -231,13 +237,25 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        
+        boolean valido = true; 
+        if(jTextFieldMarca.getText().length()<=0){
+          JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
+            jTextFieldMarca.requestFocus();
+            valido = false;
+            return;  
+        }
+         if(jTextFieldCodigo.getText().length()<=0){
+            JOptionPane.showMessageDialog(rootPane, "Código não informado!!  Uma linha deve ser selecionada");
+            valido = false;
+            return;  
+        }
+        if(valido == true){   
         m.setDescricao(jTextFieldMarca.getText());
-
-       
+        m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));
         dao.alterar(m);
         carregaTabela();
-        //falta pegar o código ou a linha selecionada da tabela!!!
+        }
+        
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMarcaActionPerformed
@@ -252,18 +270,33 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+         boolean valido = true; 
+        if(jTextFieldMarca.getText().length()<=0){
+          JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
+            jTextFieldMarca.requestFocus();
+            valido = false;
+            return;  
+        }
         
+        if(valido == true){   
         m.setDescricao(jTextFieldMarca.getText());
+        
         dao.inserir(m);
         carregaTabela();
-        
+        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        
-        m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));        
-        dao.remover(m);
-        carregaTabela();
+       int row = jTableMarca.getSelectedRow();
+       if(row != -1){
+           int id = (int) jTableMarca.getValueAt(row, 0);
+           dao.remover(id);
+           carregaTabela();
+       }
+       else{
+          JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+               
+       }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -279,6 +312,14 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
         jTextFieldCodigo.setText("");
         carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTableMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMarcaMouseClicked
+        int index = jTableMarca.getSelectedRow();
+        if(index != -1){
+            jTextFieldCodigo.setText(jTableMarca.getValueAt(jTableMarca.getSelectedRow(), 0).toString());
+            jTextFieldMarca.setText(jTableMarca.getValueAt(jTableMarca.getSelectedRow(), 1).toString());
+        }
+    }//GEN-LAST:event_jTableMarcaMouseClicked
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableMarca.getModel();
