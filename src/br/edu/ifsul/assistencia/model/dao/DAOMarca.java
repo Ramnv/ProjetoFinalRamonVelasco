@@ -109,4 +109,29 @@ public class DAOMarca {
            return lista;
            }
            
+       
+ public List<Marca> listarMarca() {
+           String sql = "select * from marca order by nome";
+           
+           List<Marca> lista = new ArrayList<>();
+           try{
+               PreparedStatement pst = Conexao.getPreparedStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Marca m = new Marca(); 
+                // m.setCodigo_marca(rs.getInt("marca_cod"));
+                 m.setDescricao(rs.getString("nome"));
+                 
+                 lista.add(m);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
+           
        }
+ 
