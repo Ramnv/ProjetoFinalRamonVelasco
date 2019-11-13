@@ -10,6 +10,7 @@ import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -168,6 +169,9 @@ private void carregaTabela(){
             
             if(jTextFieldID.getText().length()>0){
                lista = dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
+               if(lista.isEmpty()){
+                   JOptionPane.showMessageDialog(rootPane, "Código não encontrado!");
+               }
             }else {
                 
                 lista = dao.listar();
