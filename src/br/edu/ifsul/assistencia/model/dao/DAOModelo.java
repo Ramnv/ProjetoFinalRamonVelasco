@@ -22,6 +22,7 @@ public class DAOModelo {
     public boolean inserir(Modelo obj) {
         String sql = " insert into modelo ( nome, marca) values"
                 + "(?,?)";
+        System.out.println("SQL: " + sql);
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getDescricao());

@@ -253,6 +253,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
       m.setDescricao(jTextFieldModelo.getText());
         Marca ma= new Marca();
       ma.setDescricao(jComboBoxMarca.getCursor().getName());
+      
       m.setMarca(ma);
       dao.alterar(m);
       
@@ -273,9 +274,15 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
        carregaTabela();
       m.setDescricao(jTextFieldModelo.getText());
-      Marca ma= new Marca();
-      ma.setDescricao(jComboBoxMarca.getCursor().getName());
+      
+      Marca marca = new Marca();
+      ma = ( (Marca) jComboBoxMarca.getSelectedItem());
+      //marca.setCodigo_marca (ma);
+      
+       
+               
       m.setMarca(ma);
+       
       dao.inserir(m);
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -312,6 +319,7 @@ private void carregaTabela(){
              m.getCodigoModelo(),
                 m.getDescricao(),
                 m.getMarca().getDescricao(),
+             
                 
             
             });
@@ -362,7 +370,7 @@ private void carregaTabela(){
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonLocalicalizar;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox<String> jComboBoxMarca;
+    private javax.swing.JComboBox<Object> jComboBoxMarca;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelMarca;
     private javax.swing.JLabel jLabelNome;

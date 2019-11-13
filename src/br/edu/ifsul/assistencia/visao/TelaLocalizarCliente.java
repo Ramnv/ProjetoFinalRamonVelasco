@@ -173,10 +173,15 @@ private void carregaTabela(){
         
         try{
             if(jTextFieldCodigo.getText().length()>0){
-                lista = dao.listarFiltro(Integer.parseInt(jTextFieldCodigo.getText()));
+               
+                  lista = dao.listarFiltro(Integer.parseInt(jTextFieldCodigo.getText()));
+                  if(lista.isEmpty()){
+                      JOptionPane.showMessageDialog(rootPane, "Código não encontrado!");
+                  }
+                
             }
             else{
-                //JOptionPane.showMessageDialog(rootPane, "Código não enconmtrado!");
+                //JOptionPane.showMessageDialog(rootPane, "Código não encontrado!");
                 lista = dao.listar();
             }
         

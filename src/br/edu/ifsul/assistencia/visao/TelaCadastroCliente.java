@@ -88,7 +88,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "CPF", "Telefone", "Endereço", "Ordem", "Pago", "Código Produto", "N de serie", "Modelo", "Marca"
+                "Código", "Nome", "CPF", "Telefone", "Endereço", "Ordem", "Código Produto", "N de serie", "Modelo", "Marca"
             }
         ));
         jTableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
