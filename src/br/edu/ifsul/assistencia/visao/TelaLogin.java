@@ -5,6 +5,8 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ramon
@@ -90,10 +92,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcessarActionPerformed
-        // TODO add your handling code here:
+        if(jTextFieldUsuario.getText().equals("admin") && jPasswordFieldSenha.getText().equals("123")){
         TelaPrincipal tela = new TelaPrincipal();
         tela.setVisible(true);
         dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos!!");
+        }
     }//GEN-LAST:event_jButtonAcessarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
