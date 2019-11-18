@@ -10,6 +10,7 @@ import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.Peca;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,11 +26,21 @@ public class DAOOrdem {
     // INSERIR, ALTERAR , REMOVER, LISTAR, LOCALIZAR
     public boolean incluir(Ordem obj){
         //Arrumar
-        String sql = " insert into ordem (motivo, peca) values (?,?)";
+        String sql = " INSERT INTO ordem( " +
+"	 motivo, peca, data_inicial, data_final, valor, pago, funcionario)" +
+"	VALUES ( ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
             pst.setInt(2, obj.getPeca().getCodigoPeca());
+            pst.setDate(3, (Date) obj.getData_inicial());
+            pst.setDate(4, (Date)obj.getData_final());
+            pst.setFloat(5, obj.getValor());
+            pst.setBoolean(6, obj.getPago());
+            pst.setInt(7, obj.getFuncionario().getFuncionario_cod());
+            
+            
+            
             
             if(pst.executeUpdate()>0){
                 System.out.println("Ordem incluida com sucesso");
@@ -44,13 +55,20 @@ public class DAOOrdem {
 }
     
     public boolean alterar(Ordem obj){
-        String sql = "update ordem set motivo=?, peca=? where ordem_cod =?)";
+        String sql = "update ordem set motivo=?, peca=?, data_inicial = ?,"
+                + "data_final =?, valor =?, pago =?, funcionario =? "
+                + " where ordem_cod =? ";
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
-            //??
             pst.setInt(2, obj.getPeca().getCodigoPeca());
-            pst.setInt(3, obj.getOrdem_cod());
+            pst.setDate(3, (Date) obj.getData_inicial());
+            pst.setDate(4, (Date)obj.getData_final());
+            pst.setFloat(5, obj.getValor());
+            pst.setBoolean(6, obj.getPago());
+            pst.setInt(7, obj.getFuncionario().getFuncionario_cod());
+            pst.setInt(8, obj.getOrdem_cod());
+         
             
             if(pst.executeUpdate()>0){
                 System.out.println("Ordem atualizada com sucesso");
@@ -65,7 +83,7 @@ public class DAOOrdem {
         }
     
     public boolean remover(Ordem obj){
-        String sql = "delete * from ordem where ordem_cod=?";
+        String sql = "delete  from ordem where ordem_cod=?";
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setInt(1, obj.getOrdem_cod());
