@@ -272,16 +272,26 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-       carregaTabela();
+      carregaTabela();
       m.setDescricao(jTextFieldModelo.getText());
-      
-      Marca marca = new Marca();
-      ma = ( (Marca) jComboBoxMarca.getSelectedItem());
-      //marca.setCodigo_marca (ma);
+      DAOMarca d = new DAOMarca();
+      // listar a lista de marcas até encontrar o nome que foi selecionado e pegar o id
+      Marca mas = new Marca();
+      ma = (Marca) jComboBoxMarca.getSelectedItem();
+       for(Marca marca : d.listar()){
+            if(ma.equals(marca.getDescricao())){
+                System.out.println(" marca pega: " +marca.getDescricao());
+                        
+                mas.setCodigo_marca(marca.getCodigoMarca()); 
+               m.setMarca(mas);
+            }
+       }
+       
+       
       
        
                
-      m.setMarca(ma);
+      m.setMarca(mas);
        
       dao.inserir(m);
         
