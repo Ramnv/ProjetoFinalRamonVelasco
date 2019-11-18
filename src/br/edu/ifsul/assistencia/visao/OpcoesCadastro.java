@@ -169,6 +169,8 @@ public class OpcoesCadastro extends javax.swing.JFrame {
 
     private void jButtonCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroProdutoActionPerformed
         // TODO add your handling code here:
+        TelaCadastroProduto tela = new TelaCadastroProduto();
+        tela.setVisible(true);
     }//GEN-LAST:event_jButtonCadastroProdutoActionPerformed
 
     private void jButtonCadastroModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroModeloActionPerformed
@@ -185,7 +187,8 @@ public class OpcoesCadastro extends javax.swing.JFrame {
 
     private void jButtonCadastroPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroPecaActionPerformed
         // TODO add your handling code here:
-        
+        TelaCadastroPeca tela = new TelaCadastroPeca();
+        tela.setVisible(true);
     }//GEN-LAST:event_jButtonCadastroPecaActionPerformed
 
     /**
