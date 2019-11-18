@@ -153,6 +153,7 @@ public class OpcoesCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroFuncionarioActionPerformed
 
     private void jButtonCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroClienteActionPerformed
@@ -165,30 +166,35 @@ public class OpcoesCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastroMarca tela = new TelaCadastroMarca();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroMarcaActionPerformed
 
     private void jButtonCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroProdutoActionPerformed
         // TODO add your handling code here:
         TelaCadastroProduto tela = new TelaCadastroProduto();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroProdutoActionPerformed
 
     private void jButtonCadastroModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroModeloActionPerformed
         // TODO add your handling code here:
         TelaCadastroModelo tela = new TelaCadastroModelo();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroModeloActionPerformed
 
     private void jButtonCadastroOrdemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroOrdemActionPerformed
         // TODO add your handling code here:
         TelaCadastroOrdem tela = new TelaCadastroOrdem();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroOrdemActionPerformed
 
     private void jButtonCadastroPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroPecaActionPerformed
         // TODO add your handling code here:
         TelaCadastroPeca tela = new TelaCadastroPeca();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroPecaActionPerformed
 
     /**

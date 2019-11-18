@@ -295,8 +295,8 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         TelaPrincipal tela = new TelaPrincipal();
-        tela.setVisible(true);
+//         TelaPrincipal tela = new TelaPrincipal();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
