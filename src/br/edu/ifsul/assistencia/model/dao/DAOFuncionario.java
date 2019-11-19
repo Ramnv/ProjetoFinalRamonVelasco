@@ -150,5 +150,29 @@ public class DAOFuncionario {
        return lista;        
                 
     }
+      public List<Funcionario> listarFunc(){
+    
+        String sql = "select * from funcionario order by nome asc";
+        List<Funcionario> lista = new ArrayList<>(); 
+        try{
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next()){
+                Funcionario f = new Funcionario();
+                
+                f.setNome(rs.getString("nome"));
+               
+                lista.add(f);
+            
+            }
+        
+        
+        }catch(Exception e){
+            System.out.println("Erro de SQL: " +e.getMessage());
+            
+        }
+        return lista;        
+                
+    }
     
 }

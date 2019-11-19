@@ -10,8 +10,10 @@ import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.Ordem;
 import br.edu.ifsul.assistencia.model.Peca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
+import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
+import br.edu.ifsul.assistencia.model.dao.DAOPecas;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,8 +34,25 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     public TelaCadastroOrdem() {
         initComponents();
         carregaTabela();
+        preencherPeca();
     }
-
+    
+    public void preencherPeca(){
+        DAOPecas d = new DAOPecas();
+       for( Peca pe: d.listarPeca()){
+          
+         jComboBoxPeca.addItem(pe);
+       }
+    
+    }
+    public void preencherFuncionario(){
+        DAOFuncionario d = new DAOFuncionario();
+       for( Funcionario f: d.listar()){
+          
+         jComboBoxPeca.addItem(f);
+       }
+    
+    }
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -397,6 +416,18 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+      
+        jTextFieldValor.setText("");
+       jTextFieldMotivo.setText("");
+       jTextFieldDta_ini.setText(" ");
+       jTextFieldDta_fim.setText("");
+       jTextFieldCodigo.setText("");
+       jRadioButtonNao.setText("");
+       jRadioButtonSim.setText(" ");
+       jComboBoxPeca.setSelectedItem("");
+       jComboBoxFuncionario.setSelectedItem(" ");
+       
+        
         carregaTabela();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
@@ -406,6 +437,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldMotivoActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
+        o.setOrdem_cod(Integer.parseInt(jTextFieldCodigo.getText()));
+        dao.remover(o);
         carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
@@ -419,8 +452,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),7).toString());
             jRadioButtonNao.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("false"));
             jRadioButtonSim.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("true"));
-//            jTextFieldPeca.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),2).toString());
-//            jTextFieldFuncionario.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),9).toString());
+            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),2).toString());
+            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),9).toString());
         }
     }//GEN-LAST:event_jTableOrdemMouseClicked
 private void carregaTabela(){
@@ -491,8 +524,8 @@ private void carregaTabela(){
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JComboBox<String> jComboBoxFuncionario;
-    private javax.swing.JComboBox<String> jComboBoxPeca;
+    private javax.swing.JComboBox<Object> jComboBoxFuncionario;
+    private javax.swing.JComboBox<Object> jComboBoxPeca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

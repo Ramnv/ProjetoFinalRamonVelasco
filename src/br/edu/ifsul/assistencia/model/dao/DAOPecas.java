@@ -152,5 +152,29 @@ public class DAOPecas {
 }
     return null;
 }
+      public List<Peca> listarPeca() {
+           String sql = "select * from pecas order by nome";
+           
+           List<Peca> lista = new ArrayList<>();
+           try{
+               PreparedStatement pst = Conexao.getPreparedStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Peca p = new Peca(); 
+                // m.setCodigo_marca(rs.getInt("marca_cod"));
+                 p.setDescricaoPeca(rs.getString("nome"));
+                 
+                 lista.add(p);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
+           
+       }
     
-}
+

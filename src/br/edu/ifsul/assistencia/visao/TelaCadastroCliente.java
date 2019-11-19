@@ -335,6 +335,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             valido = false;
             return;
         }
+        //Código do cliente selecionar linha !! fazeer teste
         
         
         
