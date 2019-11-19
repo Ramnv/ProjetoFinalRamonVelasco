@@ -46,7 +46,7 @@ public class DAOModelo {
     }
 
     public boolean alterar(Modelo obj) {
-        String sql = "update modelo set nome =? , marca = ? where codigo = ?";
+        String sql = "update modelo set nome =? , marca = ? where modelo_cod = ?";
 
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -70,7 +70,7 @@ public class DAOModelo {
     }
     
     public boolean remover (Modelo obj){
-        String sql = "delete * from modelo where codigo = ?";
+        String sql = "delete  from modelo where modelo_cod = ?";
         
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);

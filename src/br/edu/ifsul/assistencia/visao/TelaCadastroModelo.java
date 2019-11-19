@@ -80,6 +80,11 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
                 "Código", "Modelo", "Marca"
             }
         ));
+        jTableModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableModeloMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableModelo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -249,15 +254,29 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-       carregaTabela();
+      
+      DAOMarca d = new DAOMarca();
       m.setDescricao(jTextFieldModelo.getText());
-        Marca ma= new Marca();
-      ma.setDescricao(jComboBoxMarca.getCursor().getName());
+      ma = (Marca) jComboBoxMarca.getSelectedItem();
+      ma.getDescricao();
+      for(Marca marca : d.listar()){
+             if(ma.getDescricao().equals(marca.getDescricao())){
+                 
+              ma.setCodigo_marca(marca.getCodigoMarca());
+              
+              System.out.println(" marca pega: " +ma.getDescricao() + " codigo " + ma.getCodigoMarca());
+          }
+      }
       
+      
+            
       m.setMarca(ma);
+      m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText()));
       dao.alterar(m);
+      carregaTabela();
       
-        //falta pegar o código ou a linha selecionada da tabela!!!
+      
+      
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModeloActionPerformed
@@ -272,35 +291,34 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-      carregaTabela();
-      m.setDescricao(jTextFieldModelo.getText());
+    
       DAOMarca d = new DAOMarca();
-      // listar a lista de marcas até encontrar o nome que foi selecionado e pegar o id
-      Marca mas = new Marca();
+      m.setDescricao(jTextFieldModelo.getText());
       ma = (Marca) jComboBoxMarca.getSelectedItem();
-       for(Marca marca : d.listar()){
-            if(ma.equals(marca.getDescricao())){
-                System.out.println(" marca pega: " +marca.getDescricao());
-                        
-                mas.setCodigo_marca(marca.getCodigoMarca()); 
-               m.setMarca(mas);
-            }
-       }
-       
-       
+      ma.getDescricao();
+      for(Marca marca : d.listar()){
+             if(ma.getDescricao().equals(marca.getDescricao())){
+                 
+              ma.setCodigo_marca(marca.getCodigoMarca());
+              
+              System.out.println(" marca pega: " +ma.getDescricao() + " codigo " + ma.getCodigoMarca());
+          }
+      }
       
-       
-               
+      
+            
       m.setMarca(ma);
        
       dao.inserir(m);
+      carregaTabela();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       carregaTabela();
+      
        m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText())); // linha selecionada ou pegar o código
-       dao.remover(m);
+       dao.remover(m); 
+       carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -311,11 +329,23 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        carregaTabela();
+        
         jTextFieldModelo.setText("");
         jComboBoxMarca.setFocusable(false);
+        jTextFieldCodigo.setText("");
+        carregaTabela();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTableModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableModeloMouseClicked
+        int index = jTableModelo.getSelectedRow();
+        if(index !=-1){
+            jTextFieldModelo.setText(jTableModelo.getValueAt(jTableModelo.getSelectedRow(), 1).toString());
+            jTextFieldCodigo.setText(jTableModelo.getValueAt(jTableModelo.getSelectedRow(), 0).toString());
+            jComboBoxMarca.setSelectedItem(jTableModelo.getValueAt(jTableModelo.getSelectedRow(),2).toString());
+        }
+        
+    }//GEN-LAST:event_jTableModeloMouseClicked
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableModelo.getModel();
