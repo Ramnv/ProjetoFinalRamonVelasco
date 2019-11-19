@@ -36,7 +36,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
        DAOMarca d = new DAOMarca();
        for( Marca ma: d.listarMarca() ){
           
-         jComboBoxMarca.addItem(ma.getDescricao());
+         jComboBoxMarca.addItem(ma);
        }
     
     }
@@ -291,7 +291,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
       
        
                
-      m.setMarca(mas);
+      m.setMarca(ma);
        
       dao.inserir(m);
         
