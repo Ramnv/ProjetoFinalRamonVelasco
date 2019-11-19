@@ -334,18 +334,18 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             valido = false;
             return;
         }
-        if(jTextFieldFuncionario.getText().length()<=0){
-            JOptionPane.showMessageDialog(rootPane, "O Funcionário  deve ser informado!!");
-            jTextFieldFuncionario.requestFocus();
-            valido = false;
-            return;
-        }
-        if(jTextFieldPeca.getText().length()<=0){
-            JOptionPane.showMessageDialog(rootPane, "A peça deve ser informada!!");
-            jTextFieldPeca.requestFocus();
-            valido = false;
-            return;
-        }
+//        if(jTextFieldFuncionario.getText().length()<=0){
+//            JOptionPane.showMessageDialog(rootPane, "O Funcionário  deve ser informado!!");
+//            jTextFieldFuncionario.requestFocus();
+//            valido = false;
+//            return;
+//        }
+//        if(jTextFieldPeca.getText().length()<=0){
+//            JOptionPane.showMessageDialog(rootPane, "A peça deve ser informada!!");
+//            jTextFieldPeca.requestFocus();
+//            valido = false;
+//            return;
+//        }
         if(jTextFieldValor.getText().length()<=0){
             JOptionPane.showMessageDialog(rootPane, "O valor  deve ser informado!!");
             jTextFieldValor.requestFocus();
@@ -375,11 +375,11 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             }
            o.setMotivo(jTextFieldMotivo.getText());    
            Funcionario f = new Funcionario();
-           f.setFuncionario_cod(Integer.parseInt(jTextFieldFuncionario.getText()));
-           o.setFuncionario(f);
-           Peca p = new Peca();
-           p.setCodigoPeca(Integer.parseInt(jTextFieldPeca.getText()));
-           o.setPeca(p);
+//           f.setFuncionario_cod(Integer.parseInt(jTextFieldFuncionario.getText()));
+//           o.setFuncionario(f);
+//           Peca p = new Peca();
+//           p.setCodigoPeca(Integer.parseInt(jTextFieldPeca.getText()));
+//           o.setPeca(p);
            o.setValor(Float.parseFloat(jTextFieldValor.getText()));
            if(jRadioButtonNao.isSelected()){
                
@@ -419,8 +419,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),7).toString());
             jRadioButtonNao.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("false"));
             jRadioButtonSim.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("true"));
-            jTextFieldPeca.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),2).toString());
-            jTextFieldFuncionario.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),9).toString());
+//            jTextFieldPeca.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),2).toString());
+//            jTextFieldFuncionario.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),9).toString());
         }
     }//GEN-LAST:event_jTableOrdemMouseClicked
 private void carregaTabela(){

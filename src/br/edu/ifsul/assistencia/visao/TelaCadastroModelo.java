@@ -11,6 +11,7 @@ import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -292,6 +293,15 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
     
+      boolean valido = true; 
+      if(jTextFieldModelo.getText().length()<=0){
+          JOptionPane.showMessageDialog(rootPane, " O modelo deve ser informado!!");
+          jTextFieldModelo.requestFocus();
+          valido = false;
+          return;
+      }
+      
+      if(valido == true){
       DAOMarca d = new DAOMarca();
       m.setDescricao(jTextFieldModelo.getText());
       ma = (Marca) jComboBoxMarca.getSelectedItem();
@@ -301,7 +311,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
                  
               ma.setCodigo_marca(marca.getCodigoMarca());
               
-              System.out.println(" marca pega: " +ma.getDescricao() + " codigo " + ma.getCodigoMarca());
+              //System.out.println(" marca pega: " +ma.getDescricao() + " codigo " + ma.getCodigoMarca());
           }
       }
       
@@ -311,6 +321,9 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
        
       dao.inserir(m);
       carregaTabela();
+      }
+      
+      
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -331,7 +344,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         
         jTextFieldModelo.setText("");
-        jComboBoxMarca.setFocusable(false);
+        jComboBoxMarca.setSelectedItem("");
         jTextFieldCodigo.setText("");
         carregaTabela();
         
