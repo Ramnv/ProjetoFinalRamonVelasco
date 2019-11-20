@@ -39,7 +39,7 @@ public class OpcoesCadastro extends javax.swing.JFrame {
         jButtonCadastroProduto = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButtonCadastroFuncionario.setText("Funcionário");
         jButtonCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
