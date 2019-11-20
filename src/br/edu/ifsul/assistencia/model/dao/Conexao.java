@@ -25,7 +25,7 @@ public class Conexao {
     private static final String USER = "postgres";
     //Atencao na senha
     private static final String SENHA = "postgres";
-    private static final String URL = "jdbc:postgresql://localhost:5432/projeto_assistencia";
+    private static final String URL = "jdbc:postgresql://localhost:5432/ProjetoFinal";
     private static Connection con = null;
     
     public Conexao(){    

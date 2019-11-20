@@ -433,8 +433,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jTextFieldTelefone.setText("");
         jTextFieldCodigo.setText("");
             
-        jRadioButtonTecnico.setSelected(false);
-        jRadioButtonAtendente.setSelected(false);
+        System.out.println("chegou");
+        //jRadioButtonTecnico.setSelected(false);
+        
+        
+        //jRadioButtonAtendente.setSelected(false);
+        
+       // buttonGroup1.setSelected(buttonGroup1.getSelection(), false);
+        
+        buttonGroup1.clearSelection();
+        
         carregaTabela();
 
     

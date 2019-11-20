@@ -294,7 +294,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
     
       boolean valido = true; 
-      if(jTextFieldModelo.getText().length()<=0){
+      if(jTextFieldModelo.getText().length()<=0 && jComboBoxMarca.getSelectedIndex() > 0){
           JOptionPane.showMessageDialog(rootPane, " O modelo deve ser informado!!");
           jTextFieldModelo.requestFocus();
           valido = false;
@@ -344,7 +344,8 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         
         jTextFieldModelo.setText("");
-        jComboBoxMarca.setSelectedItem("");
+        jComboBoxMarca.setSelectedIndex(0);
+        
         jTextFieldCodigo.setText("");
         carregaTabela();
         

@@ -12,7 +12,8 @@ import br.edu.ifsul.assistencia.visao.TelaCadastroFuncionario;
  *
  * @author ramon
  */
-public class OpcoesCadastro extends javax.swing.JFrame {
+public class OpcoesCadastro extends javax.swing.JDialog
+{
 
     /**
      * Creates new form CadastroOpcoes
