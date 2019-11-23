@@ -65,14 +65,14 @@ public class DAOProduto {
     }
 
     public Produto localizar(Integer id) {
-        //revisar2008
-        String sql = "select p.produto_cod,c.nome, p.motivo, p.n_serie, "
-                + " ma.nome, m.nome,  pe.nome, pe.valor, o.pago"
-                + " from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,"
-                + " cliente as c where p.modelo= m.modelo_cod "
-                + "and m.marca = ma.marca_cod"
-                + " and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and"
-                + " c.produto=p.produto_cod and p.produto_codigo= " + id;
+       
+        String sql = " select p.produto_cod,c.nome, p.motivo, p.n_serie, \n" +
+"                 ma.nome as marca, m.nome as modelo,  pe.nome as peca, pe.valor, o.pago\n" +
+"                 from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,\n" +
+"                cliente as c where p.modelo= m.modelo_cod \n" +
+"                and m.marca = ma.marca_cod\n" +
+"                 and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and\n" +
+"                c.produto=p.produto_cod and p.produto_cod= ?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setInt(1, id);
@@ -87,16 +87,16 @@ public class DAOProduto {
                 Ordem o = new Ordem(); 
                 o.setPago(rs.getBoolean("pago"));
                 Peca pe = new Peca();
-                pe.setDescricaoPeca(rs.getString("nome"));
+                pe.setDescricaoPeca(rs.getString("peca"));
                 pe.setValor(rs.getFloat("valor"));
                 o.setPeca(pe);
                 p.setOrdem(o);
                 
                 
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
+                m.setDescricao(rs.getString("modelo"));
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 p.setModelo(m);
                 
@@ -113,13 +113,13 @@ public class DAOProduto {
     }
 
     public List<Produto> listar() {
-        String sql = "select p.produto_cod,c.nome, p.motivo, p.n_serie, "
-                + " ma.nome, m.nome,  pe.nome, pe.valor, o.pago"
-                + " from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,"
-                + " cliente as c where p.modelo= m.modelo_cod "
-                + "and m.marca = ma.marca_cod"
-                + " and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and"
-                + " c.produto=p.produto_cod order by p.produto_cod asc"; 
+        String sql = "select p.produto_cod,c.nome, p.motivo, p.n_serie, \n" +
+"                 ma.nome as marca, m.nome as modelo,  pe.nome as peca, pe.valor, o.pago\n" +
+"                 from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,\n" +
+"                cliente as c where p.modelo= m.modelo_cod \n" +
+"                and m.marca = ma.marca_cod\n" +
+"                 and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and\n" +
+"                c.produto=p.produto_cod order by p.produto_cod asc"; 
         List<Produto> lista = new ArrayList<>();
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -133,16 +133,16 @@ public class DAOProduto {
                 Ordem o = new Ordem(); 
                 o.setPago(rs.getBoolean("pago"));
                 Peca pe = new Peca();
-                pe.setDescricaoPeca(rs.getString("nome"));
+                pe.setDescricaoPeca(rs.getString("peca"));
                 pe.setValor(rs.getFloat("valor"));
                 o.setPeca(pe);
                 p.setOrdem(o);
                 
                 
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
+                m.setDescricao(rs.getString("modelo"));
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 p.setModelo(m);
                 
