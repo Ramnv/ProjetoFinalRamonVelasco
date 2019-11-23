@@ -88,7 +88,7 @@ public class DAOProduto {
                 o.setPago(rs.getBoolean("pago"));
                 Peca pe = new Peca();
                 pe.setDescricaoPeca(rs.getString("nome"));
-                pe.setValor(rs.getDouble("valor"));
+                pe.setValor(rs.getFloat("valor"));
                 o.setPeca(pe);
                 p.setOrdem(o);
                 
@@ -134,7 +134,7 @@ public class DAOProduto {
                 o.setPago(rs.getBoolean("pago"));
                 Peca pe = new Peca();
                 pe.setDescricaoPeca(rs.getString("nome"));
-                pe.setValor(rs.getDouble("valor"));
+                pe.setValor(rs.getFloat("valor"));
                 o.setPeca(pe);
                 p.setOrdem(o);
                 

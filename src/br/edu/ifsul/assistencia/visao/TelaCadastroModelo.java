@@ -126,6 +126,8 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -149,14 +151,17 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabelNome)
-                    .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMarca)
-                    .addComponent(jComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxMarca)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabelNome)
+                            .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelMarca))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jButtonLimpar.setText("Limpar");
@@ -294,7 +299,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
     
       boolean valido = true; 
-      if(jTextFieldModelo.getText().length()<=0 && jComboBoxMarca.getSelectedIndex() > 0){
+      if(jTextFieldModelo.getText().length()<=0 && jComboBoxMarca.getSelectedIndex() <= 0){
           JOptionPane.showMessageDialog(rootPane, " O modelo deve ser informado!!");
           jTextFieldModelo.requestFocus();
           valido = false;
@@ -356,7 +361,8 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         if(index !=-1){
             jTextFieldModelo.setText(jTableModelo.getValueAt(jTableModelo.getSelectedRow(), 1).toString());
             jTextFieldCodigo.setText(jTableModelo.getValueAt(jTableModelo.getSelectedRow(), 0).toString());
-            jComboBoxMarca.setSelectedItem(jTableModelo.getValueAt(jTableModelo.getSelectedRow(),2).toString());
+            jComboBoxMarca.setSelectedItem(jTableModelo.getValueAt(jTableModelo.getSelectedRow(),2).equals("Asus1"));
+            
         }
         
     }//GEN-LAST:event_jTableModeloMouseClicked

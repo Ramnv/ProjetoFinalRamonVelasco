@@ -12,7 +12,7 @@ package br.edu.ifsul.assistencia.model;
 public class Peca {
     
     private Integer codigoPeca;
-    private Double valor;
+    private Float valor;
     private Integer estoque;
     private Modelo modelo; 
     private String descricaoPeca; 
@@ -29,11 +29,11 @@ public class Peca {
         this.codigoPeca = codigoPeca;
     }
 
-    public Double getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 
@@ -59,5 +59,9 @@ public class Peca {
 
     public void setDescricaoPeca(String descricaoPeca) {
         this.descricaoPeca = descricaoPeca;
+    }
+    @Override
+    public String toString(){
+        return descricaoPeca;
     }
 }

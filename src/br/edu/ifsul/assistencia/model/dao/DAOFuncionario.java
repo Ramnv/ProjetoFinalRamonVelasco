@@ -152,11 +152,12 @@ public class DAOFuncionario {
     }
       public List<Funcionario> listarFunc(){
     
-        String sql = "select * from funcionario order by nome asc";
+        String sql = "select * from funcionario order by nome";
         List<Funcionario> lista = new ArrayList<>(); 
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             ResultSet rs= pst.executeQuery();
+            
             while(rs.next()){
                 Funcionario f = new Funcionario();
                 

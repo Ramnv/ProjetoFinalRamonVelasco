@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,10 +32,12 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         DAOOrdem dao = new DAOOrdem();
         Ordem o= new Ordem(); 
         Conexao conexao = new Conexao(); 
+        
     public TelaCadastroOrdem() {
         initComponents();
         carregaTabela();
         preencherPeca();
+        preencherFuncionario();
     }
     
     public void preencherPeca(){
@@ -47,9 +50,9 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }
     public void preencherFuncionario(){
         DAOFuncionario d = new DAOFuncionario();
-       for( Funcionario f: d.listar()){
+       for( Funcionario f: d.listarFunc()){
           
-         jComboBoxPeca.addItem(f);
+         jComboBoxFuncionario.addItem(f);
        }
     
     }
@@ -58,6 +61,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -164,6 +168,10 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         jRadioButtonNao.setText("Nao");
 
         jTextFieldValor.setText(" ");
+
+        jComboBoxPeca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
+
+        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -353,18 +361,17 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             valido = false;
             return;
         }
-//        if(jTextFieldFuncionario.getText().length()<=0){
-//            JOptionPane.showMessageDialog(rootPane, "O Funcionário  deve ser informado!!");
-//            jTextFieldFuncionario.requestFocus();
-//            valido = false;
-//            return;
-//        }
-//        if(jTextFieldPeca.getText().length()<=0){
-//            JOptionPane.showMessageDialog(rootPane, "A peça deve ser informada!!");
-//            jTextFieldPeca.requestFocus();
-//            valido = false;
-//            return;
-//        }
+        if(jComboBoxFuncionario.getSelectedIndex()<=0){
+            JOptionPane.showMessageDialog(rootPane, " O Funcionário deve ser selecionado!!");
+            valido = false;
+            return;
+        }
+           if(jComboBoxPeca.getSelectedIndex()<=0){
+            JOptionPane.showMessageDialog(rootPane, " A peça deve ser selecionada!!");
+            valido = false;
+            return;
+        }
+  
         if(jTextFieldValor.getText().length()<=0){
             JOptionPane.showMessageDialog(rootPane, "O valor  deve ser informado!!");
             jTextFieldValor.requestFocus();
@@ -392,13 +399,33 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(TelaCadastroOrdem.class.getName()).log(Level.SEVERE, null, ex);
             }
-           o.setMotivo(jTextFieldMotivo.getText());    
-           Funcionario f = new Funcionario();
-//           f.setFuncionario_cod(Integer.parseInt(jTextFieldFuncionario.getText()));
-//           o.setFuncionario(f);
-//           Peca p = new Peca();
-//           p.setCodigoPeca(Integer.parseInt(jTextFieldPeca.getText()));
-//           o.setPeca(p);
+           o.setMotivo(jTextFieldMotivo.getText());  
+           //chama o dao para poder listar os funcionarios
+           DAOFuncionario daofuncionario = new DAOFuncionario();
+          //cria um funcionario e pega o nome que foi selecionado
+           Funcionario f = (Funcionario) jComboBoxFuncionario.getSelectedItem();
+           //pega o nome do funcionario
+           f.getNome();
+           //compara o nome com a lista de funcionários existente
+           for(Funcionario func: daofuncionario.listar()){
+               //se forem iguais pega o código e seta nesse funcionario criado
+               if(f.getNome().equals(func.getNome())){
+                   f.setFuncionario_cod(func.getFuncionario_cod());
+               }
+           }
+           //seta esse funcionario na ordem
+           o.setFuncionario(f);
+           
+           DAOPecas daopeca = new DAOPecas();
+           Peca pe = (Peca) jComboBoxPeca.getSelectedItem();
+           pe.getDescricaoPeca();
+           for( Peca p : daopeca.listar()){
+               if(pe.getDescricaoPeca().equals(p.getDescricaoPeca())){
+                   pe.setCodigoPeca(p.getCodigoPeca());
+               }
+           }
+           o.setPeca(pe);
+          
            o.setValor(Float.parseFloat(jTextFieldValor.getText()));
            if(jRadioButtonNao.isSelected()){
                
@@ -422,10 +449,9 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
        jTextFieldDta_ini.setText(" ");
        jTextFieldDta_fim.setText("");
        jTextFieldCodigo.setText("");
-       jRadioButtonNao.setText("");
-       jRadioButtonSim.setText(" ");
-       jComboBoxPeca.setSelectedItem("");
-       jComboBoxFuncionario.setSelectedItem(" ");
+        buttonGroup1.clearSelection();
+       jComboBoxPeca.setSelectedIndex(0);
+       jComboBoxFuncionario.setSelectedIndex(0);
        
         
         carregaTabela();
@@ -519,6 +545,7 @@ private void carregaTabela(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonLimpar;

@@ -28,7 +28,7 @@ public class DAOPecas {
             pst.setString(1, obj.getDescricaoPeca());
             pst.setInt(2, obj.getModelo().getCodigoModelo());
             pst.setInt(3, obj.getEstoque());
-            pst.setDouble(4, obj.getValor());
+            pst.setFloat(4, obj.getValor());
             
             if(pst.executeUpdate()>0){
                 System.out.println("Peça incluída com sucesso");
@@ -63,8 +63,10 @@ public class DAOPecas {
     
     public List<Peca> listar(){
         
-        String sql = "select mo.modelo_cod, mo.nome, mo.marca, ma.nome from modelo as mo, marca as ma\n" +
-"where mo.marca = ma.marca_cod order by mo.modelo_cod asc;";
+        String sql = "select distinct p.peca_cod, p.nome, m.nome  as modelo,\n" +
+"ma.nome as marca, p.estoque, p.valor from pecas as p, modelo as m, \n" +
+"marca as ma, produto as po where p.modelo = m.modelo_cod and\n" +
+" m.marca=ma.marca_cod order by peca_cod";
         List<Peca> lista = new ArrayList<>();
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -73,18 +75,15 @@ public class DAOPecas {
                 Peca obj = new Peca();
                 obj.setCodigoPeca(rs.getInt("peca_cod"));
                 obj.setDescricaoPeca(rs.getString("nome"));
-                ///??
-                Produto p = new Produto();
-                p.setNumeroSerie(rs.getString("n_serie"));
                 
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
+                m.setDescricao(rs.getString("modelo"));
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 obj.setModelo(m);
                 obj.setEstoque(rs.getInt("estoque"));
-                obj.setValor(rs.getDouble("valor"));
+                obj.setValor(rs.getFloat("valor"));
                 
                 lista.add(obj);
             }
@@ -103,7 +102,7 @@ public class DAOPecas {
             pst.setInt(2, obj.getModelo().getCodigoModelo());
                         
             pst.setInt(3, obj.getEstoque());
-            pst.setDouble(4, obj.getValor());
+            pst.setFloat(4, obj.getValor());
             pst.setInt(5, obj.getCodigoPeca());
             
             if(pst.executeUpdate() > 0 ){
@@ -118,39 +117,40 @@ public class DAOPecas {
         }
     }
     
-     public Peca localizar(Integer id){
+     public List<Peca> localizar(Integer id){
         
-        String sql = "select mo.modelo_cod, mo.nome, mo.marca, ma.nome from modelo as mo, marca as ma\n" +
-"where mo.marca = ma.marca_cod where mo.modelo_cod ="+id;
-     
+          String sql = "select distinct p.peca_cod, p.nome, m.nome  as modelo,\n" +
+"ma.nome as marca, p.estoque, p.valor from pecas as p, modelo as m, \n" +
+"marca as ma, produto as po where p.modelo = m.modelo_cod and\n" +
+" m.marca=ma.marca_cod and peca_cod = ?";
+        List<Peca> lista = new ArrayList<>();
+        
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, id);
+             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
+            
             while (rs.next()){
                 Peca obj = new Peca();
                 obj.setCodigoPeca(rs.getInt("peca_cod"));
                 obj.setDescricaoPeca(rs.getString("nome"));
-               
-                Produto p = new Produto();
-                p.setNumeroSerie(rs.getString("n_serie"));
                 
                 Modelo m = new Modelo();
-                m.setDescricao(rs.getString("nome"));
+                m.setDescricao(rs.getString("modelo"));
                 Marca ma = new Marca();
-                ma.setDescricao(rs.getString("nome"));
+                ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 obj.setModelo(m);
                 obj.setEstoque(rs.getInt("estoque"));
-                obj.setValor(rs.getDouble("valor"));
+                obj.setValor(rs.getFloat("valor"));
                 
-                
+                lista.add(obj);
             }
         }catch (Exception e){
             System.out.println("Erro de SQL: "+ e.getMessage());
     
 }
-    return null;
+    return lista;
 }
       public List<Peca> listarPeca() {
            String sql = "select * from pecas order by nome";

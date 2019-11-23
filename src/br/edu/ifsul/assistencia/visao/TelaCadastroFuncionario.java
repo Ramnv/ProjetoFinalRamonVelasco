@@ -388,7 +388,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         }
        if(jRadioButtonTecnico.isSelected()){
            
-               f.setTipo("Técnico");
+               f.setTipo("Tecnico");
         }
        
        
@@ -433,13 +433,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jTextFieldTelefone.setText("");
         jTextFieldCodigo.setText("");
             
-        System.out.println("chegou");
-        //jRadioButtonTecnico.setSelected(false);
+     
         
-        
-        //jRadioButtonAtendente.setSelected(false);
-        
-       // buttonGroup1.setSelected(buttonGroup1.getSelection(), false);
         
         buttonGroup1.clearSelection();
         
