@@ -24,7 +24,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     Peca p  = new Peca();
     Conexao conexao = new Conexao();
     Modelo mo = new Modelo();
-    Marca ma = new Marca();
+    
 
     /**
      * Creates new form TelaCadastroPeca
@@ -32,14 +32,14 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     public TelaCadastroPeca() {
         initComponents();
         carregaTabela();
-        preencherMarca();
+        preencherModelo();
     }
 
-    public void preencherMarca(){
-       DAOMarca d = new DAOMarca();
-       for( Marca ma: d.listarMarca() ){
+    public void preencherModelo(){
+       DAOModelo d = new DAOModelo();
+       for( Modelo m: d.listarModelo()){
           
-         jComboBoxModelo.addItem(ma.getDescricao());
+         jComboBoxModelo.addItem(m.getDescricao());
        }
     
     }
@@ -60,6 +60,8 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         jComboBoxModelo = new javax.swing.JComboBox<>();
         jLabelModelo = new javax.swing.JLabel();
         jTextFieldEstoque = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldValor = new javax.swing.JTextField();
         jButtonLimpar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
@@ -82,9 +84,17 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Modelo"
+                "Código", "Nome", "Modelo", "Estoque", "Valor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableModelo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -126,6 +136,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
         jComboBoxModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxModeloActionPerformed(evt);
@@ -137,6 +148,14 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         jTextFieldEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEstoqueActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Valor: ");
+
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldValorActionPerformed(evt);
             }
         });
 
@@ -153,11 +172,15 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
                 .addComponent(jLabelModelo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jLabelEstoque)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addComponent(jTextFieldEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,11 +200,13 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
                         .addComponent(jLabelPeca)
                         .addComponent(jTextFieldPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelEstoque)
-                        .addComponent(jTextFieldEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setText("Limpar Campos");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
@@ -272,16 +297,30 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-       carregaTabela();
-      p.setDescricaoPeca(jTextFieldPeca.getText());     
+     
+      p.setDescricaoPeca(jTextFieldPeca.getText());   
+      p.setEstoque(Integer.parseInt(jTextFieldEstoque.getText()));
+      p.setValor(Float.parseFloat(jTextFieldValor.getText()));
       
-        Modelo mo = new Modelo();
-        mo.setDescricao((jComboBoxModelo.getCursor().getName()));
-        p.setModelo(mo);
+      DAOModelo d = new DAOModelo();
+      Modelo mo = (Modelo) jComboBoxModelo.getSelectedItem();
+      mo.getDescricao();
+      
+      for(Modelo m : d.listar()){
+          if(mo.getDescricao().equals(m.getDescricao())){
+              
+              mo.setCodigoModelo(m.getCodigoModelo());
+          }
+      }
+        
+        
+        
+      p.setModelo(mo);
         
       dao.alterar(p);
+      carregaTabela();
       
-        //falta pegar o código ou a linha selecionada da tabela!!!
+       
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
@@ -292,25 +331,36 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-       carregaTabela();
+       
       p.setDescricaoPeca(jTextFieldPeca.getText());
+      p.setEstoque(Integer.parseInt(jTextFieldEstoque.getText()));
+      p.setValor(Float.parseFloat(jTextFieldValor.getText()));
       
-      Modelo mo = new Modelo();
-      mo = ( (Modelo) jComboBoxModelo.getSelectedItem());
-      //marca.setCodigo_marca (ma);
+     DAOModelo d = new DAOModelo();
+      Modelo mo = (Modelo) jComboBoxModelo.getSelectedItem();
+      mo.getDescricao();
+      
+      for(Modelo m : d.listar()){
+          if(mo.getDescricao().equals(m.getDescricao())){
+              
+              mo.setCodigoModelo(m.getCodigoModelo());
+          }
+      }
       
        
                
       p.setModelo(mo);
        
       dao.inserir(p);
+      carregaTabela();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       carregaTabela();
-       p.setCodigoPeca(Integer.parseInt(jTextFieldCodigo.getText())); // linha selecionada ou pegar o código
+       
+       p.setCodigoPeca(Integer.parseInt(jTextFieldCodigo.getText())); 
        dao.remover(p);
+       carregaTabela();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -323,8 +373,10 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         carregaTabela();
         jTextFieldPeca.setText("");
-        jComboBoxModelo.setFocusable(false);
-        jTextFieldEstoque.setFocusable(false);
+        jComboBoxModelo.setSelectedIndex(0);
+        jTextFieldEstoque.setText(" ");
+        jTextFieldValor.setText(" ");
+        jTextFieldCodigo.setText("");
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
@@ -343,19 +395,27 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     private void jTextFieldEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEstoqueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEstoqueActionPerformed
+
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableModelo.getModel();
         modelo.setNumRows(0);
-        DAOModelo dao = new DAOModelo();
+        DAOPecas dao = new DAOPecas();
         
         try{
         
-        for(Modelo m : dao.listar()){
+        for(Peca p : dao.listar()){
             modelo.addRow(new Object[]{
-             m.getCodigoModelo(),
-                m.getDescricao(),
-                m.getMarca().getDescricao(),
+             p.getCodigoPeca(),
+             p.getDescricaoPeca(),
+             p.getModelo().getDescricao(),
+             p.getEstoque(),
+             p.getValor()
+             
+                
              
                 
             
@@ -388,15 +448,7 @@ private void carregaTabela(){
             java.util.logging.Logger.getLogger(TelaCadastroPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaCadastroPeca().setVisible(true);
@@ -412,6 +464,7 @@ private void carregaTabela(){
     private javax.swing.JButton jButtonLocalicalizar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JComboBox<Object> jComboBoxModelo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelEstoque;
     private javax.swing.JLabel jLabelModelo;
@@ -423,5 +476,6 @@ private void carregaTabela(){
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldEstoque;
     private javax.swing.JTextField jTextFieldPeca;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 }

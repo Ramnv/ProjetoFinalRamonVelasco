@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -380,12 +381,14 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             valido = false;
             return;
         }
-        //if(jRadioButtonNao.getSelectedIcon()== null && jRadioButtonSim.getSelectedIcon() == null){
+        //DefaultButtonModel modelobotao = (DefaultButtonModel) buttonGroup1.getSelection();
+              
+//        modelobotao.setArmed(true);
+       // if(!buttonGroup1.isSelec){
          //   JOptionPane.showMessageDialog(rootPane, "Deve ser selecionado sim ou não no pagamento!!");
-           // jRadioButtonNao.requestFocus();
-           // valido = false;
-           // return;
-        //}
+         //  valido = false;
+         //  return;
+      // }
         
         
         if(valido == true){
@@ -446,12 +449,12 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
       
-        jTextFieldValor.setText("");
+       jTextFieldValor.setText("");
        jTextFieldMotivo.setText("");
        jTextFieldDta_ini.setText(" ");
        jTextFieldDta_fim.setText("");
        jTextFieldCodigo.setText("");
-        buttonGroup1.clearSelection();
+       buttonGroup1.clearSelection();
        jComboBoxPeca.setSelectedIndex(0);
        jComboBoxFuncionario.setSelectedIndex(0);
        

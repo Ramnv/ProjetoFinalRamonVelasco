@@ -120,5 +120,29 @@ public class DAOModelo {
         }
         return lista;
     }
+     public List<Modelo> listarModelo() {
+           String sql = "select * from modelo order by nome";
+           
+           List<Modelo> lista = new ArrayList<>();
+           try{
+               PreparedStatement pst = Conexao.getPreparedStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Modelo m = new Modelo(); 
+                
+                 m.setDescricao(rs.getString("nome"));
+                 
+                 lista.add(m);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
+           
+       }
 
-}
+
