@@ -16,8 +16,8 @@ public class Ordem {
     private Integer ordem_cod;
     private String motivo;
     private Peca peca;
-    private Date data_inicial; 
-    private Date data_final; 
+    private java.sql.Date data_inicial; 
+    private java.sql.Date data_final; 
     private Float valor; 
     private Boolean pago; 
     private Funcionario funcionario; 
@@ -51,7 +51,7 @@ public class Ordem {
         return data_inicial;
     }
 
-    public void setData_inicial(Date data_inicial) {
+    public void setData_inicial(java.sql.Date data_inicial) {
         this.data_inicial = data_inicial;
     }
 
@@ -59,7 +59,7 @@ public class Ordem {
         return data_final;
     }
 
-    public void setData_final(Date data_final) {
+    public void setData_final(java.sql.Date data_final) {
         this.data_final = data_final;
     }
 
