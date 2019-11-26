@@ -52,7 +52,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Motivo", "Peça", "Modelo", "Marca", "Data Inicial", "Data_Final", "Valor", "Pago", "Funcionário"
+                "Código", "Motivo", "Peça", "Modelo", "Marca", "Data Inicial", "Data Final", "Valor", "Pago", "Funcionário"
             }
         ));
         jScrollPane1.setViewportView(jTableLocalizarOrdem);

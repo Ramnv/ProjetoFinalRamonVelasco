@@ -63,7 +63,7 @@
                 <Column editable="true" title="Modelo" type="java.lang.Object"/>
                 <Column editable="true" title="Marca" type="java.lang.Object"/>
                 <Column editable="true" title="Data Inicial" type="java.lang.Object"/>
-                <Column editable="true" title="Data_Final" type="java.lang.Object"/>
+                <Column editable="true" title="Data Final" type="java.lang.Object"/>
                 <Column editable="true" title="Valor" type="java.lang.Object"/>
                 <Column editable="true" title="Pago" type="java.lang.Object"/>
                 <Column editable="true" title="Funcion&#xe1;rio" type="java.lang.Object"/>
