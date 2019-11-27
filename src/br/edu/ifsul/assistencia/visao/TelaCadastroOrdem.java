@@ -393,7 +393,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         
         if(valido == true){
             
-            Date data1; 
+           Date data1; 
             Date data2;
             try {
                 data1 = new SimpleDateFormat("dd/MM/yyyy").parse(jTextFieldDta_ini.getText());
