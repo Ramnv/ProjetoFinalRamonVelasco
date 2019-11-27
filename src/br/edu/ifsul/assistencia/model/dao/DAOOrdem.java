@@ -33,8 +33,8 @@ public class DAOOrdem {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
             pst.setInt(2, obj.getPeca().getCodigoPeca());
-            pst.setDate(3, (Date) obj.getData_inicial());
-            pst.setDate(4, (Date)obj.getData_final());
+            pst.setDate(3, new java.sql.Date( obj.getData_inicial().getTime()));
+            pst.setDate(4, new java.sql.Date(obj.getData_final().getTime()));
             pst.setFloat(5, obj.getValor());
             pst.setBoolean(6, obj.getPago());
             pst.setInt(7, obj.getFuncionario().getFuncionario_cod());

@@ -396,9 +396,9 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             Date data1; 
             Date data2;
             try {
-                data1 = new SimpleDateFormat("yyyy/MM/dd").parse(jTextFieldDta_ini.getText());
+                data1 = new SimpleDateFormat("dd/MM/yyyy").parse(jTextFieldDta_ini.getText());
                 o.setData_inicial((java.sql.Date) data1);
-                data2 = new SimpleDateFormat("yyyy/MM/dd").parse(jTextFieldDta_fim.getText());
+                data2 = new SimpleDateFormat("dd/MM/yyyy").parse(jTextFieldDta_fim.getText());
                 o.setData_final((java.sql.Date) data2);
                 
             } catch (ParseException ex) {
