@@ -5,6 +5,8 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author ramon
