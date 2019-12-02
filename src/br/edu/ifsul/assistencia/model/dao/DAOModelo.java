@@ -142,7 +142,33 @@ public class DAOModelo {
                      }
            return lista;
            }
+     
+           public List<Modelo> listarModeloCodigoMarca(int id) {
+           String sql = "select m.nome from modelo as m, marca"
+                   + " where marca_cod = modelo_cod and marca = ? order by nome";
+           
+           List<Modelo> lista = new ArrayList<>();
+           try{
+              PreparedStatement pst = Conexao.getPreparedStatement(sql);
+                pst.setInt(1, id);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Modelo m = new Modelo(); 
+                
+                 m.setDescricao(rs.getString("nome"));
+                 
+                 lista.add(m);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
            
        }
+       
 
 

@@ -128,6 +128,11 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         });
 
         jComboBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
+        jComboBoxMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMarcaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -367,6 +372,10 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jTableModeloMouseClicked
+
+    private void jComboBoxMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMarcaActionPerformed
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableModelo.getModel();
