@@ -11,6 +11,7 @@ import br.edu.ifsul.assistencia.model.Modelo;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,6 +32,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         initComponents();
         carregaTabela();
         preencherMarca();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void preencherMarca(){

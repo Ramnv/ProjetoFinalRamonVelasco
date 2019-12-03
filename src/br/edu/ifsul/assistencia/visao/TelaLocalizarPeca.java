@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ramon
  */
-public class TelaLocalizarCliente extends javax.swing.JFrame {
+public class TelaLocalizarPeca extends javax.swing.JFrame {
     Cliente c = new Cliente();
     DAOCliente dao = new DAOCliente();
      Conexao conexao = new Conexao();
@@ -30,7 +30,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
     /**
      * Creates new form TelaLocalizarCliente
      */
-    public TelaLocalizarCliente() {
+    public TelaLocalizarPeca() {
         initComponents();
         carregaTabela();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -221,20 +221,21 @@ private void carregaTabela(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLocalizarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLocalizarPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLocalizarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLocalizarPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLocalizarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLocalizarPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLocalizarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLocalizarPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLocalizarCliente().setVisible(true);
+                new TelaLocalizarPeca().setVisible(true);
             }
         });
     }

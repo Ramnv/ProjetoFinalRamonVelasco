@@ -10,6 +10,7 @@ import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +27,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
     public TelaLocalizarFuncionario() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -150,8 +152,8 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
     private void jButtonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar2ActionPerformed
         // TODO add your handling code here:
-        TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
-        tela.setVisible(true);
+       // TelaCadastroFuncionario tela = new TelaCadastroFuncionario();
+       // tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltar2ActionPerformed
 

@@ -8,6 +8,7 @@ package br.edu.ifsul.assistencia.visao;
 import br.edu.ifsul.assistencia.model.Funcionario;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     public TelaCadastroFuncionario() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

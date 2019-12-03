@@ -13,6 +13,7 @@ import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 import br.edu.ifsul.assistencia.model.dao.DAOPecas;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +34,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         initComponents();
         carregaTabela();
         preencherMarca();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void preencherMarca(){

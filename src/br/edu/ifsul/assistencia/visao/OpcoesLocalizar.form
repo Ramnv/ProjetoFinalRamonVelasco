@@ -24,24 +24,24 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jButton1" linkSize="1" min="-2" pref="97" max="-2" attributes="0"/>
+              <Component id="jButtonLocalizaFuncionario" linkSize="1" min="-2" pref="97" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton2" linkSize="1" min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="jButtonLocalizaCliente" linkSize="1" min="-2" pref="73" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButton4" linkSize="1" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="jButtonLocalizaMarca" linkSize="1" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonLocalizaModelo" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton5" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonLocalizaOrdem" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton8" max="32767" attributes="0"/>
+                  <Component id="jButtonFechar" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton6" linkSize="1" min="-2" pref="64" max="-2" attributes="0"/>
+              <Component id="jButtonLocalizaPeca" linkSize="1" min="-2" pref="64" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton7" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <Component id="jButtonLocalizaProduto" linkSize="1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -51,73 +51,76 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="jButton5" linkSize="3" alignment="1" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jButtonLocalizaOrdem" linkSize="3" alignment="1" min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jButton4" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="jButton3" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jButtonLocalizaMarca" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jButtonLocalizaModelo" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="jButton6" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="jButton7" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonLocalizaPeca" linkSize="3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jButtonLocalizaProduto" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jButton1" linkSize="3" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                  <Component id="jButton2" linkSize="3" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="jButtonLocalizaFuncionario" linkSize="3" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="jButtonLocalizaCliente" linkSize="3" min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton8" linkSize="3" min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="jButtonFechar" linkSize="3" min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaFuncionario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizaFuncionarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cliente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizaClienteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaMarca">
       <Properties>
         <Property name="text" type="java.lang.String" value="Marca"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizaMarcaActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaModelo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modelo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaOrdem">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ordem"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaPeca">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pe&#xe7;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="jButtonLocalizaProduto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Produto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JButton" name="jButtonFechar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFecharActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

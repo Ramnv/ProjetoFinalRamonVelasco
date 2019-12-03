@@ -11,6 +11,7 @@ import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOMarca;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +31,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     public TelaCadastroMarca() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

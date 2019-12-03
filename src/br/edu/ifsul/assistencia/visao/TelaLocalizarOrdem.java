@@ -10,6 +10,7 @@ import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,6 +26,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
     public TelaLocalizarOrdem() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

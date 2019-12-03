@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +38,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     public TelaCadastroCliente() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
    
 

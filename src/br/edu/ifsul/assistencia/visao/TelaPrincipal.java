@@ -5,6 +5,7 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
@@ -18,6 +19,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
