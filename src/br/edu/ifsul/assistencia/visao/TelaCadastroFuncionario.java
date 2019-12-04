@@ -298,6 +298,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
     private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldCpfActionPerformed
 
     private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed

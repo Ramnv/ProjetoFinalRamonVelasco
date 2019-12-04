@@ -62,12 +62,32 @@ public class OpcoesLocalizar extends javax.swing.JFrame {
         });
 
         jButtonLocalizaModelo.setText("Modelo");
+        jButtonLocalizaModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizaModeloActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizaOrdem.setText("Ordem");
+        jButtonLocalizaOrdem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizaOrdemActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizaPeca.setText("Peça");
+        jButtonLocalizaPeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizaPecaActionPerformed(evt);
+            }
+        });
 
         jButtonLocalizaProduto.setText("Produto");
+        jButtonLocalizaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalizaProdutoActionPerformed(evt);
+            }
+        });
 
         jButtonFechar.setText("Fechar");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -148,10 +168,38 @@ public class OpcoesLocalizar extends javax.swing.JFrame {
 
     private void jButtonLocalizaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaMarcaActionPerformed
         // TODO add your handling code here:
-        TelaLocalizarCliente tela = new TelaLocalizarCliente();
+        TelaCadastroMarca tela = new TelaCadastroMarca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaMarcaActionPerformed
+
+    private void jButtonLocalizaModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaModeloActionPerformed
+        // TODO add your handling code here:
+         TelaCadastroModelo tela = new TelaCadastroModelo();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonLocalizaModeloActionPerformed
+
+    private void jButtonLocalizaOrdemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaOrdemActionPerformed
+        // TODO add your handling code here:
+         TelaCadastroOrdem tela = new TelaCadastroOrdem();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonLocalizaOrdemActionPerformed
+
+    private void jButtonLocalizaPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaPecaActionPerformed
+        // TODO add your handling code here:
+         TelaCadastroPeca tela = new TelaCadastroPeca();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonLocalizaPecaActionPerformed
+
+    private void jButtonLocalizaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaProdutoActionPerformed
+        // TODO add your handling code here:
+         TelaCadastroProduto tela = new TelaCadastroProduto();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonLocalizaProdutoActionPerformed
 
     /**
      * @param args the command line arguments

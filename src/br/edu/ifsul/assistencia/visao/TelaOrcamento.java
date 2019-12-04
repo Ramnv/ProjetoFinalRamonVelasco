@@ -43,13 +43,15 @@ public class TelaOrcamento extends javax.swing.JFrame {
     
     public void preencherMarca(){
         
-        for(Marca ma : daomarca.listarMarca()){
+        for(Marca ma : daomarca.listar()){
             
             jComboBoxMarca.addItem(ma);
         }
         
     }
     public void preencherModelo(int id){
+        
+        jComboBoxModelo.getModel().
         
     //criar dao para pegar modelo where cod_marca = ? 
         for(Modelo mo : daomodelo.listarModeloCodigoMarca(id)){
@@ -251,18 +253,21 @@ public class TelaOrcamento extends javax.swing.JFrame {
         if(jComboBoxMarca.getSelectedIndex()>0){
             //pegar o codigo da marca pelo for e listar só os modelos daquela marca
             // e preencher o combobox com eles
-                for( Marca ma : daomarca.listarMarca() ){
-                    
-                    if(marca.getDescricao().equals(ma.getDescricao())){
-                        
-                        marca.setCodigo_marca(ma.getCodigoMarca());
-                        
-                        id = marca.getCodigoMarca();
-                        
-                    }
-                }
+              
+                
+           Marca m = (Marca) jComboBoxMarca.getSelectedItem();
+           
+            System.out.println("m: "+m.getCodigoMarca());
+           
+           preencherModelo(m.getCodigoMarca());
+           
+           
+           
             jComboBoxModelo.setEnabled(true);
             preencherModelo(id);
+            
+            
+            /*
             
             //fazer a mesma coisa para a peça 
             if(jComboBoxModelo.getSelectedIndex()>0){
@@ -272,7 +277,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
             }else{
                 jComboBoxPeca.setEnabled(false);
             }
-            
+            */
         }else{
             
             jComboBoxModelo.setEnabled(false);
