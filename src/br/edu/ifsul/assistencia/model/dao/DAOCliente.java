@@ -100,12 +100,12 @@ public class DAOCliente {
     public List<Cliente> listar() {
 
         String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone,c.endereco ,\n" +
-"                o.ordem_cod,o.pago, o. valor, p.produto_cod ,p.n_serie,m.nome as modelo,   ma.nome  as marca \n" +
+"               p.n_serie,m.nome as modelo,   ma.nome  as marca \n" +
 "               from cliente as c, produto as p,\n" +
-"               modelo as m, marca as ma, ordem as o where\n" +
-"               p.produto_cod = c.produto and m.modelo_cod = p.modelo and      \n" +
-"		ma.marca_cod = m.marca and o.ordem_cod = p.ordem  \n" +
-"                order by c.cliente_cod asc";
+"               modelo as m, marca as ma where\n" +
+"              p.produto_cod = c.produto and m.modelo_cod = p.modelo and     \n" +
+"		ma.marca_cod = m.marca   \n" +
+"               order by c.cliente_cod asc";
         List<Cliente> lista = new ArrayList<>();
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -119,15 +119,12 @@ public class DAOCliente {
                 c.setEndereco(rs.getString("endereco"));
                 
                 
-                Ordem o = new Ordem();
-                o.setOrdem_cod(rs.getInt("ordem_cod"));
-                o.setPago(rs.getBoolean("pago"));
-                o.setValor(rs.getFloat("valor"));
+                
                 
                 Produto p = new Produto();
                 p.setNumeroSerie(rs.getString("n_serie"));
-                p.setCodigoProduto(rs.getInt("produto_cod"));
-                p.setOrdem(o);
+                
+               
                 
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));
@@ -151,11 +148,11 @@ public class DAOCliente {
     public List<Cliente> listarFiltro(Integer id){
 
         String sql = "select distinct c.cliente_cod, c.nome, c.cpf, c.telefone, " +
-"                 o.ordem_cod,o.pago, o.valor ,p.n_serie,m.nome as modelo,   ma.nome  as marca " +
+"                p.n_serie,m.nome as modelo,   ma.nome  as marca " +
 "                  from cliente as c, produto as p," +
-"                 modelo as m, marca as ma, ordem as o where" +
+"                 modelo as m, marca as ma where" +
 "                 p.produto_cod = c.produto and m.modelo_cod = p.modelo and" +
-"                ma.marca_cod = m.marca and o.ordem_cod = p.ordem  " +
+"                ma.marca_cod = m.marca  " +
 "                  and cliente_cod = ?";
         System.out.println("SQL: " + sql);
         List<Cliente> lista = new ArrayList<>();
@@ -172,14 +169,11 @@ public class DAOCliente {
                 c.setTelefone(rs.getString("telefone"));
                 
                 
-                Ordem o = new Ordem();
-                o.setOrdem_cod(rs.getInt("ordem_cod"));
-                o.setPago(rs.getBoolean("pago"));
-                o.setValor(rs.getFloat("valor"));
+                
                 
                 Produto p = new Produto();
                 p.setNumeroSerie(rs.getString("n_serie"));
-                p.setOrdem(o);
+               
                 
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));

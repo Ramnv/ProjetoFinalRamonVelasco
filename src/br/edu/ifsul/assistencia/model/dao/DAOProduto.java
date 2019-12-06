@@ -25,7 +25,7 @@ public class DAOProduto {
     // TERMINAR
     // INSERIR, ALTERAR , REMOVER, LOCALIZAR
     public boolean incluir(Produto obj) {
-        String sql = "insert into produtos (motivo, n_serie, modelo, ordem) values (?,?,?,?)";
+        String sql = "insert into produtos (motivo, n_serie, modelo) values (?,?,?,?)";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
@@ -33,7 +33,7 @@ public class DAOProduto {
 
             pst.setInt(3, obj.getModelo().getCodigoModelo());
 
-            pst.setInt(4, obj.getOrdem().getOrdem_cod());
+            
 
             if (pst.executeUpdate() > 0) {
                 System.out.println("Produto incluido com sucesso");
@@ -84,13 +84,11 @@ public class DAOProduto {
                 p.setNumeroSerie(rs.getString("n_serie"));
                 p.setMotivo(rs.getString("motivo"));
                 
-                Ordem o = new Ordem(); 
-                o.setPago(rs.getBoolean("pago"));
+               
                 Peca pe = new Peca();
                 pe.setDescricaoPeca(rs.getString("peca"));
                 pe.setValor(rs.getFloat("valor"));
-                o.setPeca(pe);
-                p.setOrdem(o);
+                
                 
                 
                 Modelo m = new Modelo();
@@ -114,11 +112,11 @@ public class DAOProduto {
 
     public List<Produto> listar() {
         String sql = "select p.produto_cod,c.nome, p.motivo, p.n_serie, \n" +
-"                 ma.nome as marca, m.nome as modelo,  pe.nome as peca, pe.valor, o.pago\n" +
-"                 from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,\n" +
+"                 ma.nome as marca, m.nome as modelo \n" +
+"                 from produto as p, modelo as m, marca as ma,\n" +
 "                cliente as c where p.modelo= m.modelo_cod \n" +
 "                and m.marca = ma.marca_cod\n" +
-"                 and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and\n" +
+"                   and\n" +
 "                c.produto=p.produto_cod order by p.produto_cod asc"; 
         List<Produto> lista = new ArrayList<>();
         try {
@@ -130,14 +128,7 @@ public class DAOProduto {
                 p.setMotivo(rs.getString("motivo"));
                 p.setNumeroSerie(rs.getString("n_serie"));
                 
-                Ordem o = new Ordem(); 
-                o.setPago(rs.getBoolean("pago"));
-                Peca pe = new Peca();
-                pe.setDescricaoPeca(rs.getString("peca"));
-                pe.setValor(rs.getFloat("valor"));
-                o.setPeca(pe);
-                p.setOrdem(o);
-                
+               
                 
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));
@@ -156,13 +147,12 @@ public class DAOProduto {
 
     public boolean atualizar(Produto obj) {
         String sql = "update produto set motivo = ?, n_serie= ?,"
-                + " modelo=?, ordem=? where produto_cod = ?";
+                + " modelo=? where produto_cod = ?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
             pst.setString(2, obj.getNumeroSerie());
             pst.setInt(2, obj.getModelo().getCodigoModelo());
-            pst.setInt(4, obj.getOrdem().getOrdem_cod());
             pst.setInt(5, obj.getCodigoProduto());
 
             if (pst.executeUpdate() > 0) {
@@ -176,4 +166,29 @@ public class DAOProduto {
             return false;
         }
     }
+    public List<Produto> listarProduto() {
+           String sql = "select * from produto order by n_serie";
+           
+           List<Produto> lista = new ArrayList<>();
+           try{
+               PreparedStatement pst = Conexao.getPreparedStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Produto p = new Produto(); 
+                // m.setCodigo_marca(rs.getInt("marca_cod"));
+                 p.setNumeroSerie(rs.getString("n_serie"));
+                 
+                 lista.add(p);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+           }
+           return lista;
+           
+           }
+           
+       
 }

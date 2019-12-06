@@ -14,8 +14,7 @@ public class Produto {
     private Integer codigoProduto;
     private String motivo;
     private String numeroSerie;
-    private Ordem ordem; 
- 
+    
     private Modelo modelo;
     
     public Produto(){
@@ -38,15 +37,7 @@ public class Produto {
         this.numeroSerie = numeroSerie;
     }
 
-    public Ordem getOrdem() {
-        return ordem;
-    }
-
-    public void setOrdem(Ordem ordem) {
-        this.ordem = ordem;
-    }
-
-        
+       
     public Modelo getModelo() {
         return modelo;
     }
@@ -61,6 +52,10 @@ public class Produto {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+    @Override
+    public String toString(){
+        return numeroSerie;
     }
     
 }
