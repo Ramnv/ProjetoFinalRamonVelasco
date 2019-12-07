@@ -167,6 +167,36 @@ public class DAOModelo {
                      }
            return lista;
            }
+           public List<Modelo> listarFiltro(Integer id){
+    
+        String sql = "select modelo_cod, mo.nome, m.nome as marca from modelo mo, marca as m where\n" +
+"                mo.marca = m.marca_cod and mo.modelo_cod=?";
+         System.out.println("SQL: " + sql);
+        List<Modelo> lista = new ArrayList<>(); 
+        try{
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next()){
+                Modelo m = new Modelo();
+                m.setCodigoModelo(rs.getInt("modelo_cod"));
+                m.setDescricao(rs.getString("nome"));
+                Marca ma = new Marca();
+                ma.setDescricao(rs.getString("marca"));
+                m.setMarca(ma);
+                lista.add(m);
+               
+            
+            }
+        
+        
+        }catch(Exception e){
+            System.out.println("Erro de SQL: " +e.getMessage());
+            
+        }
+       return lista;        
+                
+    }
            
        }
        
