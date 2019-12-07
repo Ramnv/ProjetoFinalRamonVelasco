@@ -193,9 +193,9 @@ private void carregaTabela(){
                 c.getNome(),
                 c.getCpf(),
                 c.getTelefone(),
-                c.getProduto().getOrdem().getOrdem_cod(),
-                c.getProduto().getOrdem().getValor(),
-                c.getProduto().getOrdem().getPago(),
+              //  c.getProduto().getOrdem().getOrdem_cod(),
+              //  c.getProduto().getOrdem().getValor(),
+               // c.getProduto().getOrdem().getPago(),
                 c.getProduto().getNumeroSerie(),
                 c.getProduto().getModelo().getDescricao(),
                 c.getProduto().getModelo().getMarca().getDescricao()

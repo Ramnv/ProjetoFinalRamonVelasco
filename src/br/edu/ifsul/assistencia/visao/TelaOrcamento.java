@@ -51,7 +51,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
     }
     public void preencherModelo(int id){
         
-        jComboBoxModelo.getModel().
+        //jComboBoxModelo.getModel().
         
     //criar dao para pegar modelo where cod_marca = ? 
         for(Modelo mo : daomodelo.listarModeloCodigoMarca(id)){
