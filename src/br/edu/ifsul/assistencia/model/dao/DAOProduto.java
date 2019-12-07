@@ -33,8 +33,6 @@ public class DAOProduto {
 
             pst.setInt(3, obj.getModelo().getCodigoModelo());
 
-            
-
             if (pst.executeUpdate() > 0) {
                 System.out.println("Produto incluido com sucesso");
                 return true;
@@ -65,14 +63,14 @@ public class DAOProduto {
     }
 
     public Produto localizar(Integer id) {
-       
-        String sql = " select p.produto_cod,c.nome, p.motivo, p.n_serie, \n" +
-"                 ma.nome as marca, m.nome as modelo,  pe.nome as peca, pe.valor, o.pago\n" +
-"                 from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,\n" +
-"                cliente as c where p.modelo= m.modelo_cod \n" +
-"                and m.marca = ma.marca_cod\n" +
-"                 and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and\n" +
-"                c.produto=p.produto_cod and p.produto_cod= ?";
+
+        String sql = " select p.produto_cod,c.nome, p.motivo, p.n_serie, \n"
+                + "                 ma.nome as marca, m.nome as modelo,  pe.nome as peca, pe.valor, o.pago\n"
+                + "                 from produto as p, modelo as m, ordem as o, pecas as pe,marca as ma,\n"
+                + "                cliente as c where p.modelo= m.modelo_cod \n"
+                + "                and m.marca = ma.marca_cod\n"
+                + "                 and p.ordem = o.ordem_cod and o.peca = pe.peca_cod and\n"
+                + "                c.produto=p.produto_cod and p.produto_cod= ?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setInt(1, id);
@@ -83,25 +81,18 @@ public class DAOProduto {
                 p.setCodigoProduto(rs.getInt("produto_cod"));
                 p.setNumeroSerie(rs.getString("n_serie"));
                 p.setMotivo(rs.getString("motivo"));
-                
-               
+
                 Peca pe = new Peca();
                 pe.setDescricaoPeca(rs.getString("peca"));
                 pe.setValor(rs.getFloat("valor"));
-                
-                
-                
+
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));
                 Marca ma = new Marca();
                 ma.setDescricao(rs.getString("marca"));
                 m.setMarca(ma);
                 p.setModelo(m);
-                
-              
-                  
-                               
-                               
+
             }
         } catch (Exception e) {
             System.out.println("Erro de SQL: " + e.getMessage());
@@ -111,13 +102,11 @@ public class DAOProduto {
     }
 
     public List<Produto> listar() {
-        String sql = "select p.produto_cod,c.nome, p.motivo, p.n_serie, \n" +
-"                 ma.nome as marca, m.nome as modelo \n" +
-"                 from produto as p, modelo as m, marca as ma,\n" +
-"                cliente as c where p.modelo= m.modelo_cod \n" +
-"                and m.marca = ma.marca_cod\n" +
-"                   and\n" +
-"                c.produto=p.produto_cod order by p.produto_cod asc"; 
+        String sql = "select distinct p.produto_cod, p.motivo, p.n_serie, \n"
+                + "                  m.nome as modelo \n"
+                + "                 from produto as p, modelo as m "
+                + "                where p.modelo= m.modelo_cod \n"
+                + "                 order by p.produto_cod asc";
         List<Produto> lista = new ArrayList<>();
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
@@ -127,16 +116,13 @@ public class DAOProduto {
                 p.setCodigoProduto(rs.getInt("produto_cod"));
                 p.setMotivo(rs.getString("motivo"));
                 p.setNumeroSerie(rs.getString("n_serie"));
-                
-               
-                
+
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));
-                Marca ma = new Marca();
-                ma.setDescricao(rs.getString("marca"));
-                m.setMarca(ma);
-                p.setModelo(m);
                 
+               
+                p.setModelo(m);
+
                 lista.add(p);
             }
         } catch (Exception e) {
@@ -166,29 +152,59 @@ public class DAOProduto {
             return false;
         }
     }
+
     public List<Produto> listarProduto() {
-           String sql = "select * from produto order by n_serie";
-           
-           List<Produto> lista = new ArrayList<>();
-           try{
-               PreparedStatement pst = Conexao.getPreparedStatement(sql);
-               ResultSet rs = pst.executeQuery();
-               
-             while(rs.next()){
-                 Produto p = new Produto(); 
+        String sql = "select * from produto order by n_serie";
+
+        List<Produto> lista = new ArrayList<>();
+        try {
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Produto p = new Produto();
                 // m.setCodigo_marca(rs.getInt("marca_cod"));
-                 p.setNumeroSerie(rs.getString("n_serie"));
-                 
-                 lista.add(p);
-                         
-                 
-             }
-           }catch (Exception e ){
-                     System.out.println(" Erro de SQL: " + e.getMessage());
-           }
-           return lista;
-           
-           }
-           
-       
+                p.setNumeroSerie(rs.getString("n_serie"));
+
+                lista.add(p);
+
+            }
+        } catch (Exception e) {
+            System.out.println(" Erro de SQL: " + e.getMessage());
+        }
+        return lista;
+
+    }
+
+    public List<Produto> listarFiltro(Integer id) {
+
+        String sql = "select distinct produto_cod, motivo, n_serie, m.nome as modelo from \n"
+                + "produto, modelo as m where modelo = m.modelo_cod and \n"
+                + "produto_cod =?";
+        System.out.println("SQL: " + sql);
+        List<Produto> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                Produto p = new Produto();
+                p.setCodigoProduto(rs.getInt("produto_cod"));
+                p.setNumeroSerie(rs.getString("n_serie"));
+                p.setMotivo(rs.getString("motivo"));
+                Modelo m = new Modelo();
+                m.setDescricao(rs.getString("modelo"));
+                p.setModelo(m);
+
+                lista.add(p);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return lista;
+
+    }
+
 }

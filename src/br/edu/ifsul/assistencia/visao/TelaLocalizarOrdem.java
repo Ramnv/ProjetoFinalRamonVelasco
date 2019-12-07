@@ -11,6 +11,7 @@ import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -170,6 +171,10 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         try{
             if(jTextFieldID.getText().length()>0){
                 lista = dao.listarFiltro(Integer.parseInt(jTextFieldID.getText()));
+                if(lista.isEmpty()){
+                     JOptionPane.showMessageDialog(rootPane, "Código não encontrado!");
+                 
+                }
             }else{
                 lista= dao.listar();
             }
