@@ -132,6 +132,34 @@ public class DAOMarca {
                      }
            return lista;
            }
+  public List<Marca> listarFiltro(Integer id){
+    
+        String sql = "select * from marca where marca_cod=?";
+         System.out.println("SQL: " + sql);
+        List<Marca> lista = new ArrayList<>(); 
+        try{
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs= pst.executeQuery();
+            while(rs.next()){
+                Marca m = new Marca();
+                m.setCodigo_marca(rs.getInt("marca_cod"));
+                m.setDescricao(rs.getString("nome"));
+              
+                
+                lista.add(m);
+               
+            
+            }
+        
+        
+        }catch(Exception e){
+            System.out.println("Erro de SQL: " +e.getMessage());
+            
+        }
+       return lista;        
+                
+    }
            
        }
  

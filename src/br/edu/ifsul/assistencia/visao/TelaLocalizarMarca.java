@@ -7,9 +7,11 @@ package br.edu.ifsul.assistencia.visao;
 
 import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Funcionario;
+import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -21,8 +23,8 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon
  */
 public class TelaLocalizarMarca extends javax.swing.JFrame {
-    Cliente c = new Cliente();
-    DAOCliente dao = new DAOCliente();
+    Marca m = new Marca();
+    DAOMarca dao = new DAOMarca();
      Conexao conexao = new Conexao();
 
     
@@ -61,7 +63,7 @@ public class TelaLocalizarMarca extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "CPF", "Telefone", "Ordem", " Valor", "Pago", "N de serie", "Modelo ", "Marca"
+                "Código", "Nome"
             }
         ));
         jScrollPane1.setViewportView(jTableLocalizarCliente);
@@ -157,7 +159,7 @@ public class TelaLocalizarMarca extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroCliente tela = new TelaCadastroCliente();
+        TelaCadastroMarca tela = new TelaCadastroMarca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
@@ -170,8 +172,8 @@ private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarCliente.getModel();
         modelo.setNumRows(0);
-        DAOCliente dao = new DAOCliente();
-        List<Cliente> lista = new ArrayList<>();
+     
+        List<Marca> lista = new ArrayList<>();
         
         try{
             if(jTextFieldCodigo.getText().length()>0){
@@ -187,18 +189,10 @@ private void carregaTabela(){
                 lista = dao.listar();
             }
         
-        for(Cliente c : lista){
+        for(Marca m : lista){
             modelo.addRow(new Object[]{
-                c.getCodigoCliente(),
-                c.getNome(),
-                c.getCpf(),
-                c.getTelefone(),
-                c.getProduto().getOrdem().getOrdem_cod(),
-                c.getProduto().getOrdem().getValor(),
-                c.getProduto().getOrdem().getPago(),
-                c.getProduto().getNumeroSerie(),
-                c.getProduto().getModelo().getDescricao(),
-                c.getProduto().getModelo().getMarca().getDescricao()
+                m.getCodigoMarca(),
+                m.getDescricao()               
                 
           
             });
