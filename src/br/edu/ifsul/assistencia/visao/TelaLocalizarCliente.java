@@ -61,7 +61,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "CPF", "Telefone", "Ordem", " Valor", "Pago", "N de serie", "Modelo ", "Marca"
+                "Código", "Nome", "CPF", "Telefone", "N de serie", "Modelo ", "Marca"
             }
         ));
         jScrollPane1.setViewportView(jTableLocalizarCliente);
@@ -193,9 +193,6 @@ private void carregaTabela(){
                 c.getNome(),
                 c.getCpf(),
                 c.getTelefone(),
-                c.getProduto().getOrdem().getOrdem_cod(),
-                c.getProduto().getOrdem().getValor(),
-                c.getProduto().getOrdem().getPago(),
                 c.getProduto().getNumeroSerie(),
                 c.getProduto().getModelo().getDescricao(),
                 c.getProduto().getModelo().getMarca().getDescricao()

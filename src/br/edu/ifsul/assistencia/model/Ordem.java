@@ -23,6 +23,7 @@ public class Ordem {
     private Float valor; 
     private Boolean pago; 
     private Funcionario funcionario; 
+    private Produto produto;
     
 
     public Integer getOrdem_cod() {
@@ -88,6 +89,20 @@ public class Ordem {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
+    }
+
+    /**
+     * @return the produto
+     */
+    public Produto getProduto() {
+        return produto;
+    }
+
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
     
     
