@@ -25,7 +25,7 @@ public class DAOProduto {
     // TERMINAR
     // INSERIR, ALTERAR , REMOVER, LOCALIZAR
     public boolean incluir(Produto obj) {
-        String sql = "insert into produtos (motivo, n_serie, modelo) values (?,?,?,?)";
+        String sql = "insert into produto (motivo, n_serie, modelo) values (?,?,?)";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
@@ -45,11 +45,11 @@ public class DAOProduto {
         }
     }
 
-    public boolean remover(Produto obj) {
-        String sql = "delete from produtos where produto_cod = ?";
+    public boolean remover(int id) {
+        String sql = "delete from produto where produto_cod = ?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getCodigoProduto());
+            pst.setInt(1, id);
             if (pst.executeUpdate() > 0) {
                 System.out.println("Produto removido com sucesso");
                 return true;
@@ -138,8 +138,8 @@ public class DAOProduto {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getMotivo());
             pst.setString(2, obj.getNumeroSerie());
-            pst.setInt(2, obj.getModelo().getCodigoModelo());
-            pst.setInt(5, obj.getCodigoProduto());
+            pst.setInt(3, obj.getModelo().getCodigoModelo());
+            pst.setInt(4, obj.getCodigoProduto());
 
             if (pst.executeUpdate() > 0) {
                 System.out.println("Produto atualizado com sucesso");
