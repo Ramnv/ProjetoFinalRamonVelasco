@@ -7,9 +7,11 @@ package br.edu.ifsul.assistencia.visao;
 
 import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Funcionario;
+import br.edu.ifsul.assistencia.model.Peca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
 import br.edu.ifsul.assistencia.model.dao.DAOCliente;
 import br.edu.ifsul.assistencia.model.dao.DAOFuncionario;
+import br.edu.ifsul.assistencia.model.dao.DAOPecas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -21,8 +23,8 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon
  */
 public class TelaLocalizarPeca extends javax.swing.JFrame {
-    Cliente c = new Cliente();
-    DAOCliente dao = new DAOCliente();
+    Peca p = new Peca();
+    DAOPecas dao = new DAOPecas();
      Conexao conexao = new Conexao();
 
     
@@ -61,7 +63,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "CPF", "Telefone", "Ordem", " Valor", "Pago", "N de serie", "Modelo ", "Marca"
+                "Código", "Nome", "Modelo", "Estoque", " Valor"
             }
         ));
         jScrollPane1.setViewportView(jTableLocalizarCliente);
@@ -157,7 +159,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroCliente tela = new TelaCadastroCliente();
+        TelaCadastroPeca tela = new TelaCadastroPeca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
@@ -170,13 +172,13 @@ private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarCliente.getModel();
         modelo.setNumRows(0);
-        DAOCliente dao = new DAOCliente();
-        List<Cliente> lista = new ArrayList<>();
+        
+        List<Peca> lista = new ArrayList<>();
         
         try{
             if(jTextFieldCodigo.getText().length()>0){
                
-                  lista = dao.listarFiltro(Integer.parseInt(jTextFieldCodigo.getText()));
+                  lista = dao.localizar(Integer.parseInt(jTextFieldCodigo.getText()));
                   if(lista.isEmpty()){
                       JOptionPane.showMessageDialog(rootPane, "Código não encontrado!");
                   }
@@ -187,18 +189,13 @@ private void carregaTabela(){
                 lista = dao.listar();
             }
         
-        for(Cliente c : lista){
+        for(Peca p : lista){
             modelo.addRow(new Object[]{
-                c.getCodigoCliente(),
-                c.getNome(),
-                c.getCpf(),
-                c.getTelefone(),
-                c.getProduto().getOrdem().getOrdem_cod(),
-                c.getProduto().getOrdem().getValor(),
-                c.getProduto().getOrdem().getPago(),
-                c.getProduto().getNumeroSerie(),
-                c.getProduto().getModelo().getDescricao(),
-                c.getProduto().getModelo().getMarca().getDescricao()
+                p.getCodigoPeca(),
+                p.getDescricaoPeca(),
+                p.getModelo().getDescricao(),
+                p.getEstoque(),
+                p.getValor()
                 
           
             });

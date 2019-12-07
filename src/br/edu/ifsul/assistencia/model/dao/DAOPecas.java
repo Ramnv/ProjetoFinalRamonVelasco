@@ -119,10 +119,8 @@ public class DAOPecas {
     
      public List<Peca> localizar(Integer id){
         
-          String sql = "select distinct p.peca_cod, p.nome, m.nome  as modelo,\n" +
-"ma.nome as marca, p.estoque, p.valor from pecas as p, modelo as m, \n" +
-"marca as ma, produto as po where p.modelo = m.modelo_cod and\n" +
-" m.marca=ma.marca_cod and peca_cod = ?";
+          String sql = "select peca_cod, p.nome, m.nome as modelo, estoque, valor from pecas as p, modelo as m \n" +
+"where p.modelo= m.modelo_cod and peca_cod=?";
         List<Peca> lista = new ArrayList<>();
         
         try{
@@ -137,9 +135,7 @@ public class DAOPecas {
                 
                 Modelo m = new Modelo();
                 m.setDescricao(rs.getString("modelo"));
-                Marca ma = new Marca();
-                ma.setDescricao(rs.getString("marca"));
-                m.setMarca(ma);
+                
                 obj.setModelo(m);
                 obj.setEstoque(rs.getInt("estoque"));
                 obj.setValor(rs.getFloat("valor"));
