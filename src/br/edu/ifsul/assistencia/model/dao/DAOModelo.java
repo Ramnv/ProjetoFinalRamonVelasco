@@ -69,12 +69,12 @@ public class DAOModelo {
         }
     }
     
-    public boolean remover (Modelo obj){
+    public boolean remover (int id){
         String sql = "delete  from modelo where modelo_cod = ?";
         
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getCodigoModelo());
+            pst.setInt(1, id);
             
             //executa update para mostrar as linhas alteradas
 
@@ -96,7 +96,7 @@ public class DAOModelo {
     
     public List<Modelo> listar(){
         String sql ="select m.modelo_cod, m.nome, ma.nome as marca from modelo as m, marca as ma " +
-"where m.marca=ma.marca_cod";
+"where m.marca=ma.marca_cod order by modelo_cod";
         
         List<Modelo> lista = new ArrayList<>();
         try{

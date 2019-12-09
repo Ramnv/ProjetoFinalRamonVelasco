@@ -277,7 +277,14 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
             
       m.setMarca(ma);
       m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText()));
-      dao.alterar(m);
+      boolean resultado = dao.alterar(m);
+       if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Modelo atualizado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+      
       carregaTabela();
       
       
@@ -323,7 +330,13 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
             
       m.setMarca(ma);
        
-      dao.inserir(m);
+      boolean resultado =dao.inserir(m);
+       if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Modelo inserido com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
       carregaTabela();
       }
       
@@ -332,10 +345,32 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-      
-       m.setCodigoModelo(Integer.parseInt(jTextFieldCodigo.getText())); // linha selecionada ou pegar o código
-       dao.remover(m); 
-       carregaTabela();
+        int row = jTableModelo.getSelectedRow();
+        if (row != -1) {
+
+            int res = JOptionPane.showConfirmDialog(rootPane, "Deseja remover este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_NO_OPTION) {
+
+                int id = (int) jTableModelo.getValueAt(row, 0);
+
+                boolean resultado = dao.remover(id);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Modelo deletado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+                  jTextFieldModelo.setText("");
+                jComboBoxMarca.setSelectedIndex(0);
+        
+                jTextFieldCodigo.setText("");
+                carregaTabela();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+        }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
