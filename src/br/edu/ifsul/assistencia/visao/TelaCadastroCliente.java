@@ -44,18 +44,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         initComponents();
         carregaTabela();
         preencherProduto();
-        
-       //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-    public void preencherProduto(){
+
+    public void preencherProduto() {
         DAOProduto daoProduto = new DAOProduto();
-        
-        for(Produto p : daoProduto.listarProduto()){
+
+        for (Produto p : daoProduto.listarProduto()) {
             jComboBoxProduto.addItem(p);
         }
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -336,20 +336,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             valido = false;
             return;
         }
-       if (jComboBoxProduto.getSelectedIndex() == 0) {
-           JOptionPane.showMessageDialog(rootPane, "O Produto deve ser selecionado!!");
-           jComboBoxProduto.requestFocus();
+        if (jComboBoxProduto.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "O Produto deve ser selecionado!!");
+            jComboBoxProduto.requestFocus();
             valido = false;
-           return;
-       }
-        if(jTextFieldCodigo.getText().length()<=0){
+            return;
+        }
+        if (jTextFieldCodigo.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "A linha a ser alterada deve ser selecionada!!");
             valido = false;
             return;
         }
 
         if (valido == true) {
-                
+
             c.setCpf(jTextFieldCpf.getText());
             c.setEndereco(jTextFieldEndereco.getText());
             c.setNome(jTextFieldNome.getText());
@@ -357,19 +357,24 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             Produto p = new Produto();
             p = (Produto) jComboBoxProduto.getSelectedItem();
             p.getNumeroSerie();
-          
-            for(Produto po : daop.listar()){
-                if(p.getNumeroSerie().equals(po.getNumeroSerie())){
-                    
+
+            for (Produto po : daop.listar()) {
+                if (p.getNumeroSerie().equals(po.getNumeroSerie())) {
+
                     p.setCodigoProduto(po.getCodigoProduto());
                 }
             }
-            
+
             c.setProduto(p);
             c.setCodigoCliente(Integer.parseInt(jTextFieldCodigo.getText()));
 
-            dao.alterar(c);
-            JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
+            boolean resultado = dao.alterar(c);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
             carregaTabela();
         }
 
@@ -413,12 +418,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             valido = false;
             return;
         }
-       if (jComboBoxProduto.getSelectedIndex() == 0) {
-           JOptionPane.showMessageDialog(rootPane, "O Produto deve ser selecionado!!");
-           jComboBoxProduto.requestFocus();
+        if (jComboBoxProduto.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "O Produto deve ser selecionado!!");
+            jComboBoxProduto.requestFocus();
             valido = false;
-           return;
-       }
+            return;
+        }
 
         if (valido == true) {
             c.setNome(jTextFieldNome.getText());
@@ -428,17 +433,23 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             Produto p = new Produto();
             p = (Produto) jComboBoxProduto.getSelectedItem();
             p.getNumeroSerie();
-          
-            for(Produto po : daop.listar()){
-                if(p.getNumeroSerie().equals(po.getNumeroSerie())){
-                    
+
+            for (Produto po : daop.listar()) {
+                if (p.getNumeroSerie().equals(po.getNumeroSerie())) {
+
                     p.setCodigoProduto(po.getCodigoProduto());
                 }
             }
-            
+
             c.setProduto(p);
-            dao.inserir(c);
-            JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso!");
+            boolean resultado = dao.inserir(c);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+
             carregaTabela();
         }
 
@@ -454,7 +465,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
                 int id = (int) jTableCliente.getValueAt(row, 0);
 
-                dao.remover(id);
+                boolean resultado = dao.remover(id);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Cliente deletado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
                 carregaTabela();
                 jTextFieldNome.setText("");
                 jTextFieldCpf.setText("");
@@ -498,7 +515,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             jTextFieldCpf.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 2).toString());
             jTextFieldTelefone.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 3).toString());
             jTextFieldEndereco.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 4).toString());
-          //  jTextFieldProduto.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 7).toString());
+            //  jTextFieldProduto.setText(jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 7).toString());
         }
     }//GEN-LAST:event_jTableClienteMouseClicked
     private void carregaTabela() {
@@ -525,7 +542,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
     }
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
