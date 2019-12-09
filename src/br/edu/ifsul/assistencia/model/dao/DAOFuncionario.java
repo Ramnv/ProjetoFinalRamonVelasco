@@ -94,7 +94,7 @@ public class DAOFuncionario {
     
     public List<Funcionario> listar(){
     
-        String sql = "select * from funcionario order by nome asc";
+        String sql = "select * from funcionario order by funcionario_cod ";
         List<Funcionario> lista = new ArrayList<>(); 
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);

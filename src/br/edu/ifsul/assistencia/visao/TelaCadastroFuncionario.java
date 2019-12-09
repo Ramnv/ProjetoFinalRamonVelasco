@@ -17,10 +17,11 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon, Jessica
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
-        DAOFuncionario dao = new DAOFuncionario();
-        Funcionario f = new Funcionario();
-        Conexao conexao = new Conexao();
-        
+
+    DAOFuncionario dao = new DAOFuncionario();
+    Funcionario f = new Funcionario();
+    Conexao conexao = new Conexao();
+
     public TelaCadastroFuncionario() {
         initComponents();
         carregaTabela();
@@ -269,7 +270,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
     private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTextFieldCpfActionPerformed
 
     private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
@@ -277,49 +278,54 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-         boolean valido = true;
-        
-        if(jTextFieldNome.getText().length()<=0){
+        boolean valido = true;
+
+        if (jTextFieldNome.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
             jTextFieldNome.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldCpf.getText().length()<=0){
+        if (jTextFieldCpf.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
             jTextFieldCpf.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldTelefone.getText().length()<=0){
+        if (jTextFieldTelefone.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
             jTextFieldTelefone.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldCodigo.getText().length()<=0){
-           JOptionPane.showMessageDialog(rootPane, "Código não informado!!  Uma linha deve ser selecionada");
+        if (jTextFieldCodigo.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "Código não informado!!  Uma linha deve ser selecionada");
             valido = false;
-            return; 
+            return;
         }
-        
-        if(valido == true){
-           f.setCpf(jTextFieldCpf.getText());
-           f.setNome(jTextFieldNome.getText());
-           f.setTelefone(jTextFieldTelefone.getText());
-          
-        
-       if(jRadioButtonAtendente.isSelected()){
-           
-               f.setTipo("Atendente");
-        }
-       if(jRadioButtonTecnico.isSelected()){
-           
-               f.setTipo("Técnico");
-        }
-        f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
-        dao.alterar(f); 
-         carregaTabela();
+
+        if (valido == true) {
+            f.setCpf(jTextFieldCpf.getText());
+            f.setNome(jTextFieldNome.getText());
+            f.setTelefone(jTextFieldTelefone.getText());
+
+            if (jRadioButtonAtendente.isSelected()) {
+
+                f.setTipo("Atendente");
+            }
+            if (jRadioButtonTecnico.isSelected()) {
+
+                f.setTipo("Técnico");
+            }
+            f.setFuncionario_cod(Integer.parseInt(jTextFieldCodigo.getText()));
+            boolean resultado = dao.alterar(f);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Funcionário alterado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+            carregaTabela();
         }
         //falta pegar o código ou a linha selecionada da tabela!!!
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
@@ -329,49 +335,53 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
     private void jRadioButtonAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAtendenteActionPerformed
-     
+
     }//GEN-LAST:event_jRadioButtonAtendenteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         boolean valido = true;
-        
-        if(jTextFieldNome.getText().length()<=0){
+
+        if (jTextFieldNome.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O nome deve ser informado!!");
             jTextFieldNome.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldCpf.getText().length()<=0){
+        if (jTextFieldCpf.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O CPF deve ser informado!!");
             jTextFieldCpf.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldTelefone.getText().length()<=0){
+        if (jTextFieldTelefone.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O Telefone deve ser informado!!");
             jTextFieldTelefone.requestFocus();
             valido = false;
             return;
         }
-        
-        if(valido == true){
-           f.setCpf(jTextFieldCpf.getText());
-           f.setNome(jTextFieldNome.getText());
-           f.setTelefone(jTextFieldTelefone.getText());
-          
-        
-       if(jRadioButtonAtendente.isSelected()){
-           
-               f.setTipo("Atendente");
-        }
-       if(jRadioButtonTecnico.isSelected()){
-           
-               f.setTipo("Tecnico");
-        }
-       
-       
-        dao.inserir(f);
-        carregaTabela();
+
+        if (valido == true) {
+            f.setCpf(jTextFieldCpf.getText());
+            f.setNome(jTextFieldNome.getText());
+            f.setTelefone(jTextFieldTelefone.getText());
+
+            if (jRadioButtonAtendente.isSelected()) {
+
+                f.setTipo("Atendente");
+            }
+            if (jRadioButtonTecnico.isSelected()) {
+
+                f.setTipo("Tecnico");
+            }
+
+            boolean resultado = dao.inserir(f);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Funcionário inserido com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+            carregaTabela();
         }
         /*
         dao.inserir(f);    }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -381,84 +391,96 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         TelaLocalizarFuncionario tela = new TelaLocalizarFuncionario();
         tela.setVisible(true);
         dispose();
-        
+
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         int row = jTableFuncionario.getSelectedRow();
-        if(row !=-1){
-            int id = (int) jTableFuncionario.getValueAt(row,0);
-            dao.remover(id); 
-            carregaTabela();
-        }
-        else{
-             JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
-            
+        if (row != -1) {
+            int res = JOptionPane.showConfirmDialog(rootPane, "Deseja remover este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_NO_OPTION) {
+
+                int id = (int) jTableFuncionario.getValueAt(row, 0);
+                boolean resultado = dao.remover(id);
+
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Funcionário deletado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+                carregaTabela();
+                jTextFieldNome.setText("");
+                jTextFieldCpf.setText("");
+                jTextFieldTelefone.setText("");
+                jTextFieldCodigo.setText("");
+                buttonGroup1.clearSelection();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+
         }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
 //        TelaPrincipal tela = new TelaPrincipal();
 //        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        
+
         jTextFieldNome.setText("");
         jTextFieldCpf.setText("");
         jTextFieldTelefone.setText("");
         jTextFieldCodigo.setText("");
-            
-     
-        
-        
+
         buttonGroup1.clearSelection();
-        
+
         carregaTabela();
 
-    
 
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jTableFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFuncionarioMouseClicked
         int index = jTableFuncionario.getSelectedRow();
-        if(index!= -1){
-            jTextFieldCodigo.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),0).toString());
-            jTextFieldCpf.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),3).toString());
-            jTextFieldNome.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),1).toString());
-            jTextFieldTelefone.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),2).toString());
-            jRadioButtonTecnico.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),4).equals("Técnico"));
-             jRadioButtonAtendente.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(),4).equals("Atendente"));   
+        if (index != -1) {
+            jTextFieldCodigo.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 0).toString());
+            jTextFieldCpf.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 3).toString());
+            jTextFieldNome.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 1).toString());
+            jTextFieldTelefone.setText(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 2).toString());
+            jRadioButtonTecnico.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 4).equals("Técnico"));
+            jRadioButtonAtendente.setSelected(jTableFuncionario.getValueAt(jTableFuncionario.getSelectedRow(), 4).equals("Atendente"));
         }
     }//GEN-LAST:event_jTableFuncionarioMouseClicked
 
     private void jRadioButtonTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTecnicoActionPerformed
-    
+
     }//GEN-LAST:event_jRadioButtonTecnicoActionPerformed
-private void carregaTabela(){
-        
+    private void carregaTabela() {
+
         DefaultTableModel modelo = (DefaultTableModel) jTableFuncionario.getModel();
         modelo.setNumRows(0);
         DAOFuncionario dao = new DAOFuncionario();
-        
-        try{
-        
-        for(Funcionario f : dao.listar()){
-            modelo.addRow(new Object[]{
-                f.getFuncionario_cod(),
-                f.getNome(),
-                f.getTelefone(),
-                f.getCpf(),
-                f.getTipo(),
-          
-            });
-        }
-        }catch(Exception e){
-            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+
+        try {
+
+            for (Funcionario f : dao.listar()) {
+                modelo.addRow(new Object[]{
+                    f.getFuncionario_cod(),
+                    f.getNome(),
+                    f.getTelefone(),
+                    f.getCpf(),
+                    f.getTipo(),});
+            }
+        } catch (Exception e) {
+            System.out.println("ERRO SQL: " + e.getLocalizedMessage());
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
