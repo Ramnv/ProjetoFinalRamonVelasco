@@ -5,7 +5,6 @@
  */
 package br.edu.ifsul.assistencia.visao;
 
-
 import br.edu.ifsul.assistencia.model.Cliente;
 import br.edu.ifsul.assistencia.model.Marca;
 import br.edu.ifsul.assistencia.model.dao.Conexao;
@@ -20,10 +19,10 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon
  */
 public class TelaCadastroMarca extends javax.swing.JFrame {
+
     DAOMarca dao = new DAOMarca();
     Marca m = new Marca();
     Conexao conexao = new Conexao();
-    
 
     /**
      * Creates new form TelaCadastroFuncionario
@@ -31,7 +30,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     public TelaCadastroMarca() {
         initComponents();
         carregaTabela();
-       // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -211,25 +210,25 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        boolean valido = true; 
-        if(jTextFieldMarca.getText().length()<=0){
-          JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
+        boolean valido = true;
+        if (jTextFieldMarca.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
             jTextFieldMarca.requestFocus();
             valido = false;
-            return;  
+            return;
         }
-         if(jTextFieldCodigo.getText().length()<=0){
+        if (jTextFieldCodigo.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Código não informado!!  Uma linha deve ser selecionada");
             valido = false;
-            return;  
+            return;
         }
-        if(valido == true){   
-        m.setDescricao(jTextFieldMarca.getText());
-        m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));
-        dao.alterar(m);
-        carregaTabela();
+        if (valido == true) {
+            m.setDescricao(jTextFieldMarca.getText());
+            m.setCodigo_marca(Integer.parseInt(jTextFieldCodigo.getText()));
+            dao.alterar(m);
+            carregaTabela();
         }
-        
+
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMarcaActionPerformed
@@ -238,39 +237,57 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
         // TODO add your handling code here:
-         TelaLocalizarCliente tela = new TelaLocalizarCliente();
+        TelaLocalizarCliente tela = new TelaLocalizarCliente();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-         boolean valido = true; 
-        if(jTextFieldMarca.getText().length()<=0){
-          JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
+        boolean valido = true;
+        if (jTextFieldMarca.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "A marca deve ser informado!!");
             jTextFieldMarca.requestFocus();
             valido = false;
-            return;  
+            return;
         }
-        
-        if(valido == true){   
-        m.setDescricao(jTextFieldMarca.getText());
-        
-        dao.inserir(m);
-        carregaTabela();
+
+        if (valido == true) {
+            m.setDescricao(jTextFieldMarca.getText());
+
+            boolean resultado = dao.inserir(m);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Marca inserida com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+
+            carregaTabela();
+
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       int row = jTableMarca.getSelectedRow();
-       if(row != -1){
-           int id = (int) jTableMarca.getValueAt(row, 0);
-           dao.remover(id);
-           carregaTabela();
-       }
-       else{
-          JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
-               
-       }
+        int row = jTableMarca.getSelectedRow();
+        if (row != -1) {
+            int res = JOptionPane.showConfirmDialog(rootPane, "Deseja remover este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_NO_OPTION) {
+
+                int id = (int) jTableMarca.getValueAt(row, 0);
+                boolean resultado = dao.remover(id);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Marca deletada com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+                carregaTabela();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+
+        }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -281,7 +298,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        
+
         jTextFieldMarca.setText("");
         jTextFieldCodigo.setText("");
         carregaTabela();
@@ -289,31 +306,31 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
     private void jTableMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMarcaMouseClicked
         int index = jTableMarca.getSelectedRow();
-        if(index != -1){
+        if (index != -1) {
             jTextFieldCodigo.setText(jTableMarca.getValueAt(jTableMarca.getSelectedRow(), 0).toString());
             jTextFieldMarca.setText(jTableMarca.getValueAt(jTableMarca.getSelectedRow(), 1).toString());
         }
     }//GEN-LAST:event_jTableMarcaMouseClicked
-private void carregaTabela(){
-        
+    private void carregaTabela() {
+
         DefaultTableModel modelo = (DefaultTableModel) jTableMarca.getModel();
         modelo.setNumRows(0);
         DAOMarca dao = new DAOMarca();
-        
-        try{
-        
-        for(Marca m : dao.listar()){
-            modelo.addRow(new Object[]{
-                m.getCodigoMarca(),
-                m.getDescricao()
-                
-            
-            });
-        }
-        }catch(Exception e){
-            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+
+        try {
+
+            for (Marca m : dao.listar()) {
+                modelo.addRow(new Object[]{
+                    m.getCodigoMarca(),
+                    m.getDescricao()
+
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("ERRO SQL: " + e.getLocalizedMessage());
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
