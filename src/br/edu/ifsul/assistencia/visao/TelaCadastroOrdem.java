@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,35 +30,36 @@ import javax.swing.table.DefaultTableModel;
  * @author ramon
  */
 public class TelaCadastroOrdem extends javax.swing.JFrame {
-    
-        DAOOrdem dao = new DAOOrdem();
-        Ordem o= new Ordem(); 
-        Conexao conexao = new Conexao(); 
-        
+
+    DAOOrdem dao = new DAOOrdem();
+    Ordem o = new Ordem();
+    Conexao conexao = new Conexao();
+
     public TelaCadastroOrdem() {
         initComponents();
         carregaTabela();
         preencherPeca();
         preencherFuncionario();
     }
-    
-    public void preencherPeca(){
+
+    public void preencherPeca() {
         DAOPecas d = new DAOPecas();
-       for( Peca pe: d.listarPeca()){
-          
-         jComboBoxPeca.addItem(pe);
-       }
-    
+        for (Peca pe : d.listarPeca()) {
+
+            jComboBoxPeca.addItem(pe);
+        }
+
     }
-    public void preencherFuncionario(){
+
+    public void preencherFuncionario() {
         DAOFuncionario d = new DAOFuncionario();
-       for( Funcionario f: d.listarFunc()){
-          
-         jComboBoxFuncionario.addItem(f);
-       }
-    
+        for (Funcionario f : d.listarFunc()) {
+
+            jComboBoxFuncionario.addItem(f);
+        }
+
     }
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,12 +83,10 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         jRadioButtonSim = new javax.swing.JRadioButton();
         jRadioButtonNao = new javax.swing.JRadioButton();
         jTextFieldValor = new javax.swing.JTextField();
-        jTextFieldDta_ini = new javax.swing.JTextField();
-        jTextFieldDta_fim = new javax.swing.JTextField();
         jComboBoxPeca = new javax.swing.JComboBox<>();
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooserInicial = new com.toedter.calendar.JDateChooser();
+        jDateChooserFinal = new com.toedter.calendar.JDateChooser();
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
@@ -167,8 +167,10 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
         jLabel9.setText("Funcionario:");
 
+        buttonGroup1.add(jRadioButtonSim);
         jRadioButtonSim.setText("Sim");
 
+        buttonGroup1.add(jRadioButtonNao);
         jRadioButtonNao.setText("Nao");
 
         jTextFieldValor.setText(" ");
@@ -203,25 +205,23 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jDateChooserInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jDateChooserFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(46, 46, 46)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDta_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldDta_fim, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel4))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jComboBoxPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(jComboBoxPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextFieldMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,18 +251,16 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addComponent(jRadioButtonSim)
                                 .addComponent(jLabel5)
-                                .addComponent(jTextFieldDta_ini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4)
                                 .addComponent(jComboBoxPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooserInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonNao)
                             .addComponent(jLabel6)
-                            .addComponent(jTextFieldDta_fim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -346,7 +344,96 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-       carregaTabela();
+        boolean valido = true;
+
+        if (jTextFieldMotivo.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O motivo deve ser informado!!");
+            jTextFieldMotivo.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jDateChooserInicial.getDateFormatString().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "A data inicial deve ser informada!!");
+            jDateChooserInicial.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jDateChooserFinal.getDateFormatString().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "A data final deve ser informada!!");
+            jDateChooserFinal.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jComboBoxFuncionario.getSelectedIndex() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, " O Funcionário deve ser selecionado!!");
+            valido = false;
+            return;
+        }
+        if (jComboBoxPeca.getSelectedIndex() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, " A peça deve ser selecionada!!");
+            valido = false;
+            return;
+        }
+
+        if (jTextFieldValor.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O valor  deve ser informado!!");
+            jTextFieldValor.requestFocus();
+            valido = false;
+            return;
+        }
+        //DefaultButtonModel modelobotao = (DefaultButtonModel) buttonGroup1.getSelection();
+
+//        modelobotao.setArmed(true);
+        // if(!buttonGroup1.isSelec){
+        //   JOptionPane.showMessageDialog(rootPane, "Deve ser selecionado sim ou não no pagamento!!");
+        //  valido = false;
+        //  return;
+        // }
+        if (valido == true) {
+
+            o.setData_inicial(new java.sql.Date(jDateChooserInicial.getDate().getTime()));
+            o.setData_final(new java.sql.Date(jDateChooserFinal.getDate().getTime()));
+            o.setMotivo(jTextFieldMotivo.getText());
+            //chama o dao para poder listar os funcionarios
+            DAOFuncionario daofuncionario = new DAOFuncionario();
+            //cria um funcionario e pega o nome que foi selecionado
+            Funcionario f = (Funcionario) jComboBoxFuncionario.getSelectedItem();
+            //pega o nome do funcionario
+            f.getNome();
+            //compara o nome com a lista de funcionários existente
+            for (Funcionario func : daofuncionario.listar()) {
+                //se forem iguais pega o código e seta nesse funcionario criado
+                if (f.getNome().equals(func.getNome())) {
+                    f.setFuncionario_cod(func.getFuncionario_cod());
+                }
+            }
+            //seta esse funcionario na ordem
+            o.setFuncionario(f);
+
+            DAOPecas daopeca = new DAOPecas();
+            Peca pe = (Peca) jComboBoxPeca.getSelectedItem();
+            pe.getDescricaoPeca();
+            for (Peca p : daopeca.listar()) {
+                if (pe.getDescricaoPeca().equals(p.getDescricaoPeca())) {
+                    pe.setCodigoPeca(p.getCodigoPeca());
+                }
+            }
+            o.setPeca(pe);
+
+            o.setValor(Float.parseFloat(jTextFieldValor.getText()));
+            if (jRadioButtonNao.isSelected()) {
+
+                o.setPago(false);
+            }
+            if (jRadioButtonSim.isSelected()) {
+                o.setPago(true);
+            }
+            o.setOrdem_cod(Integer.parseInt(jTextFieldCodigo.getText()));
+            dao.alterar(o);
+            carregaTabela();
+
+        }
+
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -358,122 +445,110 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         boolean valido = true;
-        
-        if(jTextFieldMotivo.getText().length()<=0){
+
+        if (jTextFieldMotivo.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O motivo deve ser informado!!");
             jTextFieldMotivo.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldDta_ini.getText().length()<=0){
+        if (jDateChooserInicial.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data inicial deve ser informada!!");
-            jTextFieldDta_ini.requestFocus();
+            jDateChooserInicial.requestFocus();
             valido = false;
             return;
         }
-        if(jTextFieldDta_fim.getText().length()<=0){
+        if (jDateChooserFinal.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data final deve ser informada!!");
-            jTextFieldDta_fim.requestFocus();
+            jDateChooserFinal.requestFocus();
             valido = false;
             return;
         }
-        if(jComboBoxFuncionario.getSelectedIndex()<=0){
+        if (jComboBoxFuncionario.getSelectedIndex() <= 0) {
             JOptionPane.showMessageDialog(rootPane, " O Funcionário deve ser selecionado!!");
             valido = false;
             return;
         }
-           if(jComboBoxPeca.getSelectedIndex()<=0){
+        if (jComboBoxPeca.getSelectedIndex() <= 0) {
             JOptionPane.showMessageDialog(rootPane, " A peça deve ser selecionada!!");
             valido = false;
             return;
         }
-  
-        if(jTextFieldValor.getText().length()<=0){
+
+        if (jTextFieldValor.getText().length() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "O valor  deve ser informado!!");
             jTextFieldValor.requestFocus();
             valido = false;
             return;
         }
         //DefaultButtonModel modelobotao = (DefaultButtonModel) buttonGroup1.getSelection();
-              
+
 //        modelobotao.setArmed(true);
-       // if(!buttonGroup1.isSelec){
-         //   JOptionPane.showMessageDialog(rootPane, "Deve ser selecionado sim ou não no pagamento!!");
-         //  valido = false;
-         //  return;
-      // }
-        
-        
-        if(valido == true){
-            
-           Date data1; 
-            Date data2;
-            try {
-                data1 = new SimpleDateFormat("dd/MM/yyyy").parse(jTextFieldDta_ini.getText());
-                o.setData_inicial((java.sql.Date) data1);
-                data2 = new SimpleDateFormat("dd/MM/yyyy").parse(jTextFieldDta_fim.getText());
-                o.setData_final((java.sql.Date) data2);
-                
-            } catch (ParseException ex) {
-                Logger.getLogger(TelaCadastroOrdem.class.getName()).log(Level.SEVERE, null, ex);
+        // if(!buttonGroup1.isSelec){
+        //   JOptionPane.showMessageDialog(rootPane, "Deve ser selecionado sim ou não no pagamento!!");
+        //  valido = false;
+        //  return;
+        // }
+        if (valido == true) {
+
+            o.setData_inicial(new java.sql.Date(jDateChooserInicial.getDate().getTime()));
+            o.setData_final(new java.sql.Date(jDateChooserFinal.getDate().getTime()));
+            o.setMotivo(jTextFieldMotivo.getText());
+            //chama o dao para poder listar os funcionarios
+            DAOFuncionario daofuncionario = new DAOFuncionario();
+            //cria um funcionario e pega o nome que foi selecionado
+            Funcionario f = (Funcionario) jComboBoxFuncionario.getSelectedItem();
+            //pega o nome do funcionario
+            f.getNome();
+            //compara o nome com a lista de funcionários existente
+            for (Funcionario func : daofuncionario.listar()) {
+                //se forem iguais pega o código e seta nesse funcionario criado
+                if (f.getNome().equals(func.getNome())) {
+                    f.setFuncionario_cod(func.getFuncionario_cod());
+                }
             }
-           o.setMotivo(jTextFieldMotivo.getText());  
-           //chama o dao para poder listar os funcionarios
-           DAOFuncionario daofuncionario = new DAOFuncionario();
-          //cria um funcionario e pega o nome que foi selecionado
-           Funcionario f = (Funcionario) jComboBoxFuncionario.getSelectedItem();
-           //pega o nome do funcionario
-           f.getNome();
-           //compara o nome com a lista de funcionários existente
-           for(Funcionario func: daofuncionario.listar()){
-               //se forem iguais pega o código e seta nesse funcionario criado
-               if(f.getNome().equals(func.getNome())){
-                   f.setFuncionario_cod(func.getFuncionario_cod());
-               }
-           }
-           //seta esse funcionario na ordem
-           o.setFuncionario(f);
-           
-           DAOPecas daopeca = new DAOPecas();
-           Peca pe = (Peca) jComboBoxPeca.getSelectedItem();
-           pe.getDescricaoPeca();
-           for( Peca p : daopeca.listar()){
-               if(pe.getDescricaoPeca().equals(p.getDescricaoPeca())){
-                   pe.setCodigoPeca(p.getCodigoPeca());
-               }
-           }
-           o.setPeca(pe);
-          
-           o.setValor(Float.parseFloat(jTextFieldValor.getText()));
-           if(jRadioButtonNao.isSelected()){
-               
-             o.setPago(false);
-           }
-           if( jRadioButtonSim.isSelected()){
-               o.setPago(true);
-           }
-           dao.incluir(o);
-           carregaTabela();
-           
+            //seta esse funcionario na ordem
+            o.setFuncionario(f);
+
+            DAOPecas daopeca = new DAOPecas();
+            Peca pe = (Peca) jComboBoxPeca.getSelectedItem();
+            pe.getDescricaoPeca();
+            for (Peca p : daopeca.listar()) {
+                if (pe.getDescricaoPeca().equals(p.getDescricaoPeca())) {
+                    pe.setCodigoPeca(p.getCodigoPeca());
+                }
+            }
+            o.setPeca(pe);
+
+            o.setValor(Float.parseFloat(jTextFieldValor.getText()));
+            if (jRadioButtonNao.isSelected()) {
+
+                o.setPago(false);
+            }
+            if (jRadioButtonSim.isSelected()) {
+                o.setPago(true);
+            }
+            dao.incluir(o);
+            carregaTabela();
+
         }
-     
-        
+
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-      
-       jTextFieldValor.setText("");
-       jTextFieldMotivo.setText("");
-       jTextFieldDta_ini.setText(" ");
-       jTextFieldDta_fim.setText("");
-       jTextFieldCodigo.setText("");
-       buttonGroup1.clearSelection();
-       jComboBoxPeca.setSelectedIndex(0);
-       jComboBoxFuncionario.setSelectedIndex(0);
-       
-        
+       // Date data = new java.sql.Date(2019, 12, 10);
+        jTextFieldValor.setText("");
+        jTextFieldMotivo.setText("");
+        //jDateChooserInicial.setDate(data);
+        //jDateChooserFinal.setDate(data);
+        jTextFieldCodigo.setText("");
+        buttonGroup1.clearSelection();
+        jComboBoxPeca.setSelectedIndex(0);
+        jComboBoxFuncionario.setSelectedIndex(0);
+
         carregaTabela();
-        
+
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jTextFieldMotivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMotivoActionPerformed
@@ -488,47 +563,48 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
     private void jTableOrdemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableOrdemMouseClicked
         int index = jTableOrdem.getSelectedRow();
-        if(index!= -1){
-            jTextFieldMotivo.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),1).toString());
-            jTextFieldCodigo.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),0).toString());
-            jTextFieldDta_fim.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),6).toString());
-            jTextFieldDta_ini.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),5).toString());
-            jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),7).toString());
-            jRadioButtonNao.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("false"));
-            jRadioButtonSim.setSelected(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),8).equals("true"));
-            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),2).toString());
-            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(),9).toString());
+        if (index != -1) {
+            jTextFieldMotivo.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 1).toString());
+            jTextFieldCodigo.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 0).toString());
+            jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 7).toString());
+            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 2).toString());
+            jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 9).toString());
+            boolean pago = false;
+            if (jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 8).toString().equals("false")) {
+                buttonGroup1.setSelected((ButtonModel) jRadioButtonNao, true);
+
+            } else {
+                buttonGroup1.setSelected((ButtonModel) jRadioButtonSim, true);
+
+            }
         }
     }//GEN-LAST:event_jTableOrdemMouseClicked
-private void carregaTabela(){
-        
+    private void carregaTabela() {
+
         DefaultTableModel modelo = (DefaultTableModel) jTableOrdem.getModel();
         modelo.setNumRows(0);
         DAOOrdem dao = new DAOOrdem();
-        
-        try{
-        
-        for(Ordem o: dao.listar()){
-            modelo.addRow(new Object[]{
-         
-                o.getOrdem_cod(),
-                o.getMotivo(),
-                o.getPeca().getDescricaoPeca(),
-                o.getPeca().getModelo().getDescricao(),
-                o.getPeca().getModelo().getMarca().getDescricao(),
-                o.getData_inicial(),
-                o.getData_final(),
-                
-                o.getValor(),
-                o.getPago(),
-                o.getFuncionario().getNome(),
-            
-            });
-        }
-        }catch(Exception e){
-            System.out.println("ERRO SQL: " +e.getLocalizedMessage());
+
+        try {
+
+            for (Ordem o : dao.listar()) {
+                modelo.addRow(new Object[]{
+                    o.getOrdem_cod(),
+                    o.getMotivo(),
+                    o.getPeca().getDescricaoPeca(),
+                    o.getPeca().getModelo().getDescricao(),
+                    o.getPeca().getModelo().getMarca().getDescricao(),
+                    o.getData_inicial(),
+                    o.getData_final(),
+                    o.getValor(),
+                    o.getPago(),
+                    o.getFuncionario().getNome(),});
+            }
+        } catch (Exception e) {
+            System.out.println("ERRO SQL: " + e.getLocalizedMessage());
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -571,8 +647,8 @@ private void carregaTabela(){
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<Object> jComboBoxFuncionario;
     private javax.swing.JComboBox<Object> jComboBoxPeca;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooserFinal;
+    private com.toedter.calendar.JDateChooser jDateChooserInicial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -588,8 +664,6 @@ private void carregaTabela(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableOrdem;
     private javax.swing.JTextField jTextFieldCodigo;
-    private javax.swing.JTextField jTextFieldDta_fim;
-    private javax.swing.JTextField jTextFieldDta_ini;
     private javax.swing.JTextField jTextFieldMotivo;
     private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
