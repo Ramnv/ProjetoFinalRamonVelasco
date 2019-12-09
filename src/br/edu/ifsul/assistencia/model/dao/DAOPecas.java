@@ -44,11 +44,11 @@ public class DAOPecas {
         }
     }
     
-    public boolean remover(Peca obj){
+    public boolean remover(int id){
         String sql = "delete from pecas where peca_cod=?";
     try{
     PreparedStatement pst = Conexao.getPreparedStatement(sql);
-    pst.setInt(1, obj.getCodigoPeca());
+    pst.setInt(1, id);
     if (pst.executeUpdate()> 0){
         System.out.println("Peca removida com sucesso");
         return true;

@@ -14,6 +14,7 @@ import br.edu.ifsul.assistencia.model.dao.DAOMarca;
 import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 import br.edu.ifsul.assistencia.model.dao.DAOPecas;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,7 +42,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
        DAOModelo d = new DAOModelo();
        for( Modelo m: d.listarModelo()){
           
-         jComboBoxModelo.addItem(m.getDescricao());
+         jComboBoxModelo.addItem(m);
        }
     
     }
@@ -51,7 +52,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableModelo = new javax.swing.JTable();
+        jTablePeca = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldPeca = new javax.swing.JTextField();
         jLabelPeca = new javax.swing.JLabel();
@@ -76,7 +77,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTableModelo.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePeca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -92,7 +93,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableModelo);
+        jScrollPane1.setViewportView(jTablePeca);
 
         jPanel1.add(jScrollPane1);
 
@@ -267,11 +268,39 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-     
+      boolean valido = true;
+
+        if (jTextFieldCodigo.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "A linha a ser alterada deve ser selecionada!!");
+            
+            valido = false;
+            return;
+        }
+        if (jTextFieldEstoque.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O estoque deve ser informado!!");
+            jTextFieldEstoque.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jTextFieldPeca.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "A peça  deve ser informada!!");
+            jTextFieldPeca.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jTextFieldValor.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O valor deve ser informado!!");
+            jTextFieldValor.requestFocus();
+            valido = false;
+            return;
+        }
+        
+
+        if (valido == true) {
       p.setDescricaoPeca(jTextFieldPeca.getText());   
       p.setEstoque(Integer.parseInt(jTextFieldEstoque.getText()));
       p.setValor(Float.parseFloat(jTextFieldValor.getText()));
-      
+      p.setCodigoPeca(Integer.parseInt(jTextFieldCodigo.getText()));
       DAOModelo d = new DAOModelo();
       Modelo mo = (Modelo) jComboBoxModelo.getSelectedItem();
       mo.getDescricao();
@@ -287,9 +316,15 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         
       p.setModelo(mo);
         
-      dao.alterar(p);
+      boolean resultado = dao.alterar(p);
+       if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Peça atualizada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
       carregaTabela();
-      
+        }
        
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
@@ -301,7 +336,30 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-       
+       boolean valido = true;
+
+        
+        if (jTextFieldEstoque.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O estoque deve ser informado!!");
+            jTextFieldEstoque.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jTextFieldPeca.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "A peça  deve ser informada!!");
+            jTextFieldPeca.requestFocus();
+            valido = false;
+            return;
+        }
+        if (jTextFieldValor.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "O valor deve ser informado!!");
+            jTextFieldValor.requestFocus();
+            valido = false;
+            return;
+        }
+        
+
+        if (valido == true) {
       p.setDescricaoPeca(jTextFieldPeca.getText());
       p.setEstoque(Integer.parseInt(jTextFieldEstoque.getText()));
       p.setValor(Float.parseFloat(jTextFieldValor.getText()));
@@ -321,16 +379,47 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
                
       p.setModelo(mo);
        
-      dao.inserir(p);
+      
+     boolean resultado = dao.inserir(p);
+      if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Peça inserida com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
       carregaTabela();
-        
+        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-       
-       p.setCodigoPeca(Integer.parseInt(jTextFieldCodigo.getText())); 
-       dao.remover(p);
-       carregaTabela();
+        int row = jTablePeca.getSelectedRow();
+        if (row != -1) {
+
+            int res = JOptionPane.showConfirmDialog(rootPane, "Deseja remover este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_NO_OPTION) {
+
+                int id = (int) jTablePeca.getValueAt(row, 0);
+
+                boolean resultado = dao.remover(id);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Peça deletada com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+                carregaTabela();
+        jTextFieldPeca.setText("");
+        jComboBoxModelo.setSelectedIndex(0);
+        jTextFieldEstoque.setText(" ");
+        jTextFieldValor.setText(" ");
+        jTextFieldCodigo.setText("");
+              
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+        }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -341,12 +430,13 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        carregaTabela();
+       
         jTextFieldPeca.setText("");
         jComboBoxModelo.setSelectedIndex(0);
         jTextFieldEstoque.setText(" ");
         jTextFieldValor.setText(" ");
         jTextFieldCodigo.setText("");
+         carregaTabela();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
@@ -371,7 +461,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldValorActionPerformed
 private void carregaTabela(){
         
-        DefaultTableModel modelo = (DefaultTableModel) jTableModelo.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTablePeca.getModel();
         modelo.setNumRows(0);
         DAOPecas dao = new DAOPecas();
         
@@ -443,7 +533,7 @@ private void carregaTabela(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableModelo;
+    private javax.swing.JTable jTablePeca;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldEstoque;
     private javax.swing.JTextField jTextFieldPeca;
