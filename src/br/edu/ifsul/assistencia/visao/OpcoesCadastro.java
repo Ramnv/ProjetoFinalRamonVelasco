@@ -161,6 +161,7 @@ public class OpcoesCadastro extends javax.swing.JDialog
         // TODO add your handling code here:
         TelaCadastroCliente tela = new TelaCadastroCliente();
         tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCadastroClienteActionPerformed
 
     private void jButtonCadastroMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroMarcaActionPerformed

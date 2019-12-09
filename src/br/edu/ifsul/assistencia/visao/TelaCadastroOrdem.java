@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultButtonModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,6 +41,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         carregaTabela();
         preencherPeca();
         preencherFuncionario();
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public void preencherPeca() {
@@ -65,7 +67,6 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jButtonSalvar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableOrdem = new javax.swing.JTable();
@@ -85,8 +86,10 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         jTextFieldValor = new javax.swing.JTextField();
         jComboBoxPeca = new javax.swing.JComboBox<>();
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
-        jDateChooserInicial = new com.toedter.calendar.JDateChooser();
-        jDateChooserFinal = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonSalvar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
@@ -94,14 +97,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableOrdem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,24 +115,9 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableOrdem);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel1.add(jScrollPane1);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordem"));
 
         jLabel1.setText("Motivo:");
 
@@ -193,7 +175,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(760, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -205,11 +187,11 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooserInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateChooserFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(46, 46, 46)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -253,16 +235,26 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel4)
                                 .addComponent(jComboBoxPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jDateChooserInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButtonNao)
                             .addComponent(jLabel6)
                             .addComponent(jLabel9)
                             .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDateChooserFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
+
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonSalvar);
 
         jButtonDeletar.setText("Deletar");
         jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +262,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 jButtonDeletarActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonDeletar);
 
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +270,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 jButtonAtualizarActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonAtualizar);
 
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,6 +278,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 jButtonLimparActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonLimpar);
 
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -291,6 +286,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 jButtonVoltarActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonVoltar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,41 +295,22 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonAtualizar, jButtonDeletar, jButtonLimpar, jButtonSalvar});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonVoltar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonAtualizar, jButtonDeletar, jButtonLimpar, jButtonSalvar, jButtonVoltar});
 
         pack();
         setLocationRelativeTo(null);
@@ -352,15 +329,15 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             valido = false;
             return;
         }
-        if (jDateChooserInicial.getDateFormatString().isEmpty()) {
+        if (jDateChooser1.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data inicial deve ser informada!!");
-            jDateChooserInicial.requestFocus();
+            jDateChooser1.requestFocus();
             valido = false;
             return;
         }
-        if (jDateChooserFinal.getDateFormatString().isEmpty()) {
+        if (jDateChooser2.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data final deve ser informada!!");
-            jDateChooserFinal.requestFocus();
+            jDateChooser2.requestFocus();
             valido = false;
             return;
         }
@@ -391,8 +368,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         // }
         if (valido == true) {
 
-            o.setData_inicial(new java.sql.Date(jDateChooserInicial.getDate().getTime()));
-            o.setData_final(new java.sql.Date(jDateChooserFinal.getDate().getTime()));
+            o.setData_inicial(new java.sql.Date(jDateChooser1.getDate().getTime()));
+            o.setData_final(new java.sql.Date(jDateChooser2.getDate().getTime()));
             o.setMotivo(jTextFieldMotivo.getText());
             //chama o dao para poder listar os funcionarios
             DAOFuncionario daofuncionario = new DAOFuncionario();
@@ -438,8 +415,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaPrincipal tela = new TelaPrincipal();
-        tela.setVisible(true);
+//        TelaPrincipal tela = new TelaPrincipal();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
@@ -452,15 +429,15 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             valido = false;
             return;
         }
-        if (jDateChooserInicial.getDateFormatString().isEmpty()) {
+        if (jDateChooser1.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data inicial deve ser informada!!");
-            jDateChooserInicial.requestFocus();
+            jDateChooser1.requestFocus();
             valido = false;
             return;
         }
-        if (jDateChooserFinal.getDateFormatString().isEmpty()) {
+        if (jDateChooser2.getDateFormatString().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "A data final deve ser informada!!");
-            jDateChooserFinal.requestFocus();
+            jDateChooser2.requestFocus();
             valido = false;
             return;
         }
@@ -491,8 +468,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         // }
         if (valido == true) {
 
-            o.setData_inicial(new java.sql.Date(jDateChooserInicial.getDate().getTime()));
-            o.setData_final(new java.sql.Date(jDateChooserFinal.getDate().getTime()));
+            o.setData_inicial(new java.sql.Date(jDateChooser1.getDate().getTime()));
+            o.setData_final(new java.sql.Date(jDateChooser2.getDate().getTime()));
             o.setMotivo(jTextFieldMotivo.getText());
             //chama o dao para poder listar os funcionarios
             DAOFuncionario daofuncionario = new DAOFuncionario();
@@ -569,7 +546,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 7).toString());
             jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 2).toString());
             jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 9).toString());
-            boolean pago = false;
+            
             if (jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 8).toString().equals("false")) {
                 buttonGroup1.setSelected((ButtonModel) jRadioButtonNao, true);
 
@@ -647,8 +624,8 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<Object> jComboBoxFuncionario;
     private javax.swing.JComboBox<Object> jComboBoxPeca;
-    private com.toedter.calendar.JDateChooser jDateChooserFinal;
-    private com.toedter.calendar.JDateChooser jDateChooserInicial;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -659,6 +636,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButtonNao;
     private javax.swing.JRadioButton jRadioButtonSim;
     private javax.swing.JScrollPane jScrollPane1;
