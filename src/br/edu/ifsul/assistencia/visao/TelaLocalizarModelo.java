@@ -35,7 +35,7 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
     public TelaLocalizarModelo() {
         initComponents();
         carregaTabela();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -159,8 +159,8 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroModelo tela = new TelaCadastroModelo();
-        tela.setVisible(true);
+//        TelaCadastroModelo tela = new TelaCadastroModelo();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 

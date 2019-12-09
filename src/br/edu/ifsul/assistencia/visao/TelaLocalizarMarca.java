@@ -35,7 +35,7 @@ public class TelaLocalizarMarca extends javax.swing.JFrame {
     public TelaLocalizarMarca() {
         initComponents();
         carregaTabela();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+       // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -159,8 +159,8 @@ public class TelaLocalizarMarca extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroMarca tela = new TelaCadastroMarca();
-        tela.setVisible(true);
+//        TelaCadastroMarca tela = new TelaCadastroMarca();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 

@@ -35,7 +35,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
     public TelaLocalizarPeca() {
         initComponents();
         carregaTabela();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -159,8 +159,8 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        TelaCadastroPeca tela = new TelaCadastroPeca();
-        tela.setVisible(true);
+//        TelaCadastroPeca tela = new TelaCadastroPeca();
+//        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
