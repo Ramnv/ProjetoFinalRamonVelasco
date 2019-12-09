@@ -52,7 +52,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionário"));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("ID:");
@@ -78,7 +78,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonVoltar2.setText("Voltar");
         jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLocalizar2);
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableLocalizarFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

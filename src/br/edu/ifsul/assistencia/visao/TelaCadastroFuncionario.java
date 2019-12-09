@@ -62,7 +62,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,7 +89,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionário"));
 
         jLabelNome.setText("Nome:");
 
@@ -189,7 +189,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {

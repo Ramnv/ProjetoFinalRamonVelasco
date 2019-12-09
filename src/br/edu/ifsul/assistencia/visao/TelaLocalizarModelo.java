@@ -69,7 +69,7 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableLocalizarCliente);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Modelo"));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("ID:");
@@ -95,7 +95,7 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         pack();

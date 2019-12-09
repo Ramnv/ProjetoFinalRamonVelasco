@@ -69,7 +69,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableLocalizarCliente);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Peça"));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("ID:");
@@ -79,7 +79,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(291, Short.MAX_VALUE)
+                .addContainerGap(281, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,7 +95,7 @@ public class TelaLocalizarPeca extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonLocalizar.setText("Localizar");
         jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {

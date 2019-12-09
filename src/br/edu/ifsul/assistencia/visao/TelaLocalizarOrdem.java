@@ -52,7 +52,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordem"));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("ID:");
@@ -62,7 +62,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(243, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -78,7 +78,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonLocalizar2.setText("Localizar");
         jButtonLocalizar2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class TelaLocalizarOrdem extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonVoltar2);
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableLocalizarOrdem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

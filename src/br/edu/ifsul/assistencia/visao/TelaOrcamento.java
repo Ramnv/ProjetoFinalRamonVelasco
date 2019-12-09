@@ -92,10 +92,10 @@ public class TelaOrcamento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
         jPanel1.add(jTextField2);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Orçamento"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabelMarca.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -164,7 +164,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(22, 68, 38, 123);
         jPanel2.add(jComboBoxPeca, gridBagConstraints);
 
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonSalvar.setText("Gerar Orçamento");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {

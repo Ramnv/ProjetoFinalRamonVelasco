@@ -86,7 +86,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +184,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,7 +203,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +273,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
