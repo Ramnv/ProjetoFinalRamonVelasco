@@ -82,11 +82,11 @@ public class DAOOrdem {
                     }
         }
     
-    public boolean remover(Ordem obj){
+    public boolean remover(int id){
         String sql = "delete  from ordem where ordem_cod=?";
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getOrdem_cod());
+            pst.setInt(1, id);
             
             if(pst.executeUpdate()> 0){
                 System.out.println("Ordem removida com sucesso");

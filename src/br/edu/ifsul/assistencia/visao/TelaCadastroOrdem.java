@@ -406,7 +406,14 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
                 o.setPago(true);
             }
             o.setOrdem_cod(Integer.parseInt(jTextFieldCodigo.getText()));
-            dao.alterar(o);
+            boolean resultado = dao.alterar(o);
+             if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Ordem alterada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+            
             carregaTabela();
 
         }
@@ -505,7 +512,14 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             if (jRadioButtonSim.isSelected()) {
                 o.setPago(true);
             }
-            dao.incluir(o);
+
+            boolean resultado = dao.incluir(o);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Ordem inserida com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
             carregaTabela();
 
         }
@@ -514,11 +528,10 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-       // Date data = new java.sql.Date(2019, 12, 10);
+        // Date data = new java.sql.Date(2019, 12, 10);
         jTextFieldValor.setText("");
         jTextFieldMotivo.setText("");
-        //jDateChooserInicial.setDate(data);
-        //jDateChooserFinal.setDate(data);
+        
         jTextFieldCodigo.setText("");
         buttonGroup1.clearSelection();
         jComboBoxPeca.setSelectedIndex(0);
@@ -533,9 +546,37 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldMotivoActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        o.setOrdem_cod(Integer.parseInt(jTextFieldCodigo.getText()));
-        dao.remover(o);
-        carregaTabela();
+        int row = jTableOrdem.getSelectedRow();
+        if (row != -1) {
+
+            int res = JOptionPane.showConfirmDialog(rootPane, "Deseja remover este registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_NO_OPTION) {
+
+                int id = (int) jTableOrdem.getValueAt(row, 0);
+                boolean resultado = dao.remover(id);
+                if(resultado){
+                  JOptionPane.showMessageDialog(null, "Ordem deletada!!");
+
+                }else{
+                  JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
+                
+                carregaTabela();
+                
+                jTextFieldValor.setText("");
+                jTextFieldMotivo.setText("");
+                jTextFieldCodigo.setText("");
+                buttonGroup1.clearSelection();
+                jComboBoxPeca.setSelectedIndex(0);
+                jComboBoxFuncionario.setSelectedIndex(0);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
+        }
+
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jTableOrdemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableOrdemMouseClicked
@@ -546,7 +587,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             jTextFieldValor.setText(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 7).toString());
             jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 2).toString());
             jComboBoxPeca.setSelectedItem(jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 9).toString());
-            
+
             if (jTableOrdem.getValueAt(jTableOrdem.getSelectedRow(), 8).toString().equals("false")) {
                 buttonGroup1.setSelected((ButtonModel) jRadioButtonNao, true);
 
