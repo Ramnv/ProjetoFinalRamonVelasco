@@ -56,12 +56,12 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         jTextFieldCodigo = new javax.swing.JTextField();
         jComboBoxMarca = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jButtonLocalicalizar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
-        jButtonSalvar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableModelo = new javax.swing.JTable();
@@ -146,13 +146,13 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSalvarActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1);
+        jPanel4.add(jButtonSalvar);
 
         jButtonLocalicalizar.setText("Localizar");
         jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,13 +186,13 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         });
         jPanel4.add(jButtonDeletar);
 
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButtonSalvar);
+        jPanel4.add(jButton1);
 
         jTableModelo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

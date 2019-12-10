@@ -65,12 +65,12 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldN_serie = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jButtonLocalicalizar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
-        jButtonSalvar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,13 +175,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSalvarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
+        jPanel3.add(jButtonSalvar);
 
         jButtonLocalicalizar.setText("Localizar");
         jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -215,13 +215,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonDeletar);
 
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonSalvar);
+        jPanel3.add(jButton1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

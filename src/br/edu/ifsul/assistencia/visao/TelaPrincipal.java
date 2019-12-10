@@ -137,12 +137,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
-                        .addGap(0, 21, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTextFieldDescricao))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(930, 765));
+        setSize(new java.awt.Dimension(930, 745));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

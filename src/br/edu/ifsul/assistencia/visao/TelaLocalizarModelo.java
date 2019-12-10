@@ -53,9 +53,9 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
         jTextFieldCodigo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButtonVoltar = new javax.swing.JButton();
-        jButtonLimpar = new javax.swing.JButton();
         jButtonLocalizar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +97,13 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButtonVoltar.setText("Voltar");
-        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLocalizar.setText("Localizar");
+        jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVoltarActionPerformed(evt);
+                jButtonLocalizarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonVoltar);
+        jPanel2.add(jButtonLocalizar);
 
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,13 +113,13 @@ public class TelaLocalizarModelo extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonLimpar);
 
-        jButtonLocalizar.setText("Localizar");
-        jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLocalizarActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLocalizar);
+        jPanel2.add(jButtonVoltar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

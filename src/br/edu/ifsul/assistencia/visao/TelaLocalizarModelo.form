@@ -145,12 +145,12 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButtonVoltar">
+        <Component class="javax.swing.JButton" name="jButtonLocalizar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Voltar"/>
+            <Property name="text" type="java.lang.String" value="Localizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVoltarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonLimpar">
@@ -161,12 +161,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimparActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonLocalizar">
+        <Component class="javax.swing.JButton" name="jButtonVoltar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Localizar"/>
+            <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLocalizarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVoltarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

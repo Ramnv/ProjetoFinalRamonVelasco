@@ -43,9 +43,9 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         jTextFieldID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButtonVoltar2 = new javax.swing.JButton();
-        jButtonLimpar2 = new javax.swing.JButton();
         jButtonLocalizar2 = new javax.swing.JButton();
+        jButtonLimpar2 = new javax.swing.JButton();
+        jButtonVoltar2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLocalizarFunc = new javax.swing.JTable();
@@ -80,13 +80,13 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButtonVoltar2.setText("Voltar");
-        jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLocalizar2.setText("Localizar");
+        jButtonLocalizar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVoltar2ActionPerformed(evt);
+                jButtonLocalizar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonVoltar2);
+        jPanel1.add(jButtonLocalizar2);
 
         jButtonLimpar2.setText("Limpar");
         jButtonLimpar2.addActionListener(new java.awt.event.ActionListener() {
@@ -96,13 +96,13 @@ public class TelaLocalizarFuncionario extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLimpar2);
 
-        jButtonLocalizar2.setText("Localizar");
-        jButtonLocalizar2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar2.setText("Voltar");
+        jButtonVoltar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLocalizar2ActionPerformed(evt);
+                jButtonVoltar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLocalizar2);
+        jPanel1.add(jButtonVoltar2);
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
