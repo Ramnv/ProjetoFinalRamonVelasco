@@ -232,7 +232,9 @@ public class TelaOrcamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        jComboBoxMarca.setSelectedIndex(0);
+        jComboBoxModelo.setSelectedIndex(0);
+        jComboBoxPeca.setSelectedIndex(0);
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
