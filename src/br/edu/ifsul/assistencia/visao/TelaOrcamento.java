@@ -33,7 +33,10 @@ public class TelaOrcamento extends javax.swing.JFrame {
         Peca peca = new Peca();
                
         Conexao conexao = new Conexao(); 
-        int id;
+        int idMarca;
+        int idModelo;
+        int idPeca;
+        
         
     public TelaOrcamento() {
         
@@ -54,10 +57,10 @@ public class TelaOrcamento extends javax.swing.JFrame {
     }
     public void preencherModelo(int id){
         
-        //jComboBoxModelo.getModel().
+      
         
     //criar dao para pegar modelo where cod_marca = ? 
-        for(Modelo mo : daomodelo.listarModeloCodigoMarca(id)){
+        for(Modelo mo : daomodelo.listarModeloCodigoMarca(idMarca)){
             
             jComboBoxModelo.addItem(mo);
         }
@@ -65,14 +68,14 @@ public class TelaOrcamento extends javax.swing.JFrame {
     //criar dao para pegar peca where cod_marca = ? 
      public void preencherPeca(int id){
          
-         for(Peca pe : daopecas.listarPecaCodigoModelo(id)){
+         for(Peca pe : daopecas.listarPecaCodigoModelo(idModelo)){
          
              jComboBoxPeca.addItem(pe);
          }
     
     }
      public void mostarValor(int id){
-         for(Peca pe : daopecas.localizar(id)){
+         for(Peca pe : daopecas.localizar(idPeca)){
              jTextField2.setText("R$" + pe.getValor());
          }
      }
@@ -233,8 +236,8 @@ public class TelaOrcamento extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-       // TelaPrincipal tela = new TelaPrincipal();
-       // tela.setVisible(true);
+        //TelaPrincipal tela = new TelaPrincipal();
+        //tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
@@ -242,8 +245,8 @@ public class TelaOrcamento extends javax.swing.JFrame {
         
         if(jComboBoxPeca.getSelectedIndex()>0){
             Peca p = (Peca) jComboBoxPeca.getSelectedItem();
-            
-            mostarValor(p.getCodigoPeca());
+            idPeca = p.getCodigoPeca();
+            mostarValor(idPeca);
         }
         else {
             JOptionPane.showMessageDialog(rootPane,"A peca deve ser selecionada!" );
@@ -271,8 +274,8 @@ public class TelaOrcamento extends javax.swing.JFrame {
            Marca m = (Marca) jComboBoxMarca.getSelectedItem();
            
             System.out.println("m: "+m.getCodigoMarca());
-           
-           preencherModelo(m.getCodigoMarca());
+           idMarca = m.getCodigoMarca();
+           preencherModelo(idMarca);
            
            
            
@@ -292,6 +295,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
             Modelo m = (Modelo) jComboBoxModelo.getSelectedItem();
             System.out.println("m: "+m.getCodigoModelo());
             preencherPeca(m.getCodigoModelo());
+            idModelo = m.getCodigoModelo();
             jComboBoxPeca.setEnabled(true);
             
         }

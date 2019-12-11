@@ -87,7 +87,8 @@ public class DAOMarca {
         }
     }
        public List<Marca> listar() {
-           String sql = "select * from marca";
+           String sql = "select distinct marca_cod, nome from marca\n" +
+"                   order by nome";
            
            List<Marca> lista = new ArrayList<>();
            try{
