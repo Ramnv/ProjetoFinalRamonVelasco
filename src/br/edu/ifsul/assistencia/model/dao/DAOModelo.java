@@ -144,8 +144,8 @@ public class DAOModelo {
            }
      
            public List<Modelo> listarModeloCodigoMarca(int id) {
-           String sql = "select m.nome from modelo as m, marca"
-                   + " where marca_cod = modelo_cod and marca = ? order by nome";
+           String sql = "select distinct m.nome, modelo_cod from modelo as m, marca"
+                   + " where m.marca = marca_cod and marca = ? order by nome";
            
            List<Modelo> lista = new ArrayList<>();
            try{
@@ -155,7 +155,7 @@ public class DAOModelo {
                
              while(rs.next()){
                  Modelo m = new Modelo(); 
-                
+                m.setCodigoModelo(rs.getInt("modelo_cod"));
                  m.setDescricao(rs.getString("nome"));
                  
                  lista.add(m);

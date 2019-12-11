@@ -170,6 +170,30 @@ public class DAOPecas {
                      }
            return lista;
            }
+      public List<Peca> listarPecaCodigoModelo(int id) {
+           String sql = "select distinct p.peca_cod, p.nome from pecas as p, modelo\n" +
+"                   where p.modelo = modelo_cod and modelo = ? order by nome";
+           
+           List<Peca> lista = new ArrayList<>();
+           try{
+              PreparedStatement pst = Conexao.getPreparedStatement(sql);
+                pst.setInt(1, id);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Peca p = new Peca();
+                p.setCodigoPeca(rs.getInt("peca_cod"));
+                 p.setDescricaoPeca(rs.getString("nome"));
+                 
+                 lista.add(p);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
            
        }
     

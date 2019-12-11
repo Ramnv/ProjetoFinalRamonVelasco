@@ -15,6 +15,7 @@ import br.edu.ifsul.assistencia.model.dao.DAOModelo;
 import br.edu.ifsul.assistencia.model.dao.DAOOrdem;
 import br.edu.ifsul.assistencia.model.dao.DAOPecas;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,8 @@ public class TelaOrcamento extends javax.swing.JFrame {
         initComponents();
         preencherMarca();
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        jComboBoxModelo.setEnabled(false);
+        jComboBoxPeca.setEnabled(false);
     }
     
     public void preencherMarca(){
@@ -60,14 +63,19 @@ public class TelaOrcamento extends javax.swing.JFrame {
         }
     }
     //criar dao para pegar peca where cod_marca = ? 
-     public void preencherPeca(){
+     public void preencherPeca(int id){
          
-         for(Peca pe : daopecas.listarPeca()){
+         for(Peca pe : daopecas.listarPecaCodigoModelo(id)){
          
              jComboBoxPeca.addItem(pe);
          }
     
     }
+     public void mostarValor(int id){
+         for(Peca pe : daopecas.localizar(id)){
+             jTextField2.setText("R$" + pe.getValor());
+         }
+     }
 
     
     @SuppressWarnings("unchecked")
@@ -147,6 +155,11 @@ public class TelaOrcamento extends javax.swing.JFrame {
         jPanel2.add(jComboBoxMarca, gridBagConstraints);
 
         jComboBoxModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:" }));
+        jComboBoxModelo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxModeloItemStateChanged(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -226,7 +239,15 @@ public class TelaOrcamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+        
+        if(jComboBoxPeca.getSelectedIndex()>0){
+            Peca p = (Peca) jComboBoxPeca.getSelectedItem();
+            
+            mostarValor(p.getCodigoPeca());
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane,"A peca deve ser selecionada!" );
+        }
        
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -235,6 +256,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         jComboBoxMarca.setSelectedIndex(0);
         jComboBoxModelo.setSelectedIndex(0);
         jComboBoxPeca.setSelectedIndex(0);
+        jTextField2.setText("");
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
@@ -255,30 +277,25 @@ public class TelaOrcamento extends javax.swing.JFrame {
            
            
             jComboBoxModelo.setEnabled(true);
-            preencherModelo(id);
-            
-            
-            /*
-            
-            //fazer a mesma coisa para a peça 
-            if(jComboBoxModelo.getSelectedIndex()>0){
-                
-                    jComboBoxPeca.setEnabled(true);
-                    
-            }else{
-                jComboBoxPeca.setEnabled(false);
-            }
-            */
-        }else{
-            
-            jComboBoxModelo.setEnabled(false);
-            jComboBoxPeca.setEnabled(false);
+           
         }
     }//GEN-LAST:event_jComboBoxMarcaItemStateChanged
 
     private void jComboBoxMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxMarcaActionPerformed
+
+    private void jComboBoxModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModeloItemStateChanged
+        
+        if(jComboBoxModelo.getSelectedIndex()>0){
+            
+            Modelo m = (Modelo) jComboBoxModelo.getSelectedItem();
+            System.out.println("m: "+m.getCodigoModelo());
+            preencherPeca(m.getCodigoModelo());
+            jComboBoxPeca.setEnabled(true);
+            
+        }
+    }//GEN-LAST:event_jComboBoxModeloItemStateChanged
 
     /**
      * @param args the command line arguments
