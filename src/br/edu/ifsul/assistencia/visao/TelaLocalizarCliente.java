@@ -69,6 +69,12 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
+        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCodigoActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("ID:");
 
@@ -150,6 +156,7 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
     private void jButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizarActionPerformed
         // TODO add your handling code here:
         carregaTabela();
+      
     }//GEN-LAST:event_jButtonLocalizarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -163,6 +170,10 @@ public class TelaLocalizarCliente extends javax.swing.JFrame {
     jTextFieldCodigo.setText("");
     carregaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 private void carregaTabela(){
         
         DefaultTableModel modelo = (DefaultTableModel) jTableLocalizarCliente.getModel();
