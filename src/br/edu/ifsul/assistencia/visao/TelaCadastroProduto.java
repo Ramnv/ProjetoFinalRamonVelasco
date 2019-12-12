@@ -372,8 +372,20 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             if (res == JOptionPane.YES_NO_OPTION) {
 
                 int id = (int) jTableProduto.getValueAt(row, 0);
-                dao.remover(id);
+              
+                 boolean resultado = dao.remover(id);
+                if (resultado) {
+                    JOptionPane.showMessageDialog(rootPane, "Produto deletado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+                }
                 carregaTabela();
+               jTextAreaMotivo.setText("");
+        jComboBoxModelo.setSelectedIndex(0);
+        jTextFieldN_serie.setText("");
+        jTextFieldCodigo.setText("");
+
 
             }
         }else {
