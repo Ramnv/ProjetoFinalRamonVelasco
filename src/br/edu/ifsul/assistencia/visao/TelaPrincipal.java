@@ -44,6 +44,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldDescricao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldDescricao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDescricao.setOpaque(false);
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -56,7 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +125,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDescricao)
+                .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -128,18 +133,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextFieldDescricao))
-                .addContainerGap())
+                        .addComponent(jButton3))
+                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(930, 745));
@@ -148,7 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("Cadastra funcionários, cliente, modelo ou marca");
+        jTextFieldDescricao.setText("Cadastrar funcionários, cliente, marca, modelo, ordem, peça ou produto");
     }//GEN-LAST:event_jButton2MouseMoved
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -159,7 +163,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("Localiza funcionários, cliente, modelo ou marca");
+        jTextFieldDescricao.setText("Localizar funcionários, cliente, marca, modelo, ordem, peça ou produto");
     }//GEN-LAST:event_jButton3MouseMoved
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -170,7 +174,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("Cria um orçamento do produto");
+        jTextFieldDescricao.setText("Criar um orçamento do produto");
     }//GEN-LAST:event_jButton4MouseMoved
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -181,8 +185,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseMoved
         // TODO add your handling code here:
-        jTextFieldDescricao.setText("IFSUL - 2019 Alunos: Jessica ... Ramon ... 2019");
+        jTextFieldDescricao.setText("IFSUL - 2019 Alunos: Jéssica Regina Di Domênico Ramon Antonio Maito Velasco");
     }//GEN-LAST:event_jButton5MouseMoved
+
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     /**
      * @param args the command line arguments
