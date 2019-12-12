@@ -229,7 +229,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonAtualizar);
 
-        jButtonLimpar.setText("Limpar Campos");
+        jButtonLimpar.setText("Limpar campos");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);

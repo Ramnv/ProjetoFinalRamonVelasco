@@ -323,7 +323,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonLimpar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Limpar Campos"/>
+            <Property name="text" type="java.lang.String" value="Limpar campos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimparActionPerformed"/>

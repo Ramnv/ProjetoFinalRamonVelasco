@@ -66,10 +66,10 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         jTextFieldValor = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButtonSalvar = new javax.swing.JButton();
-        jButtonLocalicalizar = new javax.swing.JButton();
-        jButtonLimpar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonLocalicalizar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -199,22 +199,6 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonSalvar);
 
-        jButtonLocalicalizar.setText("Localizar");
-        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLocalicalizarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonLocalicalizar);
-
-        jButtonLimpar.setText("Limpar Campos");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonLimpar);
-
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +214,22 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButtonDeletar);
+
+        jButtonLimpar.setText("Limpar campos");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonLimpar);
+
+        jButtonLocalicalizar.setText("Localizar");
+        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalicalizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonLocalicalizar);
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -330,7 +330,7 @@ public class TelaCadastroPeca extends javax.swing.JFrame {
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
         // TODO add your handling code here:
-         TelaLocalizarCliente tela = new TelaLocalizarCliente();
+         TelaLocalizarPeca tela = new TelaLocalizarPeca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed

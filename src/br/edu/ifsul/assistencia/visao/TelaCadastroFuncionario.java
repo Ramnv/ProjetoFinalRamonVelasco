@@ -216,7 +216,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         });
         jPanel4.add(jButtonAtualizar);
 
-        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setText("Limpar Campos");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
@@ -224,7 +224,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         });
         jPanel4.add(jButtonLimpar);
 
-        jButtonLocalizar.setText("Localizar Funcionario");
+        jButtonLocalizar.setText("Localizar");
         jButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLocalizarActionPerformed(evt);

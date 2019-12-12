@@ -153,7 +153,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonAtualizar);
 
-        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setText("Limpar campos");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
@@ -237,7 +237,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
         // TODO add your handling code here:
-        TelaLocalizarCliente tela = new TelaLocalizarCliente();
+        TelaLocalizarMarca tela = new TelaLocalizarMarca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed

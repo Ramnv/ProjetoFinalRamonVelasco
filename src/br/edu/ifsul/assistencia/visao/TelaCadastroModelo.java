@@ -57,10 +57,10 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         jComboBoxMarca = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jButtonSalvar = new javax.swing.JButton();
-        jButtonLocalicalizar = new javax.swing.JButton();
-        jButtonLimpar = new javax.swing.JButton();
-        jButtonAtualizar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonLocalicalizar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -154,21 +154,13 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         });
         jPanel4.add(jButtonSalvar);
 
-        jButtonLocalicalizar.setText("Localizar");
-        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeletar.setText("Deletar");
+        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLocalicalizarActionPerformed(evt);
+                jButtonDeletarActionPerformed(evt);
             }
         });
-        jPanel4.add(jButtonLocalicalizar);
-
-        jButtonLimpar.setText("Limpar");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButtonLimpar);
+        jPanel4.add(jButtonDeletar);
 
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,13 +170,21 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
         });
         jPanel4.add(jButtonAtualizar);
 
-        jButtonDeletar.setText("Deletar");
-        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpar.setText("Limpar campos");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeletarActionPerformed(evt);
+                jButtonLimparActionPerformed(evt);
             }
         });
-        jPanel4.add(jButtonDeletar);
+        jPanel4.add(jButtonLimpar);
+
+        jButtonLocalicalizar.setText("Localizar");
+        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalicalizarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButtonLocalicalizar);
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +297,7 @@ public class TelaCadastroModelo extends javax.swing.JFrame {
 
     private void jButtonLocalicalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalicalizarActionPerformed
         // TODO add your handling code here:
-         TelaLocalizarCliente tela = new TelaLocalizarCliente();
+         TelaLocalizarModelo tela = new TelaLocalizarModelo();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalicalizarActionPerformed

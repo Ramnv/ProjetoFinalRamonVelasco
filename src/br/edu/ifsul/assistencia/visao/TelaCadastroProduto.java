@@ -66,10 +66,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jTextFieldN_serie = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButtonSalvar = new javax.swing.JButton();
-        jButtonLocalicalizar = new javax.swing.JButton();
-        jButtonLimpar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonLocalicalizar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,22 +182,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonSalvar);
 
-        jButtonLocalicalizar.setText("Localizar");
-        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLocalicalizarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonLocalicalizar);
-
-        jButtonLimpar.setText("Limpar");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButtonLimpar);
-
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +197,22 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButtonDeletar);
+
+        jButtonLimpar.setText("Limpar campos");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonLimpar);
+
+        jButtonLocalicalizar.setText("Localizar");
+        jButtonLocalicalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalicalizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonLocalicalizar);
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

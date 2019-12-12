@@ -168,35 +168,35 @@ public class OpcoesLocalizar extends javax.swing.JFrame {
 
     private void jButtonLocalizaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaMarcaActionPerformed
         // TODO add your handling code here:
-        TelaCadastroMarca tela = new TelaCadastroMarca();
+        TelaLocalizarMarca tela = new TelaLocalizarMarca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaMarcaActionPerformed
 
     private void jButtonLocalizaModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaModeloActionPerformed
         // TODO add your handling code here:
-         TelaCadastroModelo tela = new TelaCadastroModelo();
+         TelaLocalizarModelo tela = new TelaLocalizarModelo();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaModeloActionPerformed
 
     private void jButtonLocalizaOrdemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaOrdemActionPerformed
         // TODO add your handling code here:
-         TelaCadastroOrdem tela = new TelaCadastroOrdem();
+         TelaLocalizarOrdem tela = new TelaLocalizarOrdem();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaOrdemActionPerformed
 
     private void jButtonLocalizaPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaPecaActionPerformed
         // TODO add your handling code here:
-         TelaCadastroPeca tela = new TelaCadastroPeca();
+         TelaLocalizarPeca tela = new TelaLocalizarPeca();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaPecaActionPerformed
 
     private void jButtonLocalizaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalizaProdutoActionPerformed
         // TODO add your handling code here:
-         TelaCadastroProduto tela = new TelaCadastroProduto();
+         TelaLocalizarProduto tela = new TelaLocalizarProduto();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonLocalizaProdutoActionPerformed

@@ -93,6 +93,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         jButtonDeletar = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -272,13 +273,21 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonAtualizar);
 
-        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setText("Limpar campos");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
             }
         });
         jPanel3.add(jButtonLimpar);
+
+        jButton1.setText("Localizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
 
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -597,6 +606,13 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTableOrdemMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         TelaLocalizarOrdem tela = new TelaLocalizarOrdem();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void carregaTabela() {
 
         DefaultTableModel modelo = (DefaultTableModel) jTableOrdem.getModel();
@@ -658,6 +674,7 @@ public class TelaCadastroOrdem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonLimpar;
