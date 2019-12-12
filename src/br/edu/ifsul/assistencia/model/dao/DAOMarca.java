@@ -88,6 +88,29 @@ public class DAOMarca {
     }
        public List<Marca> listar() {
            String sql = "select distinct marca_cod, nome from marca\n" +
+"                   order by marca_cod";
+           
+           List<Marca> lista = new ArrayList<>();
+           try{
+               PreparedStatement pst = Conexao.getPreparedStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               
+             while(rs.next()){
+                 Marca m = new Marca(); 
+                 m.setCodigo_marca(rs.getInt("marca_cod"));
+                 m.setDescricao(rs.getString("nome"));
+                 
+                 lista.add(m);
+                         
+                 
+             }
+           }catch (Exception e ){
+                     System.out.println(" Erro de SQL: " + e.getMessage());
+                     }
+           return lista;
+           }
+        public List<Marca> listarNome() {
+           String sql = "select distinct marca_cod, nome from marca\n" +
 "                   order by nome";
            
            List<Marca> lista = new ArrayList<>();
@@ -133,6 +156,7 @@ public class DAOMarca {
                      }
            return lista;
            }
+ 
   public List<Marca> listarFiltro(Integer id){
     
         String sql = "select * from marca where marca_cod=?";

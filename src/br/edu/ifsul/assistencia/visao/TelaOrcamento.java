@@ -49,7 +49,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
     
     public void preencherMarca(){
         
-        for(Marca ma : daomarca.listar()){
+        for(Marca ma : daomarca.listarNome()){
             
             jComboBoxMarca.addItem(ma);
         }
