@@ -386,6 +386,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jTextAreaMotivo.setText("");
         jComboBoxModelo.setSelectedIndex(0);
         jTextFieldN_serie.setText("");
+        jTextFieldCodigo.setText("");
 
 
     }//GEN-LAST:event_jButtonLimparActionPerformed
