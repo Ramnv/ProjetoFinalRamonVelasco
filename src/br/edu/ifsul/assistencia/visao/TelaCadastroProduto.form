@@ -76,7 +76,7 @@
                   <Table columnCount="4" rowCount="0">
                     <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                     <Column editable="true" title="Motivo" type="java.lang.Object"/>
-                    <Column editable="true" title="N&#xfa;emro de s&#xe9;rie" type="java.lang.Object"/>
+                    <Column editable="true" title="N&#xfa;mero de s&#xe9;rie" type="java.lang.Object"/>
                     <Column editable="true" title="Modelo" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -238,9 +238,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldN_serie">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldN_serieActionPerformed"/>
           </Events>

@@ -82,7 +82,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Motivo", "Núemro de série", "Modelo"
+                "Código", "Motivo", "Número de série", "Modelo"
             }
         ));
         jTableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +123,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jLabel2.setText("Número de série: ");
 
-        jTextFieldN_serie.setText(" ");
         jTextFieldN_serie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldN_serieActionPerformed(evt);
@@ -296,9 +295,15 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
            }  
          }
          p.setModelo(m);
-         dao.atualizar(p);
-          JOptionPane.showMessageDialog(rootPane, "Produto alterado com sucesso!");
-         carregaTabela();
+        
+           boolean resultado =  dao.atualizar(p);
+            if (resultado) {
+                JOptionPane.showMessageDialog(rootPane, "Produto alterado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um problema! Tente novamente");
+
+            }
+            carregaTabela();
             
         }
 
@@ -371,6 +376,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 carregaTabela();
 
             }
+        }else {
+            JOptionPane.showMessageDialog(null, "Linha a ser deletada não foi selecionada!!");
         }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
